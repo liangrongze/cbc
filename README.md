@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # PyroCMS Community Edition
 
 [![Build Status](https://secure.travis-ci.org/pyrocms/pyrocms.png?branch=2.2/develop)](https://travis-ci.org/pyrocms/pyrocms)
@@ -85,3 +86,9 @@ Think you should be on this list? Add yourself in the next pull request you subm
 * [Toni Haryanto](http://toniharyanto.cs.upi.edu/) Indonesian
 * [Nateetorn Lertkhonsan](http://twitter.com/ikwannnnn) Thai
 * [Christian Giupponi](https://github.com/ChristianGiupponi) Italian
+=======
+test
+====
+
+test of 
+>>>>>>> 831264306ecbf8890fcd11727e691a10a2fb72c2
