@@ -1,42 +1,124 @@
-	<footer>
-		{{ widgets:area slug="footer" }}
-		
-		<ul>
-			{{ navigation:links group="footer" }}
-		</ul>
-		
-		<!--
-		- You can modify these social links to suit. 
-		- Add your username and links, add or remove items.
-		-->
-		<div class="widget social">
-			<h3>Socialise</h3>
-			<ul>
-				<li><a class="tooltip-s" href="http://twitter.com/iKreativ" title="Follow on Twitter" target="_blank">{{ theme:image file="twitter.png" }}</a></li>
-				<li><a class="tooltip-s" href="#" title="Follow on Facebook" target="_blank">{{ theme:image file="facebook.png" }}</a></li>
-				<li><a class="tooltip-s" href="http://forrst.com/people/iKreativ" title="Follow on Forrst" target="_blank">{{ theme:image file="forrst.png" }}</a></li>
-				<li><a class="tooltip-s" href="http://dribbble.com/iKreativ" title="Follow on Dribbble" target="_blank">{{ theme:image file="dribbble.png" }}</a></li>
-				<li><a class="tooltip-s" href="#" title="Follow on Vimeo" target="_blank">{{ theme:image file="vimeo.png" }}</a></li>
-				<li><a class="tooltip-s" href="#" title="Follow on YouTube" target="_blank">{{ theme:image file="youtube.png" }}</a></li>
-			</ul>
-		</div>	
-	</footer>
-	
+<!-- start: footer -->
+<footer>
+	<div class="pre-footer">
+		<div class="container">
+			<div class="row-fluid">
+				<div class="section-wrapper clearfix">
+
+					<div class="span4">
+						<div class="separator">
+							<div class="left">
+								<div class="lines">
+									<div>
+									<h2 class="lines-title">关注我们</h2>
+									</div>
+								</div>
+							</div>
+						</div>
+						<p>愿大家细心欣赏我们为您准备的各项航海体验活动，同时加入成为会员。于认识新朋友之余可享受一个精英级别交流的游艇俱乐部，使游艇活动能够发扬光大。 <a href="work-with-us.html"><i class="icon-share"></i></a></p>
+
+						<p class="footer-subscribe"><strong>订阅每月最新动态:</strong></p>
+
+						<form id="newsletter">
+				              <input type="text" placeholder="你Emaill邮件地址" class="span9 subs">
+				              <button type="button" class="btn btn-send">发送</button>
+						</form>
+					</div>
+					
+					
+					<div class="span5">
+						<div class="separator">
+							<div class="left">
+								<div class="lines">
+									<div>
+									<h2 class="lines-title">最新动态</h2>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="tweet"></div> 
+					</div>
+
+
+					<div class="span3">
+						<div class="separator">
+							<div class="left">
+								<div class="lines">
+									<div>
+									<h2 class="lines-title">联系我们</h2>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<ul class="contact-footer">
+							<li>
+								<i class="icon-map-marker"></i>  450 St. Kilda Rd. Melbourne, VIC, Australia，3004
+							</li>
+							<li>
+								<i class="icon-phone"></i> 1300 648 648
+							</li>
+							<li>
+								<i class="icon-envelope-alt"></i> hello@chineseboatclub.com
+							</li>
+							<li>
+								<i class="icon-globe"></i><a href="#"> www.chineseboatclub.com</a> 
+							</li>							
+						</ul>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
 	</div>
-	<!-- /container -->
+	<div class="post-footer">
+		<div class="container">
+			<div class="row">
+					<div class="span6">
+						<div class="copyright">Copyright &copy; 2013 CBC澳洲中国游艇荟. Made with Love in Australia.</div>
+					</div>
+					<div class="span6">
+						<ul class="footer-links">
+							<li>
+								<a href="about.html">关于我们</a>
+							</li>
+							<li>
+								<a href="features.html">会员中心</a>
+							</li>
+							<li>
+								<a href="blog-post.html">航海体验</a>
+							</li>
+							<li>
+								<a href="sign-in.html">联系我们</a>
+							</li>
+							<li>
+								<a href="contact.html">加入我们</a>
+							</li>
+						</ul>
+					</div>
+			</div>
+		</div>
+	</div>
+</footer><!-- end: footer -->
 
   	<!-- JavaScript at the bottom for fast page loading -->
 
   	<!-- Scripts -->
-  	{{ theme:js file="plugins.js" }}
-  	{{ theme:js file="script.js" }}
+  	{{ theme:js file="jquery.js" }}
+  	{{ theme:js file="bootstrap.min.js" }}
+  	{{ theme:js file="modernizr.js" }}
+  	{{ theme:js file="ba-cond.js" }}
+  	{{ theme:js file="slitslider.js" }}
+  	{{ theme:js file="isotope.js" }}
+  	{{ theme:js file="plax.js" }}
+  	{{ theme:js file="tweet.js" }}
+  	{{ theme:js file="custom.js" }}
   	<!-- End Scripts -->
 
-  	<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6. chromium.org/developers/how-tos/chrome-frame-getting-started -->
-  	<!--[if lt IE 7 ]>
-    	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-    	<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-  	<![endif]-->
+  	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->	
   
 </body>
 </html>

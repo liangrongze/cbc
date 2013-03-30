@@ -296,7 +296,7 @@
 /* Forth Slide */
 .slider-wrapper .bg-4 .sl-slide-inner,
 .slider-wrapper .bg-4 .sl-content-slice {
-    background-image: url("../images/photos/screen-tablet.jpg");
+    background-image: url("../img/photos/screen-tablet.jpg");
     background-position: 0 center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -348,19 +348,19 @@
 }
 
 .demo-2 .bg-img-1 {
-	background-image: url(../images/slider/1.jpg);
+	background-image: url(../img/slider/1.jpg);
 }
 .demo-2 .bg-img-2 {
-	background-image: url(../images/slider/2.jpg);
+	background-image: url(../img/slider/2.jpg);
 }
 .demo-2 .bg-img-3 {
-	background-image: url(../images/slider/3.jpg);
+	background-image: url(../img/slider/3.jpg);
 }
 .demo-2 .bg-img-4 {
-	background-image: url(assets/images/slider/4.jpg);
+	background-image: url(../img/slider/4.jpg);
 }
 .demo-2 .bg-img-5 {
-	background-image: url(assets/images/slider/5.jpg);
+	background-image: url(../img/slider/5.jpg);
 }
 
 /* Animations for content elements */
