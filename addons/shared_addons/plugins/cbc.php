@@ -54,7 +54,7 @@ class Plugin_Cbc extends Plugin
 	}
 
 	/**
-	 * Hello
+	 * CBC 滚动图片
 	 *
 	 * Usage:
 	 * {{ cbc:about_us_carousel_class }}
@@ -66,6 +66,36 @@ class Plugin_Cbc extends Plugin
 		static $count = 0;
 		$count ++;
 		return $count == 1 ? 'active' : "";
+	}
+
+	/**
+	 * CBC About us 我们的会员-tab选中与否
+	 *
+	 * Usage:
+	 * {{ cbc:about_us_member_tab_carousel_class }}
+	 *
+	 * @return string
+	 */
+	function about_us_member_tab_content_class()
+	{
+		static $about_us_member_tab_content = 0;
+		$about_us_member_tab_content ++;
+		return $about_us_member_tab_content == 1 ? 'active in' : "";
+	}
+
+	/**
+	 * CBC About us 我们的会员-tab选中与否
+	 *
+	 * Usage:
+	 * {{ cbc:about_us_member_tab_carousel_class }}
+	 *
+	 * @return string
+	 */
+	function about_us_member_tab_class()
+	{
+		static $about_us_member_tab = 0;
+		$about_us_member_tab ++;
+		return $about_us_member_tab == 1 ? 'active' : "";
 	}
 }
 
