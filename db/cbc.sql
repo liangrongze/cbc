@@ -1,13 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.2.1
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2013 年 03 月 31 日 18:40
--- 服务器版本: 5.0.45
--- PHP 版本: 5.2.5
+-- 生成日期: 2013 年 04 月 01 日 03:17
+-- 服务器版本: 5.5.24-log
+-- PHP 版本: 5.2.2
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- 数据库: `cbc`
@@ -19,17 +26,17 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- 表的结构 `core_settings`
 --
 
-CREATE TABLE `core_settings` (
-  `slug` varchar(30) collate utf8_unicode_ci NOT NULL,
-  `default` text collate utf8_unicode_ci NOT NULL,
-  `value` text collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`slug`),
+CREATE TABLE IF NOT EXISTS `core_settings` (
+  `slug` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `default` text COLLATE utf8_unicode_ci NOT NULL,
+  `value` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`slug`),
   UNIQUE KEY `unique - slug` (`slug`),
   KEY `index - slug` (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores settings for the multi-site interface';
 
 --
--- 导出表中的数据 `core_settings`
+-- 转存表中的数据 `core_settings`
 --
 
 INSERT INTO `core_settings` (`slug`, `default`, `value`) VALUES
@@ -43,15 +50,15 @@ INSERT INTO `core_settings` (`slug`, `default`, `value`) VALUES
 -- 表的结构 `core_sites`
 --
 
-CREATE TABLE `core_sites` (
-  `id` int(5) NOT NULL auto_increment,
-  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `ref` varchar(20) collate utf8_unicode_ci NOT NULL,
-  `domain` varchar(100) collate utf8_unicode_ci default NULL,
-  `active` tinyint(1) NOT NULL default '1',
-  `created_on` int(11) NOT NULL default '0',
-  `updated_on` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id`),
+CREATE TABLE IF NOT EXISTS `core_sites` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `ref` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `domain` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `created_on` int(11) NOT NULL DEFAULT '0',
+  `updated_on` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
   UNIQUE KEY `Unique ref` (`ref`),
   UNIQUE KEY `Unique domain` (`domain`),
   KEY `ref` (`ref`),
@@ -59,7 +66,7 @@ CREATE TABLE `core_sites` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- 导出表中的数据 `core_sites`
+-- 转存表中的数据 `core_sites`
 --
 
 INSERT INTO `core_sites` (`id`, `name`, `ref`, `domain`, `active`, `created_on`, `updated_on`) VALUES
@@ -71,26 +78,26 @@ INSERT INTO `core_sites` (`id`, `name`, `ref`, `domain`, `active`, `created_on`,
 -- 表的结构 `core_users`
 --
 
-CREATE TABLE `core_users` (
-  `id` smallint(5) unsigned NOT NULL auto_increment,
-  `email` varchar(60) collate utf8_unicode_ci NOT NULL default '',
-  `password` varchar(100) collate utf8_unicode_ci NOT NULL default '',
-  `salt` varchar(6) collate utf8_unicode_ci NOT NULL default '',
-  `group_id` int(11) default NULL,
-  `ip_address` varchar(16) collate utf8_unicode_ci default NULL,
-  `active` int(1) default NULL,
-  `activation_code` varchar(40) collate utf8_unicode_ci default NULL,
+CREATE TABLE IF NOT EXISTS `core_users` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(60) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `salt` varchar(6) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `group_id` int(11) DEFAULT NULL,
+  `ip_address` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `active` int(1) DEFAULT NULL,
+  `activation_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_on` int(11) NOT NULL,
   `last_login` int(11) NOT NULL,
-  `username` varchar(20) collate utf8_unicode_ci default NULL,
-  `forgotten_password_code` varchar(40) collate utf8_unicode_ci default NULL,
-  `remember_code` varchar(40) collate utf8_unicode_ci default NULL,
-  PRIMARY KEY  (`id`),
+  `username` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `forgotten_password_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remember_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Super User Information' AUTO_INCREMENT=2 ;
 
 --
--- 导出表中的数据 `core_users`
+-- 转存表中的数据 `core_users`
 --
 
 INSERT INTO `core_users` (`id`, `email`, `password`, `salt`, `group_id`, `ip_address`, `active`, `activation_code`, `created_on`, `last_login`, `username`, `forgotten_password_code`, `remember_code`) VALUES
@@ -102,31 +109,31 @@ INSERT INTO `core_users` (`id`, `email`, `password`, `salt`, `group_id`, `ip_add
 -- 表的结构 `default_blog`
 --
 
-CREATE TABLE `default_blog` (
-  `id` int(9) NOT NULL auto_increment,
+CREATE TABLE IF NOT EXISTS `default_blog` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
   `created` datetime NOT NULL,
-  `updated` datetime default NULL,
-  `created_by` int(11) default NULL,
-  `ordering_count` int(11) default NULL,
-  `intro` longtext collate utf8_unicode_ci,
-  `title` varchar(200) collate utf8_unicode_ci NOT NULL,
-  `slug` varchar(200) collate utf8_unicode_ci NOT NULL,
+  `updated` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `ordering_count` int(11) DEFAULT NULL,
+  `intro` longtext COLLATE utf8_unicode_ci,
+  `title` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `category_id` int(11) NOT NULL,
-  `body` text collate utf8_unicode_ci NOT NULL,
-  `parsed` text collate utf8_unicode_ci NOT NULL,
-  `keywords` varchar(32) collate utf8_unicode_ci NOT NULL default '',
-  `author_id` int(11) NOT NULL default '0',
+  `body` text COLLATE utf8_unicode_ci NOT NULL,
+  `parsed` text COLLATE utf8_unicode_ci NOT NULL,
+  `keywords` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `author_id` int(11) NOT NULL DEFAULT '0',
   `created_on` int(11) NOT NULL,
-  `updated_on` int(11) NOT NULL default '0',
-  `comments_enabled` enum('no','1 day','1 week','2 weeks','1 month','3 months','always') collate utf8_unicode_ci NOT NULL default '3 months',
-  `status` enum('draft','live') collate utf8_unicode_ci NOT NULL default 'draft',
-  `type` set('html','markdown','wysiwyg-advanced','wysiwyg-simple') collate utf8_unicode_ci NOT NULL,
-  `preview_hash` char(32) collate utf8_unicode_ci NOT NULL default '',
-  PRIMARY KEY  (`id`)
+  `updated_on` int(11) NOT NULL DEFAULT '0',
+  `comments_enabled` enum('no','1 day','1 week','2 weeks','1 month','3 months','always') COLLATE utf8_unicode_ci NOT NULL DEFAULT '3 months',
+  `status` enum('draft','live') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'draft',
+  `type` set('html','markdown','wysiwyg-advanced','wysiwyg-simple') COLLATE utf8_unicode_ci NOT NULL,
+  `preview_hash` char(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- 导出表中的数据 `default_blog`
+-- 转存表中的数据 `default_blog`
 --
 
 INSERT INTO `default_blog` (`id`, `created`, `updated`, `created_by`, `ordering_count`, `intro`, `title`, `slug`, `category_id`, `body`, `parsed`, `keywords`, `author_id`, `created_on`, `updated_on`, `comments_enabled`, `status`, `type`, `preview_hash`) VALUES
@@ -138,18 +145,18 @@ INSERT INTO `default_blog` (`id`, `created`, `updated`, `created_by`, `ordering_
 -- 表的结构 `default_blog_categories`
 --
 
-CREATE TABLE `default_blog_categories` (
-  `id` int(11) NOT NULL auto_increment,
-  `slug` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `title` varchar(100) collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`),
+CREATE TABLE IF NOT EXISTS `default_blog_categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `unique_slug` (`slug`),
   UNIQUE KEY `unique_title` (`title`),
   KEY `slug` (`slug`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- 导出表中的数据 `default_blog_categories`
+-- 转存表中的数据 `default_blog_categories`
 --
 
 INSERT INTO `default_blog_categories` (`id`, `slug`, `title`) VALUES
@@ -161,18 +168,18 @@ INSERT INTO `default_blog_categories` (`id`, `slug`, `title`) VALUES
 -- 表的结构 `default_ci_sessions`
 --
 
-CREATE TABLE `default_ci_sessions` (
-  `session_id` varchar(40) collate utf8_unicode_ci NOT NULL default '0',
-  `ip_address` varchar(16) collate utf8_unicode_ci NOT NULL default '0',
-  `user_agent` varchar(120) collate utf8_unicode_ci NOT NULL,
-  `last_activity` int(10) unsigned NOT NULL default '0',
-  `user_data` text collate utf8_unicode_ci,
-  PRIMARY KEY  (`session_id`),
+CREATE TABLE IF NOT EXISTS `default_ci_sessions` (
+  `session_id` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `ip_address` varchar(16) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `user_agent` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`session_id`),
   KEY `last_activity_idx` (`last_activity`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 导出表中的数据 `default_ci_sessions`
+-- 转存表中的数据 `default_ci_sessions`
 --
 
 INSERT INTO `default_ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
@@ -214,7 +221,12 @@ INSERT INTO `default_ci_sessions` (`session_id`, `ip_address`, `user_agent`, `la
 ('8208cafdaa784c392d0059691475c342', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364754455, ''),
 ('d81798c324dfc096d8d5690e76d8e58c', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364754520, ''),
 ('2d5ffcdba3b9a4e826349bb7bcf3ea7c', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364754553, ''),
-('7f20883c0f25f1e27c5b5c4f952df92f', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364754767, '');
+('7f20883c0f25f1e27c5b5c4f952df92f', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364754767, ''),
+('e98b12bad7daf9c72469746e49eb4b20', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364785746, 'a:6:{s:8:"username";s:3:"cbc";s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}'),
+('22e930fa6d42c66e17418a7d45cfbdc6', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364780964, ''),
+('bc2707f6126fd24540c81ea01f40b8f8', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364781059, ''),
+('01d64d8bf7c812d72d2a886280ec02fe', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364781263, ''),
+('fce01f2a21cd096a776709538409360f', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364784894, '');
 
 -- --------------------------------------------------------
 
@@ -222,31 +234,26 @@ INSERT INTO `default_ci_sessions` (`session_id`, `ip_address`, `user_agent`, `la
 -- 表的结构 `default_comments`
 --
 
-CREATE TABLE `default_comments` (
-  `id` int(11) NOT NULL auto_increment,
-  `is_active` int(1) NOT NULL default '0',
-  `user_id` int(11) NOT NULL default '0',
-  `user_name` varchar(40) collate utf8_unicode_ci NOT NULL default '',
-  `user_email` varchar(40) collate utf8_unicode_ci NOT NULL default '',
-  `user_website` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `comment` text collate utf8_unicode_ci NOT NULL,
-  `parsed` text collate utf8_unicode_ci NOT NULL,
-  `module` varchar(40) collate utf8_unicode_ci NOT NULL,
-  `entry_id` varchar(255) collate utf8_unicode_ci NOT NULL default '0',
-  `entry_title` char(255) collate utf8_unicode_ci NOT NULL,
-  `entry_key` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `entry_plural` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `uri` varchar(255) collate utf8_unicode_ci default NULL,
-  `cp_uri` varchar(255) collate utf8_unicode_ci default NULL,
-  `created_on` int(11) NOT NULL default '0',
-  `ip_address` varchar(15) collate utf8_unicode_ci NOT NULL default '',
-  PRIMARY KEY  (`id`)
+CREATE TABLE IF NOT EXISTS `default_comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `is_active` int(1) NOT NULL DEFAULT '0',
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `user_name` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `user_email` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `user_website` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `comment` text COLLATE utf8_unicode_ci NOT NULL,
+  `parsed` text COLLATE utf8_unicode_ci NOT NULL,
+  `module` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
+  `entry_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `entry_title` char(255) COLLATE utf8_unicode_ci NOT NULL,
+  `entry_key` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `entry_plural` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `uri` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cp_uri` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_on` int(11) NOT NULL DEFAULT '0',
+  `ip_address` varchar(15) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- 导出表中的数据 `default_comments`
---
-
 
 -- --------------------------------------------------------
 
@@ -254,17 +261,12 @@ CREATE TABLE `default_comments` (
 -- 表的结构 `default_comment_blacklists`
 --
 
-CREATE TABLE `default_comment_blacklists` (
-  `id` int(11) NOT NULL auto_increment,
-  `website` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `email` varchar(150) collate utf8_unicode_ci NOT NULL default '',
-  PRIMARY KEY  (`id`)
+CREATE TABLE IF NOT EXISTS `default_comment_blacklists` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `website` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `email` varchar(150) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- 导出表中的数据 `default_comment_blacklists`
---
-
 
 -- --------------------------------------------------------
 
@@ -272,23 +274,18 @@ CREATE TABLE `default_comment_blacklists` (
 -- 表的结构 `default_contact_log`
 --
 
-CREATE TABLE `default_contact_log` (
-  `id` int(11) NOT NULL auto_increment,
-  `email` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `subject` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `message` text collate utf8_unicode_ci NOT NULL,
-  `sender_agent` varchar(64) collate utf8_unicode_ci NOT NULL default '',
-  `sender_ip` varchar(32) collate utf8_unicode_ci NOT NULL default '',
-  `sender_os` varchar(32) collate utf8_unicode_ci NOT NULL default '',
-  `sent_at` int(11) NOT NULL default '0',
-  `attachments` text collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`)
+CREATE TABLE IF NOT EXISTS `default_contact_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `subject` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `message` text COLLATE utf8_unicode_ci NOT NULL,
+  `sender_agent` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `sender_ip` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `sender_os` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `sent_at` int(11) NOT NULL DEFAULT '0',
+  `attachments` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- 导出表中的数据 `default_contact_log`
---
-
 
 -- --------------------------------------------------------
 
@@ -296,20 +293,20 @@ CREATE TABLE `default_contact_log` (
 -- 表的结构 `default_data_fields`
 --
 
-CREATE TABLE `default_data_fields` (
-  `id` int(11) unsigned NOT NULL auto_increment,
-  `field_name` varchar(60) collate utf8_unicode_ci NOT NULL,
-  `field_slug` varchar(60) collate utf8_unicode_ci NOT NULL,
-  `field_namespace` varchar(60) collate utf8_unicode_ci default NULL,
-  `field_type` varchar(50) collate utf8_unicode_ci NOT NULL,
+CREATE TABLE IF NOT EXISTS `default_data_fields` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `field_name` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `field_slug` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `field_namespace` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `field_type` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `field_data` blob,
   `view_options` blob,
-  `is_locked` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'no',
-  PRIMARY KEY  (`id`)
+  `is_locked` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 --
--- 导出表中的数据 `default_data_fields`
+-- 转存表中的数据 `default_data_fields`
 --
 
 INSERT INTO `default_data_fields` (`id`, `field_name`, `field_slug`, `field_namespace`, `field_type`, `field_data`, `view_options`, `is_locked`) VALUES
@@ -337,20 +334,20 @@ INSERT INTO `default_data_fields` (`id`, `field_name`, `field_slug`, `field_name
 -- 表的结构 `default_data_field_assignments`
 --
 
-CREATE TABLE `default_data_field_assignments` (
-  `id` int(11) unsigned NOT NULL auto_increment,
+CREATE TABLE IF NOT EXISTS `default_data_field_assignments` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `sort_order` int(11) NOT NULL,
   `stream_id` int(11) NOT NULL,
   `field_id` int(11) NOT NULL,
-  `is_required` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'no',
-  `is_unique` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'no',
-  `instructions` text collate utf8_unicode_ci,
-  `field_name` varchar(255) collate utf8_unicode_ci default NULL,
-  PRIMARY KEY  (`id`)
+  `is_required` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
+  `is_unique` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
+  `instructions` text COLLATE utf8_unicode_ci,
+  `field_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 --
--- 导出表中的数据 `default_data_field_assignments`
+-- 转存表中的数据 `default_data_field_assignments`
 --
 
 INSERT INTO `default_data_field_assignments` (`id`, `sort_order`, `stream_id`, `field_id`, `is_required`, `is_unique`, `instructions`, `field_name`) VALUES
@@ -378,24 +375,24 @@ INSERT INTO `default_data_field_assignments` (`id`, `sort_order`, `stream_id`, `
 -- 表的结构 `default_data_streams`
 --
 
-CREATE TABLE `default_data_streams` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `stream_name` varchar(60) collate utf8_unicode_ci NOT NULL,
-  `stream_slug` varchar(60) collate utf8_unicode_ci NOT NULL,
-  `stream_namespace` varchar(60) collate utf8_unicode_ci default NULL,
-  `stream_prefix` varchar(60) collate utf8_unicode_ci default NULL,
-  `about` varchar(255) collate utf8_unicode_ci default NULL,
+CREATE TABLE IF NOT EXISTS `default_data_streams` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `stream_name` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `stream_slug` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `stream_namespace` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `stream_prefix` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `about` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `view_options` blob NOT NULL,
-  `title_column` varchar(255) collate utf8_unicode_ci default NULL,
-  `sorting` enum('title','custom') collate utf8_unicode_ci NOT NULL default 'title',
-  `permissions` text collate utf8_unicode_ci,
-  `is_hidden` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'no',
-  `menu_path` varchar(255) collate utf8_unicode_ci default NULL,
-  PRIMARY KEY  (`id`)
+  `title_column` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sorting` enum('title','custom') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'title',
+  `permissions` text COLLATE utf8_unicode_ci,
+  `is_hidden` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
+  `menu_path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
--- 导出表中的数据 `default_data_streams`
+-- 转存表中的数据 `default_data_streams`
 --
 
 INSERT INTO `default_data_streams` (`id`, `stream_name`, `stream_slug`, `stream_namespace`, `stream_prefix`, `about`, `view_options`, `title_column`, `sorting`, `permissions`, `is_hidden`, `menu_path`) VALUES
@@ -411,18 +408,18 @@ INSERT INTO `default_data_streams` (`id`, `stream_name`, `stream_slug`, `stream_
 -- 表的结构 `default_def_page_fields`
 --
 
-CREATE TABLE `default_def_page_fields` (
-  `id` int(9) NOT NULL auto_increment,
+CREATE TABLE IF NOT EXISTS `default_def_page_fields` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
   `created` datetime NOT NULL,
-  `updated` datetime default NULL,
-  `created_by` int(11) default NULL,
-  `ordering_count` int(11) default NULL,
-  `body` longtext collate utf8_unicode_ci,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+  `updated` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `ordering_count` int(11) DEFAULT NULL,
+  `body` longtext COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 --
--- 导出表中的数据 `default_def_page_fields`
+-- 转存表中的数据 `default_def_page_fields`
 --
 
 INSERT INTO `default_def_page_fields` (`id`, `created`, `updated`, `created_by`, `ordering_count`, `body`) VALUES
@@ -433,7 +430,10 @@ INSERT INTO `default_def_page_fields` (`id`, `created`, `updated`, `created_by`,
 (5, '2013-03-28 12:59:37', NULL, 1, NULL, '<p>We cannot find the page you are looking for, please click <a title="Home" href="{{ pages:url id=''1'' }}">here</a> to go to the homepage.</p>'),
 (6, '2013-03-28 15:25:34', '2013-03-30 17:15:51', 1, 1, '<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">澳洲中国游艇荟，位于墨尔本Dockland , 在墨尔本最美丽的海港中，是澳洲第一家为航海，划艇爱好者成立的俱乐部。本会宗旨是推动澳洲游艇活动，将被认为是富豪享受的游艇活动概念重新定位，以满足精英人士对此活动的各项需求。</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">虽然我们舍弃一切昂贵会所，与澳洲多家游艇俱乐部合作，我们拥有33尺，43尺，55尺等多艘澳洲最有名品牌的游艇，如此得天独厚的环境和先进的设备，让热爱大海的你能更亲密的与她接触，领略她的魅力，探索她的神秘。</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">您可以在游艇会享受我们会员航海体验中心服务：驾驶培训，商务接待，亲朋聚会，休闲度假，公司庆典，婚纱摄影，私密时光，海岛探幽，海上垂钓，潜水观光，碧波畅游，甲板日光浴等各种活动。</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">愿大家细心欣赏我们为您准备的各项航海体验活动，同时加入成为会员。于认识新朋友之余可享受一个精英级别交流的游艇俱乐部，使游艇活动能够发扬光大。<br />\r\n&nbsp;</p>\r\n'),
 (7, '2013-03-30 15:10:50', '2013-03-30 15:38:19', 1, 2, 'testfdsfds'),
-(8, '2013-03-31 17:27:17', NULL, 1, 3, '<div class="separator">\r\n					<div class="left">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">Say hello to CBC!</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>		\r\n				<i class="icon-check icon-4x pull-left icon-muted"></i><p> 澳洲中国游艇荟，位于墨尔本Dockland , 在墨尔本最美丽的海港中，是澳洲第一家为航海，划艇爱好者成立的俱乐部。本会宗旨是推动澳洲游艇活动，将被认为是富豪享受的游艇活动概念重新定位，以满足精英人士对此活动的各项需求。</p>\r\n				<p>虽然我们舍弃一切昂贵会所，与澳洲多家游艇俱乐部合作，我们拥有33尺，43尺，55尺等多艘澳洲最有名品牌的游艇，如此得天独厚的环境和先进的设备，让热爱大海的你能更亲密的与她接触，领略她的魅力，探索她的神秘。</p>');
+(8, '2013-03-31 17:27:17', NULL, 1, 3, '<div class="separator">\r\n					<div class="left">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">Say hello to CBC!</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>		\r\n				<i class="icon-check icon-4x pull-left icon-muted"></i><p> 澳洲中国游艇荟，位于墨尔本Dockland , 在墨尔本最美丽的海港中，是澳洲第一家为航海，划艇爱好者成立的俱乐部。本会宗旨是推动澳洲游艇活动，将被认为是富豪享受的游艇活动概念重新定位，以满足精英人士对此活动的各项需求。</p>\r\n				<p>虽然我们舍弃一切昂贵会所，与澳洲多家游艇俱乐部合作，我们拥有33尺，43尺，55尺等多艘澳洲最有名品牌的游艇，如此得天独厚的环境和先进的设备，让热爱大海的你能更亲密的与她接触，领略她的魅力，探索她的神秘。</p>'),
+(9, '2013-04-01 02:58:07', NULL, 1, 4, 'Welcome to CBC!'),
+(10, '2013-04-01 03:07:21', '2013-04-01 03:09:30', 1, 5, '<img alt="" class="pyro-image alignment-none" data-pyroimage="true" src="{{ url:site }}files/large/fb52ed59fc7a400" />\r\n <h4>Device-Responsive Compatibility</h4>\r\n\r\n			                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus ducimus harum animi debitis dolore in vitae consequuntur. Nulla fuga eos aliquam pariatur nesciunt neque perferendis magni aut laudantium optio. Excepturi!</p>\r\n\r\n			                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae numquam perferendis optio modi repellendus a illo accusamus magnam totam pariatur! Vel tempora velit recusandae repudiandae tenetur cum hic in dignissimos!</p>\r\n\r\n			                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ea fugiat saepe doloremque quas iste quaerat adipisci nulla laborum nam nesciunt iusto voluptates illo aliquam ipsam molestias enim doloribus asperiores?</p>'),
+(11, '2013-04-01 03:08:20', '2013-04-01 03:09:02', 1, 6, '&nbsp;&nbsp; &nbsp;&lt;h4&gt;Your Brand is Showing&lt;/h4&gt;<br />\r\n<br />\r\n&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ea fugiat saepe doloremque quas iste quaerat adipisci nulla laborum nam nesciunt iusto voluptates illo aliquam ipsam molestias enim doloribus asperiores?&lt;/p&gt;<br />\r\n<br />\r\n&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae numquam perferendis optio modi repellendus a illo accusamus magnam totam pariatur! Vel tempora velit recusandae repudiandae tenetur cum hic in dignissimos!&lt;/p&gt;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;');
 
 -- --------------------------------------------------------
 
@@ -441,22 +441,22 @@ INSERT INTO `default_def_page_fields` (`id`, `created`, `updated`, `created_by`,
 -- 表的结构 `default_email_templates`
 --
 
-CREATE TABLE `default_email_templates` (
-  `id` int(11) NOT NULL auto_increment,
-  `slug` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `description` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `subject` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `body` text collate utf8_unicode_ci NOT NULL,
-  `lang` varchar(2) collate utf8_unicode_ci default NULL,
-  `is_default` int(1) NOT NULL default '0',
-  `module` varchar(50) collate utf8_unicode_ci NOT NULL default '',
-  PRIMARY KEY  (`id`),
+CREATE TABLE IF NOT EXISTS `default_email_templates` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `subject` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `body` text COLLATE utf8_unicode_ci NOT NULL,
+  `lang` varchar(2) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_default` int(1) NOT NULL DEFAULT '0',
+  `module` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
   UNIQUE KEY `slug_lang` (`slug`,`lang`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
--- 导出表中的数据 `default_email_templates`
+-- 转存表中的数据 `default_email_templates`
 --
 
 INSERT INTO `default_email_templates` (`id`, `slug`, `name`, `description`, `subject`, `body`, `lang`, `is_default`, `module`) VALUES
@@ -473,41 +473,42 @@ INSERT INTO `default_email_templates` (`id`, `slug`, `name`, `description`, `sub
 -- 表的结构 `default_files`
 --
 
-CREATE TABLE `default_files` (
-  `id` char(15) collate utf8_unicode_ci NOT NULL,
-  `folder_id` int(11) NOT NULL default '0',
-  `user_id` int(11) NOT NULL default '1',
-  `type` enum('a','v','d','i','o') collate utf8_unicode_ci default NULL,
-  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `filename` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `path` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `description` text collate utf8_unicode_ci NOT NULL,
-  `extension` varchar(10) collate utf8_unicode_ci NOT NULL,
-  `mimetype` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `keywords` char(32) collate utf8_unicode_ci NOT NULL default '',
-  `width` int(5) default NULL,
-  `height` int(5) default NULL,
-  `filesize` int(11) NOT NULL default '0',
-  `alt_attribute` varchar(255) collate utf8_unicode_ci default NULL,
-  `download_count` int(11) NOT NULL default '0',
-  `date_added` int(11) NOT NULL default '0',
-  `sort` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id`)
+CREATE TABLE IF NOT EXISTS `default_files` (
+  `id` char(15) COLLATE utf8_unicode_ci NOT NULL,
+  `folder_id` int(11) NOT NULL DEFAULT '0',
+  `user_id` int(11) NOT NULL DEFAULT '1',
+  `type` enum('a','v','d','i','o') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `filename` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `extension` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `mimetype` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `keywords` char(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `width` int(5) DEFAULT NULL,
+  `height` int(5) DEFAULT NULL,
+  `filesize` int(11) NOT NULL DEFAULT '0',
+  `alt_attribute` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `download_count` int(11) NOT NULL DEFAULT '0',
+  `date_added` int(11) NOT NULL DEFAULT '0',
+  `sort` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 导出表中的数据 `default_files`
+-- 转存表中的数据 `default_files`
 --
 
 INSERT INTO `default_files` (`id`, `folder_id`, `user_id`, `type`, `name`, `filename`, `path`, `description`, `extension`, `mimetype`, `keywords`, `width`, `height`, `filesize`, `alt_attribute`, `download_count`, `date_added`, `sort`) VALUES
-('0d654056e094109', 2, 1, 'i', 'team-1.jpg', 'cd31514de3b0c0cef4de7a9eeb0bd831.jpg', '{{ url:site }}files/large/cd31514de3b0c0cef4de7a9eeb0bd831.jpg', '', '.jpg', 'image/jpeg', '', 250, 250, 68, '', 0, 1364669909, 0),
-('14a8eaf22cbc25f', 1, 1, 'i', 'agency-3.jpg', '718c84e6756376d5f9a7e13128d1e940.jpg', '{{ url:site }}files/large/718c84e6756376d5f9a7e13128d1e940.jpg', '', '.jpg', 'image/jpeg', '', 870, 500, 103, '', 0, 1364667157, 0),
-('3f4a816a402d3d3', 1, 1, 'i', 'agency-1.jpg', 'f7ff342e0bcd591df234e23e15854d28.jpg', '{{ url:site }}files/large/f7ff342e0bcd591df234e23e15854d28.jpg', '', '.jpg', 'image/jpeg', '', 870, 500, 121, '', 0, 1364664402, 0),
+('25de394cd2ce150', 1, 1, 'i', 'agency-3.jpg', '3293bb357d7dcf5f73e00600cffa85f4.jpg', '{{ url:site }}files/large/3293bb357d7dcf5f73e00600cffa85f4.jpg', '', '.jpg', 'image/jpeg', '', 870, 500, 103, '', 0, 1364779993, 0),
 ('6190bcb97b91109', 3, 1, 'i', 'responsive-showcase.png', '2bd876bb4cc2b43e3259834c06ec7e2f.png', '{{ url:site }}files/large/2bd876bb4cc2b43e3259834c06ec7e2f.png', '', '.png', 'image/png', '', 779, 512, 217, '', 0, 1364752685, 0),
 ('95104bd7a339ec3', 3, 1, 'i', 'responsive-media.png', '93706d036ef05345aec396b6256d61d4.png', '{{ url:site }}files/large/93706d036ef05345aec396b6256d61d4.png', '', '.png', 'image/png', '', 1000, 545, 430, '', 0, 1364752687, 0),
-('eae017e813f00cc', 1, 1, 'i', 'agency-2.jpg', '887134b53c9e108421d6d70055406923.jpg', '{{ url:site }}files/large/887134b53c9e108421d6d70055406923.jpg', '', '.jpg', 'image/jpeg', '', 870, 500, 185, '', 0, 1364667156, 0),
+('d6b14276a8b8c7c', 1, 1, 'i', 'agency-2.jpg', '8ac9cfe725eaf5c4f5b926b7ba2c6ba2.jpg', '{{ url:site }}files/large/8ac9cfe725eaf5c4f5b926b7ba2c6ba2.jpg', '', '.jpg', 'image/jpeg', '', 870, 500, 185, '', 0, 1364779946, 0),
+('ed011d9a1dcfbda', 2, 1, 'i', 'team-1.jpg', '6754437d1e009ebb0555844ccb7fa8f9.jpg', '{{ url:site }}files/large/6754437d1e009ebb0555844ccb7fa8f9.jpg', '', '.jpg', 'image/jpeg', '', 250, 250, 68, '', 0, 1364781570, 0),
 ('f0fad5a0a69a6f3', 3, 1, 'i', 'loupe-screenshot.png', 'c1a532bed19361a810875474ef816744.png', '{{ url:site }}files/large/c1a532bed19361a810875474ef816744.png', '', '.png', 'image/png', '', 1213, 804, 525, '', 0, 1364752686, 0),
-('fa97233c8d09e26', 3, 1, 'i', 'macbook-air.png', '589a7f3c73df9bd191f7efac204712ca.png', '{{ url:site }}files/large/589a7f3c73df9bd191f7efac204712ca.png', '', '.png', 'image/png', '', 1000, 545, 315, '', 0, 1364752687, 0);
+('fa3c0604b9d57ce', 1, 1, 'i', 'agency-1.jpg', 'd261b1c5a077384285ae5b6c6adc8ff9.jpg', '{{ url:site }}files/large/d261b1c5a077384285ae5b6c6adc8ff9.jpg', '', '.jpg', 'image/jpeg', '', 870, 500, 121, '', 0, 1364779947, 0),
+('fa97233c8d09e26', 3, 1, 'i', 'macbook-air.png', '589a7f3c73df9bd191f7efac204712ca.png', '{{ url:site }}files/large/589a7f3c73df9bd191f7efac204712ca.png', '', '.png', 'image/png', '', 1000, 545, 315, '', 0, 1364752687, 0),
+('fb52ed59fc7a400', 4, 1, 'i', 'do-1.png', 'b862c0eb86e2f4bff607341cea89bdee.png', '{{ url:site }}files/large/b862c0eb86e2f4bff607341cea89bdee.png', '', '.png', 'image/png', '', 150, 150, 44, '', 0, 1364785511, 0);
 
 -- --------------------------------------------------------
 
@@ -515,26 +516,27 @@ INSERT INTO `default_files` (`id`, `folder_id`, `user_id`, `type`, `name`, `file
 -- 表的结构 `default_file_folders`
 --
 
-CREATE TABLE `default_file_folders` (
-  `id` int(11) NOT NULL auto_increment,
-  `parent_id` int(11) default '0',
-  `slug` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `location` varchar(20) collate utf8_unicode_ci NOT NULL default 'local',
-  `remote_container` varchar(100) collate utf8_unicode_ci NOT NULL default '',
+CREATE TABLE IF NOT EXISTS `default_file_folders` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT '0',
+  `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `location` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'local',
+  `remote_container` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `date_added` int(11) NOT NULL,
-  `sort` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+  `sort` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
--- 导出表中的数据 `default_file_folders`
+-- 转存表中的数据 `default_file_folders`
 --
 
 INSERT INTO `default_file_folders` (`id`, `parent_id`, `slug`, `name`, `location`, `remote_container`, `date_added`, `sort`) VALUES
 (1, 0, 'about-us', 'about_us', 'local', '', 1364485010, 1364485010),
 (2, 1, 'who', 'who', 'local', '', 1364669886, 1364669886),
-(3, 0, 'home', 'home', 'local', '', 1364752638, 1364752638);
+(3, 0, 'home', 'home', 'local', '', 1364752638, 1364752638),
+(4, 0, 'pages', 'pages', 'local', '', 1364785488, 1364785488);
 
 -- --------------------------------------------------------
 
@@ -542,15 +544,15 @@ INSERT INTO `default_file_folders` (`id`, `parent_id`, `slug`, `name`, `location
 -- 表的结构 `default_groups`
 --
 
-CREATE TABLE `default_groups` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `description` varchar(250) collate utf8_unicode_ci default NULL,
-  PRIMARY KEY  (`id`)
+CREATE TABLE IF NOT EXISTS `default_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
--- 导出表中的数据 `default_groups`
+-- 转存表中的数据 `default_groups`
 --
 
 INSERT INTO `default_groups` (`id`, `name`, `description`) VALUES
@@ -563,16 +565,11 @@ INSERT INTO `default_groups` (`id`, `name`, `description`) VALUES
 -- 表的结构 `default_keywords`
 --
 
-CREATE TABLE `default_keywords` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(50) collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`)
+CREATE TABLE IF NOT EXISTS `default_keywords` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- 导出表中的数据 `default_keywords`
---
-
 
 -- --------------------------------------------------------
 
@@ -580,17 +577,12 @@ CREATE TABLE `default_keywords` (
 -- 表的结构 `default_keywords_applied`
 --
 
-CREATE TABLE `default_keywords_applied` (
-  `id` int(11) NOT NULL auto_increment,
-  `hash` char(32) collate utf8_unicode_ci NOT NULL default '',
+CREATE TABLE IF NOT EXISTS `default_keywords_applied` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `hash` char(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `keyword_id` int(11) NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- 导出表中的数据 `default_keywords_applied`
---
-
 
 -- --------------------------------------------------------
 
@@ -598,12 +590,12 @@ CREATE TABLE `default_keywords_applied` (
 -- 表的结构 `default_migrations`
 --
 
-CREATE TABLE `default_migrations` (
-  `version` int(3) default NULL
+CREATE TABLE IF NOT EXISTS `default_migrations` (
+  `version` int(3) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 导出表中的数据 `default_migrations`
+-- 转存表中的数据 `default_migrations`
 --
 
 INSERT INTO `default_migrations` (`version`) VALUES
@@ -615,28 +607,28 @@ INSERT INTO `default_migrations` (`version`) VALUES
 -- 表的结构 `default_modules`
 --
 
-CREATE TABLE `default_modules` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` text collate utf8_unicode_ci NOT NULL,
-  `slug` varchar(50) collate utf8_unicode_ci NOT NULL,
-  `version` varchar(20) collate utf8_unicode_ci NOT NULL,
-  `type` varchar(20) collate utf8_unicode_ci default NULL,
-  `description` text collate utf8_unicode_ci,
+CREATE TABLE IF NOT EXISTS `default_modules` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` text COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `version` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8_unicode_ci,
   `skip_xss` tinyint(1) NOT NULL,
   `is_frontend` tinyint(1) NOT NULL,
   `is_backend` tinyint(1) NOT NULL,
-  `menu` varchar(20) collate utf8_unicode_ci NOT NULL,
+  `menu` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `enabled` tinyint(1) NOT NULL,
   `installed` tinyint(1) NOT NULL,
   `is_core` tinyint(1) NOT NULL,
-  `updated_on` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id`),
+  `updated_on` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`),
   KEY `enabled` (`enabled`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
--- 导出表中的数据 `default_modules`
+-- 转存表中的数据 `default_modules`
 --
 
 INSERT INTO `default_modules` (`id`, `name`, `slug`, `version`, `type`, `description`, `skip_xss`, `is_frontend`, `is_backend`, `menu`, `enabled`, `installed`, `is_core`, `updated_on`) VALUES
@@ -669,16 +661,16 @@ INSERT INTO `default_modules` (`id`, `name`, `slug`, `version`, `type`, `descrip
 -- 表的结构 `default_navigation_groups`
 --
 
-CREATE TABLE `default_navigation_groups` (
-  `id` int(11) NOT NULL auto_increment,
-  `title` varchar(50) collate utf8_unicode_ci NOT NULL,
-  `abbrev` varchar(50) collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`),
+CREATE TABLE IF NOT EXISTS `default_navigation_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `abbrev` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `abbrev` (`abbrev`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- 导出表中的数据 `default_navigation_groups`
+-- 转存表中的数据 `default_navigation_groups`
 --
 
 INSERT INTO `default_navigation_groups` (`id`, `title`, `abbrev`) VALUES
@@ -692,26 +684,26 @@ INSERT INTO `default_navigation_groups` (`id`, `title`, `abbrev`) VALUES
 -- 表的结构 `default_navigation_links`
 --
 
-CREATE TABLE `default_navigation_links` (
-  `id` int(11) NOT NULL auto_increment,
-  `title` varchar(100) collate utf8_unicode_ci NOT NULL default '',
-  `parent` int(11) default NULL,
-  `link_type` varchar(20) collate utf8_unicode_ci NOT NULL default 'uri',
-  `page_id` int(11) default NULL,
-  `module_name` varchar(50) collate utf8_unicode_ci NOT NULL default '',
-  `url` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `uri` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `navigation_group_id` int(5) NOT NULL default '0',
-  `position` int(5) NOT NULL default '0',
-  `target` varchar(10) collate utf8_unicode_ci default NULL,
-  `restricted_to` varchar(255) collate utf8_unicode_ci default NULL,
-  `class` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  PRIMARY KEY  (`id`),
+CREATE TABLE IF NOT EXISTS `default_navigation_links` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `parent` int(11) DEFAULT NULL,
+  `link_type` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'uri',
+  `page_id` int(11) DEFAULT NULL,
+  `module_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `uri` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `navigation_group_id` int(5) NOT NULL DEFAULT '0',
+  `position` int(5) NOT NULL DEFAULT '0',
+  `target` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `restricted_to` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `class` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
   KEY `navigation_group_id` (`navigation_group_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- 导出表中的数据 `default_navigation_links`
+-- 转存表中的数据 `default_navigation_links`
 --
 
 INSERT INTO `default_navigation_links` (`id`, `title`, `parent`, `link_type`, `page_id`, `module_name`, `url`, `uri`, `navigation_group_id`, `position`, `target`, `restricted_to`, `class`) VALUES
@@ -725,36 +717,36 @@ INSERT INTO `default_navigation_links` (`id`, `title`, `parent`, `link_type`, `p
 -- 表的结构 `default_pages`
 --
 
-CREATE TABLE `default_pages` (
-  `id` int(11) NOT NULL auto_increment,
-  `slug` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `class` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `title` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `uri` text collate utf8_unicode_ci,
-  `parent_id` int(11) NOT NULL default '0',
-  `type_id` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `entry_id` varchar(255) collate utf8_unicode_ci default NULL,
-  `css` text collate utf8_unicode_ci,
-  `js` text collate utf8_unicode_ci,
-  `meta_title` varchar(255) collate utf8_unicode_ci default NULL,
-  `meta_keywords` char(32) collate utf8_unicode_ci default NULL,
-  `meta_description` text collate utf8_unicode_ci,
-  `rss_enabled` int(1) NOT NULL default '0',
-  `comments_enabled` int(1) NOT NULL default '0',
-  `status` enum('draft','live') collate utf8_unicode_ci NOT NULL default 'draft',
-  `created_on` int(11) NOT NULL default '0',
-  `updated_on` int(11) NOT NULL default '0',
-  `restricted_to` varchar(255) collate utf8_unicode_ci default NULL,
-  `is_home` int(1) NOT NULL default '0',
-  `strict_uri` tinyint(1) NOT NULL default '1',
-  `order` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id`),
+CREATE TABLE IF NOT EXISTS `default_pages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `class` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `uri` text COLLATE utf8_unicode_ci,
+  `parent_id` int(11) NOT NULL DEFAULT '0',
+  `type_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `entry_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `css` text COLLATE utf8_unicode_ci,
+  `js` text COLLATE utf8_unicode_ci,
+  `meta_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_keywords` char(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8_unicode_ci,
+  `rss_enabled` int(1) NOT NULL DEFAULT '0',
+  `comments_enabled` int(1) NOT NULL DEFAULT '0',
+  `status` enum('draft','live') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'draft',
+  `created_on` int(11) NOT NULL DEFAULT '0',
+  `updated_on` int(11) NOT NULL DEFAULT '0',
+  `restricted_to` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_home` int(1) NOT NULL DEFAULT '0',
+  `strict_uri` tinyint(1) NOT NULL DEFAULT '1',
+  `order` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
   KEY `slug` (`slug`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 --
--- 导出表中的数据 `default_pages`
+-- 转存表中的数据 `default_pages`
 --
 
 INSERT INTO `default_pages` (`id`, `slug`, `class`, `title`, `uri`, `parent_id`, `type_id`, `entry_id`, `css`, `js`, `meta_title`, `meta_keywords`, `meta_description`, `rss_enabled`, `comments_enabled`, `status`, `created_on`, `updated_on`, `restricted_to`, `is_home`, `strict_uri`, `order`) VALUES
@@ -768,7 +760,10 @@ INSERT INTO `default_pages` (`id`, `slug`, `class`, `title`, `uri`, `parent_id`,
 (9, 'features', '', '航海体验中心', 'features', 0, '3', '1', '', '', '', '', '', 0, 0, 'live', 1364651521, 0, '0', 0, 1, 1364651521),
 (10, 'blogs', '', 'test', 'blogs', 0, '1', '7', '', '', '', '', '', 0, 0, 'live', 1364656250, 1364657899, '0', 0, 1, 1364656250),
 (11, 'aboutus', '', 'CBC澳洲中国游艇荟', 'aboutus', 0, '2', '3', '', '', '关于我们', '', '', 0, 0, 'live', 1364663789, 1364670451, '0', 0, 1, 1364663789),
-(12, 'home-new', '', '首页', 'home-new', 0, '4', '8', '', '', '', '', '', 0, 0, 'live', 1364750837, 0, '0', 0, 1, 1364750837);
+(12, 'home-new', '', '首页', 'home-new', 0, '4', '8', '', '', '', '', '', 0, 0, 'live', 1364750837, 0, '0', 0, 1, 1364750837),
+(13, 'plugin-about-us-our-member', '', '关于我们-我们的会员-专用-不能删除', 'plugin-about-us-our-member', 0, '5', '9', '', '', '', '', '', 0, 0, 'draft', 1364785087, 0, '0', 0, 1, 1364785087),
+(14, 'device', '', 'Device', 'plugin-about-us-our-member/device', 13, '5', '10', '', '', '', '', '', 0, 0, 'draft', 1364785641, 1364785770, '0', 0, 1, 1364785641),
+(15, 'brand', '', 'Brand', 'plugin-about-us-our-member/brand', 13, '5', '11', '', '', '', '', '', 0, 0, 'draft', 1364785700, 1364785742, '0', 0, 1, 1364785700);
 
 -- --------------------------------------------------------
 
@@ -776,17 +771,17 @@ INSERT INTO `default_pages` (`id`, `slug`, `class`, `title`, `uri`, `parent_id`,
 -- 表的结构 `default_pages_features_-_page_-_type`
 --
 
-CREATE TABLE `default_pages_features_-_page_-_type` (
-  `id` int(9) NOT NULL auto_increment,
+CREATE TABLE IF NOT EXISTS `default_pages_features_-_page_-_type` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
   `created` datetime NOT NULL,
-  `updated` datetime default NULL,
-  `created_by` int(11) default NULL,
-  `ordering_count` int(11) default NULL,
-  PRIMARY KEY  (`id`)
+  `updated` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `ordering_count` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- 导出表中的数据 `default_pages_features_-_page_-_type`
+-- 转存表中的数据 `default_pages_features_-_page_-_type`
 --
 
 INSERT INTO `default_pages_features_-_page_-_type` (`id`, `created`, `updated`, `created_by`, `ordering_count`) VALUES
@@ -798,23 +793,23 @@ INSERT INTO `default_pages_features_-_page_-_type` (`id`, `created`, `updated`, 
 -- 表的结构 `default_pages_staff`
 --
 
-CREATE TABLE `default_pages_staff` (
-  `id` int(9) NOT NULL auto_increment,
+CREATE TABLE IF NOT EXISTS `default_pages_staff` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
   `created` datetime NOT NULL,
-  `updated` datetime default NULL,
-  `created_by` int(11) default NULL,
-  `ordering_count` int(11) default NULL,
-  `about_us_description` longtext collate utf8_unicode_ci,
-  PRIMARY KEY  (`id`)
+  `updated` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `ordering_count` int(11) DEFAULT NULL,
+  `about_us_description` longtext COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- 导出表中的数据 `default_pages_staff`
+-- 转存表中的数据 `default_pages_staff`
 --
 
 INSERT INTO `default_pages_staff` (`id`, `created`, `updated`, `created_by`, `ordering_count`, `about_us_description`) VALUES
 (1, '2013-03-28 15:34:37', '2013-03-28 15:35:13', 1, 1, NULL),
-(3, '2013-03-30 17:16:29', '2013-03-30 19:07:31', 1, 2, '<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">澳洲中国游艇荟，位于墨尔本Dockland , 在墨尔本最美丽的海港中，是澳洲第一家为航海，划艇爱好者成立的俱乐部。本会宗旨是推动澳洲游艇活动，将被认为是富豪享受的游艇活动概念重新定位，以满足精英人士对此活动的各项需求。</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">虽然我们舍弃一切昂贵会所，与澳洲多家游艇俱乐部合作，我们拥有33尺，43尺，55尺等多艘澳洲最有名品牌的游艇，如此得天独厚的环境和先进的设备，让热爱大海的你能更亲密的与她接触，领略她的魅力，探索她的神秘。</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">您可以在游艇会享受我们会员航海体验中心服务：驾驶培训，商务接待，亲朋聚会，休闲度假，公司庆典，婚纱摄影，私密时光，海岛探幽，海上垂钓，潜水观光，碧波畅游，甲板日光浴等各种活动。</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">愿大家细心欣赏我们为您准备的各项航海体验活动，同时加入成为会员。于认识新朋友之余可享受一个精英级别交流的游艇俱乐部，使游艇活动能够发扬光大。</p>\r\n');
+(3, '2013-03-30 17:16:29', '2013-03-30 19:07:31', 1, 2, '<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">澳洲中国游艇荟，位于墨尔本Dockland , 在墨尔本最美丽的海港中，是澳洲第一家为航海，划艇爱好者成立的俱乐部。本会宗旨是推动澳洲游艇活动，将被认为是富豪享受的游艇活动概念重新定位，以满足精英人士对此活动的各项需求。</p>\n\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">虽然我们舍弃一切昂贵会所，与澳洲多家游艇俱乐部合作，我们拥有33尺，43尺，55尺等多艘澳洲最有名品牌的游艇，如此得天独厚的环境和先进的设备，让热爱大海的你能更亲密的与她接触，领略她的魅力，探索她的神秘。</p>\n\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">您可以在游艇会享受我们会员航海体验中心服务：驾驶培训，商务接待，亲朋聚会，休闲度假，公司庆典，婚纱摄影，私密时光，海岛探幽，海上垂钓，潜水观光，碧波畅游，甲板日光浴等各种活动。</p>\n\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">愿大家细心欣赏我们为您准备的各项航海体验活动，同时加入成为会员。于认识新朋友之余可享受一个精英级别交流的游艇俱乐部，使游艇活动能够发扬光大。</p>\n');
 
 -- --------------------------------------------------------
 
@@ -822,35 +817,36 @@ INSERT INTO `default_pages_staff` (`id`, `created`, `updated`, `created_by`, `or
 -- 表的结构 `default_page_types`
 --
 
-CREATE TABLE `default_page_types` (
-  `id` int(11) NOT NULL auto_increment,
-  `slug` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `title` varchar(60) collate utf8_unicode_ci NOT NULL,
-  `description` text collate utf8_unicode_ci,
+CREATE TABLE IF NOT EXISTS `default_page_types` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci,
   `stream_id` int(11) NOT NULL,
-  `meta_title` varchar(255) collate utf8_unicode_ci default NULL,
-  `meta_keywords` char(32) collate utf8_unicode_ci default NULL,
-  `meta_description` text collate utf8_unicode_ci,
-  `body` text collate utf8_unicode_ci NOT NULL,
-  `css` text collate utf8_unicode_ci,
-  `js` text collate utf8_unicode_ci,
-  `theme_layout` varchar(100) collate utf8_unicode_ci NOT NULL default 'default',
+  `meta_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_keywords` char(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8_unicode_ci,
+  `body` text COLLATE utf8_unicode_ci NOT NULL,
+  `css` text COLLATE utf8_unicode_ci,
+  `js` text COLLATE utf8_unicode_ci,
+  `theme_layout` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'default',
   `updated_on` int(11) NOT NULL,
-  `save_as_files` char(1) collate utf8_unicode_ci NOT NULL default 'n',
-  `content_label` varchar(60) collate utf8_unicode_ci default NULL,
-  `title_label` varchar(100) collate utf8_unicode_ci default NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+  `save_as_files` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'n',
+  `content_label` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title_label` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
--- 导出表中的数据 `default_page_types`
+-- 转存表中的数据 `default_page_types`
 --
 
 INSERT INTO `default_page_types` (`id`, `slug`, `title`, `description`, `stream_id`, `meta_title`, `meta_keywords`, `meta_description`, `body`, `css`, `js`, `theme_layout`, `updated_on`, `save_as_files`, `content_label`, `title_label`) VALUES
 (1, 'default', 'Default', 'A simple page type with a WYSIWYG editor that will get you started adding content.', 2, NULL, NULL, NULL, '<h2>{{ page:title }}</h2>\n\n{{ body }}', '', '', 'default', 1364475578, 'n', NULL, NULL),
-(2, 'staff', 'page-type-about-us', 'For about us page', 4, '', NULL, '', '<!-- start: where -->\r\n<div class="section-wrapper">\r\n	<div class="container">\r\n		<div class="row">\r\n\r\n			<div class="span12">\r\n				<div class="separator">\r\n					<div class="left">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">{{title}}</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n\r\n			<div class="span6">						\r\n				{{about_us_description}}\r\n			</div>\r\n\r\n			<div class="span6">\r\n\r\n				    <div id="myCarousel" class="carousel slide ">\r\n				    <ol class="carousel-indicators">\r\n				    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>\r\n				    <li data-target="#myCarousel" data-slide-to="1"></li>\r\n				    <li data-target="#myCarousel" data-slide-to="2"></li>\r\n				    </ol>\r\n				    <!-- Carousel items -->\r\n				    <div class="carousel-inner">\r\n\r\n{{ files:listing folder="about-us" }}\r\n        <div class="item {{cbc:about_us_carousel_class}}"><img src="uploads/default/files/{{ filename}}" alt="{{ description }}"/></div>\r\n{{ /files:listing }}\r\n\r\n				    </div>\r\n\r\n				    </div>\r\n\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n<!-- end: where -->\r\n<!-- start: who -->\r\n<div class="section-who">\r\n	<div class="section-wrapper">\r\n		<div class="container">\r\n			<div class="row">\r\n\r\n				<div class="span12">\r\n					<div class="separator">\r\n						<div class="left">\r\n							<div class="lines">\r\n								<div>\r\n								<h2 class="lines-title">我们的游艇</h2>\r\n								</div>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>\r\n\r\n				<div class="span3 thumbnail-wrapper">						\r\n					<div class="thumbnail-box">\r\n{{ files:listing folder="about-us/who" }}\r\n        <img src="uploads/default/files/{{ filename}}" class="thumbnail-boxy"/>\r\n{{ /files:listing }}\r\n						<span class="easter-egg">I <i class="icon-heart"></i> sushi</span>\r\n					</div>\r\n					<div class="clearfix"></div>\r\n					<div class="thumbnail-info">\r\n	                    <p class="name">Mustan 32</p>\r\n	                    <p class="area">马斯顿游艇32尺</p>\r\n	                </div>\r\n				</div>\r\n\r\n				<div class="span3 thumbnail-wrapper">						\r\n					<div class="thumbnail-box">\r\n{{ files:listing folder="about-us/who" }}\r\n        <img src="uploads/default/files/{{ filename}}" class="thumbnail-boxy"/>\r\n{{ /files:listing }}\r\n						<span class="easter-egg">I loose my <i class="icon-key"></i></span>\r\n					</div>\r\n					\r\n					<div class="clearfix"></div>\r\n					<div class="thumbnail-info">\r\n	                    <p class="name">Sunrunner 28</p>\r\n	                    <p class="area">圣伦娜游艇28尺</p>\r\n	                </div>\r\n				</div>\r\n\r\n				<div class="span3 thumbnail-wrapper">						\r\n					<div class="thumbnail-box">\r\n{{ files:listing folder="about-us/who" }}\r\n        <img src="uploads/default/files/{{ filename}}" class="thumbnail-boxy"/>\r\n{{ /files:listing }}\r\n						<span class="easter-egg">I <i class="icon-food"></i> hamburger</span>\r\n					</div>\r\n					\r\n					<div class="clearfix"></div>\r\n					<div class="thumbnail-info">\r\n	                    <p class="name">Riviera 4400 Sports Yachat</p>\r\n	                    <p class="area">瑞维雅游艇44尺</p>\r\n	                </div>\r\n				</div>			\r\n\r\n				<div class="span3 thumbnail-wrapper">						\r\n					<div class="thumbnail-box">\r\n{{ files:listing folder="about-us/who" }}\r\n        <img src="uploads/default/files/{{ filename}}" class="thumbnail-boxy"/>\r\n{{ /files:listing }}\r\n						<span class="easter-egg">I need <i class="icon-music"></i></span>\r\n					</div>\r\n					<div class="clearfix"></div>\r\n					<div class="thumbnail-info">\r\n	                    <p class="name">Riviera 3600 Sport Yachat</p>\r\n	                    <p class="area">瑞维雅游艇40尺</p>\r\n					</div>	\r\n				</div>	\r\n\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div><!-- end: who -->', '', '', 'aboutus.html', 1364670035, 'n', '', ''),
+(2, 'staff', 'page-type-about-us', 'For about us page', 4, '', NULL, '', '<!-- start: where -->\r\n<div class="section-wrapper">\r\n	<div class="container">\r\n		<div class="row">\r\n\r\n			<div class="span12">\r\n				<div class="separator">\r\n					<div class="left">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">{{title}}</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n\r\n			<div class="span6">						\r\n				{{about_us_description}}\r\n			</div>\r\n\r\n			<div class="span6">\r\n\r\n				    <div id="myCarousel" class="carousel slide ">\r\n				    <ol class="carousel-indicators">\r\n				    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>\r\n				    <li data-target="#myCarousel" data-slide-to="1"></li>\r\n				    <li data-target="#myCarousel" data-slide-to="2"></li>\r\n				    </ol>\r\n				    <!-- Carousel items -->\r\n				    <div class="carousel-inner">\r\n\r\n{{ files:listing folder="about-us" }}\r\n        <div class="item {{cbc:about_us_carousel_class}}"><img src="uploads/default/files/{{ filename}}" alt="{{ description }}"/></div>\r\n{{ /files:listing }}\r\n\r\n				    </div>\r\n\r\n				    </div>\r\n\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n<!-- end: where -->\r\n<!-- start: who -->\r\n<div class="section-who">\r\n	<div class="section-wrapper">\r\n		<div class="container">\r\n			<div class="row">\r\n				<div class="span12">\r\n					<div class="separator">\r\n						<div class="left">\r\n							<div class="lines">\r\n								<div>\r\n								<h2 class="lines-title">我们的游艇</h2>\r\n								</div>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>\r\n\r\n{{ widgets:instance id="10"}}\r\n{{ widgets:instance id="11"}}\r\n{{ widgets:instance id="12"}}\r\n{{ widgets:instance id="13"}}\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div><!-- end: who -->\r\n\r\n<!-- start: do -->\r\n<div class="section-do">\r\n	<div class="section-wrapper">\r\n		<div class="container">\r\n			<div class="row-fluid">\r\n\r\n				<div class="span12">\r\n					<div class="separator">\r\n						<div class="left">\r\n							<div class="lines">\r\n								<div>\r\n								<h2 class="lines-title">我们的会员</h2>\r\n								</div>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>\r\n\r\n				<div class="span6">\r\n					<div class="about-tabs">\r\n			            <ul class="nav nav-tabs" id="myTab">\r\n			              <li class="active"><a data-toggle="tab" href="#device">Device</a></li>\r\n			              <li class=""><a data-toggle="tab" href="#brand">Brand</a></li>\r\n			            </ul>\r\n			            <div class="tab-content" id="myTabContent">\r\n			              <div id="device" class="tab-pane fade active in">\r\n			                \r\n							{{ theme:image file="photos/do-1.png" class="img-content"}}\r\n\r\n			                <h4>Device-Responsive Compatibility</h4>\r\n\r\n			                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus ducimus harum animi debitis dolore in vitae consequuntur. Nulla fuga eos aliquam pariatur nesciunt neque perferendis magni aut laudantium optio. Excepturi!</p>\r\n\r\n			                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae numquam perferendis optio modi repellendus a illo accusamus magnam totam pariatur! Vel tempora velit recusandae repudiandae tenetur cum hic in dignissimos!</p>\r\n\r\n			                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ea fugiat saepe doloremque quas iste quaerat adipisci nulla laborum nam nesciunt iusto voluptates illo aliquam ipsam molestias enim doloribus asperiores?</p>\r\n			              </div>\r\n			              <div id="brand" class="tab-pane fade">\r\n\r\n			              	<h4>Your Brand is Showing</h4>\r\n\r\n			                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ea fugiat saepe doloremque quas iste quaerat adipisci nulla laborum nam nesciunt iusto voluptates illo aliquam ipsam molestias enim doloribus asperiores?</p>\r\n\r\n			                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae numquam perferendis optio modi repellendus a illo accusamus magnam totam pariatur! Vel tempora velit recusandae repudiandae tenetur cum hic in dignissimos!</p>			                \r\n			              </div>\r\n			            </div>\r\n					 </div>\r\n				</div>	 \r\n\r\n\r\n				<div class="span5 subscribe">\r\n\r\n					<div class="separator">\r\n						<div class="">\r\n							<div class="lines">\r\n								<div>\r\n									<h2 class="lines-title">Want some more?</h2>\r\n								</div>\r\n							</div>\r\n						</div>\r\n					</div>\r\n\r\n					<div class="blank">&nbsp;</div>\r\n\r\n					<div class="alert alert-block alert-error fade in">  \r\n			            <h4 class="alert-heading">Subscribe for monthly updates:</h4>\r\n			            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit dolores similique animi totam temporibus aspernatur enim itaque fugiat ipsa corporis magni placeat laudantium in asperiores saepe odio doloribus? At nam?</p>\r\n\r\n						<form id="subscribe">\r\n							<input  type="text" placeholder="Enter your name" class="span8 subs">\r\n							<input type="text" placeholder="Enter email adress" class="span8 subs">				    <button type="button" class="btn btn-color ">Subscribe</button>\r\n						</form>\r\n\r\n			            <p>\r\n			              \r\n			            </p>\r\n         			</div>					\r\n\r\n				</div>\r\n\r\n			</div>\r\n\r\n\r\n\r\n		</div>\r\n	</div>			\r\n </div><!-- end: do -->', '', '', 'aboutus.html', 1364782953, 'n', '', ''),
 (3, 'features_page_type', 'features - page - type', '', 5, '', NULL, '', '<h2>{{ title }}</h2>', '', '', 'features.html', 1364651469, 'n', '', ''),
-(4, 'home', '首页', '', 2, '', NULL, '', '<!-- start: slider -->\r\n<div class="slider-wrapper slider-wrapper">\r\n\r\n            <div id="slider" class="sl-slider-wrapper">\r\n\r\n				<div class="sl-slider">\r\n				\r\n					{{ widgets:instance id="4"}}					\r\n					{{ widgets:instance id="5"}}	\r\n                                        {{ widgets:instance id="6"}}\r\n                                        {{ widgets:instance id="7"}}\r\n				\r\n				</div><!-- /sl-slider -->\r\n				\r\n				<nav id="nav-arrows" class="nav-arrows">\r\n					<span class="nav-arrow-prev">Previous</span>\r\n					<span class="nav-arrow-next">Next</span>\r\n				</nav>\r\n\r\n				<nav id="nav-dots" class="nav-dots">\r\n					<span class="nav-dot-current"></span>\r\n					<span></span>\r\n					<span></span>\r\n					<span></span>\r\n				</nav>\r\n\r\n			</div><!-- /slider-wrapper -->\r\n	\r\n\r\n</div><!-- end: slider -->\r\n\r\n\r\n<!-- start: lastest-events -->\r\n<div class="section-wrapper lastest-work">\r\n	<div class="container">\r\n		<div class="row">\r\n			<div class="span12">\r\n				<div class="separator">\r\n					<div class="left">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">推荐活动</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>	\r\n			</div>\r\n			<div class="span3">\r\n				<div class="white-content">\r\n					<div class="img-mask hover-mask">\r\n						{{ theme:image file="photos/app-1.jpg" }}\r\n						<div class="flip-container">\r\n						  <div class="flipper">\r\n						    <div class="back">\r\n						      <div class="flip-b">\r\n						      	<a href="#"><span class="icon-back"><i class="icon-plus-sign"></i></span></a>\r\n						      </div>\r\n						    </div>\r\n						  </div>\r\n						</div>\r\n						<span class="hover-fade"><i class="icon-plus-sign icon-3x"></i></span>					\r\n					</div>							\r\n					<a href="#"><h5>帆船挑战赛 <span class="white-title"><i class="icon-plus"></i></span></h5></a>\r\n					<p>帆影点点荡漾团队智慧，乘风破浪跨越艰难使命；高贵典雅乐享大海景致，竞技娱乐快意人生情怀。鸿洲帆船挑战赛邀您鉴赏汇聚四岛的海岸极境。竞逐海上荣...</p>\r\n				</div>\r\n			</div>\r\n			<div class="span3">\r\n				<div class="white-content">\r\n					<div class="img-mask hover-mask">\r\n						{{ theme:image file="photos/app-2.jpg" }}\r\n						<div class="flip-container">\r\n						  <div class="flipper">\r\n						    <div class="back">\r\n						      <div class="flip-b">\r\n						      	<a href="#"><span class="icon-back"><i class="icon-plus-sign"></i></span></a>\r\n						      </div>\r\n						    </div>\r\n						  </div>\r\n						</div>							\r\n						<span class="hover-fade"><i class="icon-plus-sign icon-3x"></i></span>					\r\n					</div>\r\n					<a href="#"><h5>海上求婚仪式 <span class="white-title"><i class="icon-plus"></i></span></h5></a>\r\n					<p>为您树一株浪漫的奇葩，孕育一生的回味。一座游艇，一片蔚蓝，为您酿造一生的甜蜜。以海为名，以船为媒。鸿洲国际游艇会为您专业铸造奢华游艇婚礼。</p>\r\n				</div>\r\n			</div>\r\n			<div class="span3">\r\n				<div class="white-content">\r\n					<div class="img-mask hover-mask">\r\n						{{ theme:image file="photos/app-3.jpg" }}\r\n						<div class="flip-container">\r\n						  <div class="flipper">\r\n						    <div class="back">\r\n						      <div class="flip-b">\r\n						      	<a href="#"><span class="icon-back"><i class="icon-plus-sign"></i></span></a>\r\n						      </div>\r\n						    </div>\r\n						  </div>\r\n						</div>							\r\n						<span class="hover-fade"><i class="icon-plus-sign icon-3x"></i></span>\r\n					</div>\r\n					<a href="#"><h5>游艇鸡尾酒 <span class="white-title"><i class="icon-plus"></i></span></h5></a>\r\n					<p>奢华碰撞，圈层际会。大海之上，觥筹交错问人生；游艇派对，舞乐人生快意享。鸿洲国际游艇会携世界顶级游艇驶入三亚海，为您酝酿巅峰游艇主题酒会，恭...</p>	\r\n				</div>\r\n			</div>\r\n			<div class="span3">\r\n				<div class="white-content">\r\n					<div class="img-mask hover-mask">\r\n						{{ theme:image file="photos/app-4.jpg" }}\r\n						<div class="flip-container">\r\n						  <div class="flipper">\r\n						    <div class="back">\r\n						      <div class="flip-b">\r\n						      	<a href="#"><span class="icon-back"><i class="icon-plus-sign"></i></span></a>\r\n						      </div>\r\n						    </div>\r\n						  </div>\r\n						</div>							\r\n						<span class="hover-fade"><i class="icon-plus-sign icon-3x"></i></span>\r\n					</div>\r\n					<a href="#"><h5>祈福之旅 <span class="white-title"><i class="icon-plus"></i></span></h5></a>\r\n					<p>秉一颗虔诚之心，架一座海上游艇，赴一趟福如东海，祈一世福寿安康。鸿洲东海祈福之旅携您莅赏东海龙王庙，畅览第一福海妙景英姿，撒播一世福寿情缘。...</p>	\r\n				</div>\r\n			</div>						\r\n		</div>\r\n	</div>\r\n</div><!-- end: lastest-events -->\r\n\r\n<!-- start: hello -->\r\n<div class="section-wrapper">\r\n	<div class="container">\r\n		<div class="row">\r\n			<div class="span6">\r\n			{{ body }}\r\n			</div>\r\n\r\n			<div class="span6">\r\n				<div class="separator">\r\n					<div class="left">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">航海体验中心 </h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>	\r\n\r\n			<div class="accordion" id="accordion2">\r\n\r\n{{ widgets:instance id="8"}}\r\n{{ widgets:instance id="9"}}\r\n			  \r\n			</div>\r\n\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div><!-- end: hello -->\r\n\r\n<!-- start: section-Member -->\r\n<div class="section-features">\r\n	<div class="container">\r\n		<div class="row">\r\n\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class="icon-resize-small"></i>\r\n					<h5>驾驶培训</h5>\r\n					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora praesentium qui aspernatur amet distinctio.</p>\r\n				</div>\r\n			</div>\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class="icon-ok"></i>\r\n					<h5>航海体验</h5>\r\n					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora praesentium qui aspernatur amet distinctio. </p>\r\n				</div>\r\n			</div>\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class="icon-edit"></i>\r\n					<h5>VIP活动</h5>\r\n					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora praesentium qui aspernatur amet distinctio.</p>\r\n				</div>\r\n			</div>\r\n\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class="icon-magic"></i>\r\n					<h5>游艇使用</h5>\r\n					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>\r\n				</div>\r\n			</div>\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class=" icon-dashboard"></i>\r\n					<h5>尊享会员</h5>\r\n					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit Tempora praesentium qui aspernatur.</p>\r\n				</div>\r\n			</div>\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class="icon-user-md"></i>\r\n					<h5>优惠打折</h5>\r\n					<p>Consectetur adipisicing elit. Tempora praesentium qui aspernatur  <a href="">contact <i class="icon-envelope"></i></a> </p>\r\n				</div>\r\n			</div>\r\n\r\n		</div>\r\n	</div>\r\n</div><!-- end: section-features -->\r\n\r\n\r\n\r\n<!-- start: client -->\r\n<div class="section-wrapper section-testimonial">\r\n	<div class="container">\r\n		<div class="row">\r\n			<div class="span12">\r\n				<div class="separator">\r\n					<div class="">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">合作伙伴</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>	\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client">\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n						{{ theme:image file="client/1.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">Photoshop <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client" >\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n				    	{{ theme:image file="client/2.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">Jquery <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client" >\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n				    	{{ theme:image file="client/3.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">CSS3 <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client" >\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n				    	{{ theme:image file="client/4.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">GitHub <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client" >\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n				    	{{ theme:image file="client/5.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">HTML5 <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client" >\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n				    	{{ theme:image file="client/6.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">Chromium <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div><!-- end: client -->\r\n\r\n<!-- start: Testimonial -->\r\n<div class="section-wrapper">\r\n	<div class="container">\r\n		<div class="row">\r\n			<div class="span12">\r\n				<div class="separator">\r\n					<div class="">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">会员留言</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>	\r\n			</div>\r\n			<div class="span4">\r\n			  <blockquote>\r\n			    <p><i class="icon-quote-left icon-3x pull-left icon-muted"></i>从我们第一次接触，到成品交货，你们都能提出最好的解决方案。 印刷品的执行很好， 传达了我们和我们参会贵宾所习惯的高品质。.</p>\r\n			    <small>黄总 <a href="#"><i class="icon-external-link"></i></a></small> \r\n			  </blockquote>\r\n			</div>\r\n			<div class="span4">\r\n			  <blockquote>\r\n			    <p><i class="icon-quote-left icon-3x pull-left icon-muted"></i>无论我对质量和时间要求有多高， 我都能依赖他们完成任务。 他们从来没跟我讲过“不行，我们做不到”， 而会和我一起找到价格合理、满足要求的解决办法。</p>\r\n			    <small>Jerry Yang <a href="#"><i class="icon-external-link"></i></a></small> \r\n			  </blockquote>\r\n			</div>\r\n			<div class="span4">\r\n			  <blockquote>\r\n			    <p><i class="icon-quote-left icon-3x pull-left icon-muted"></i>总是积极地找寻最好的解决方案，并严格遵守时间！ 非常耐心和全面。 ... 花时间给我简洁明了地解释一些技术细节。完美地达到了客户期望，即使时间非常紧。</p>\r\n			    <small>Leonard Bernstein <a href="#"><i class="icon-external-link"></i></a></small> \r\n			  </blockquote>\r\n			</div>\r\n		</div>\r\n  	</div>\r\n</div><!-- end: Testimonial -->\r\n\r\n\r\n\r\n<!-- start: social icon -->\r\n<div class="section-wrapper section-icon social-icon">\r\n	<div class="container">\r\n		<div class="row">\r\n\r\n			<div class="social-icon-phone clear-phone">\r\n				<div class="span1 offset3">\r\n					<div class="flip-container">\r\n					  <div class="flipper">\r\n					    <div class="front">\r\n					      <div class="flip-a">\r\n					      	<a href="#"><i class="icon-facebook icon-2x"></i></a>\r\n					      </div>\r\n					    </div>\r\n					    <div class="back">\r\n					      <div class="flip-b facebook">\r\n					      	<a href="#"><span class="icon-back"><i class="icon-facebook icon-2x"></i></span></a>\r\n					      </div>\r\n					    </div>\r\n					  </div>\r\n					</div>\r\n				</div>				\r\n				\r\n				<div class="span1">\r\n					<div class="flip-container">\r\n					  <div class="flipper">\r\n					    <div class="front ">\r\n					      <div class="flip-a">\r\n					      	<a href="#"><i class="icon-twitter icon-2x"></i></a>\r\n					      </div>\r\n					    </div>\r\n					    <div class="back">\r\n					      <div class="flip-b twitter">\r\n					      	<a href="#"><span class="icon-back"><i class="icon-twitter icon-2x"></i></span></a>\r\n					      </div>\r\n					    </div>\r\n					  </div>\r\n					</div>\r\n				</div>	\r\n\r\n				<div class="span1">\r\n					<div class="flip-container">\r\n					  <div class="flipper">\r\n					    <div class="front ">\r\n					      <div class="flip-a">\r\n					      	<a href="#"><i class="icon-google-plus icon-2x"></i></a>\r\n					      </div>\r\n					    </div>\r\n					    <div class="back">\r\n					      <div class="flip-b google">\r\n					      	<a href="#"><span class="icon-back"><i class="icon-google-plus icon-2x"></i></span></a>\r\n					      </div>\r\n					    </div>\r\n					  </div>\r\n					</div>\r\n				</div>					\r\n			</div>\r\n\r\n			<div class="social-icon-phone clear-phone">\r\n				<div class="span1">\r\n					<div class="flip-container">\r\n					  <div class="flipper">\r\n					    <div class="front ">\r\n					      <div class="flip-a">\r\n					      	<a href="#"><i class="icon-github icon-2x"></i></a>\r\n					      </div>\r\n					    </div>\r\n					    <div class="back">\r\n					      <div class="flip-b github">\r\n					      	<a href="#"><span class="icon-back"><i class="icon-github icon-2x"></i></span></a>\r\n					      </div>\r\n					    </div>\r\n					  </div>\r\n					</div>\r\n				</div>	\r\n\r\n				<div class="span1">\r\n					<div class="flip-container">\r\n					  <div class="flipper">\r\n					    <div class="front ">\r\n					      <div class="flip-a">\r\n					      	<a href="#"><i class="icon-pinterest icon-2x"></i></a>\r\n					      </div>\r\n					    </div>\r\n					    <div class="back">\r\n					      <div class="flip-b pinterest">\r\n					      	<a href="#"><span class="icon-back"><i class="icon-pinterest icon-2x"></i></span></a>\r\n					      </div>\r\n					    </div>\r\n					  </div>\r\n					</div>\r\n				</div>					\r\n\r\n				<div class="span1">\r\n					<div class="flip-container">\r\n					  <div class="flipper">\r\n					    <div class="front ">\r\n					      <div class="flip-a">\r\n					      	<a href="#"><i class="icon-linkedin icon-2x"></i></a>\r\n					      </div>\r\n					    </div>\r\n					    <div class="back">\r\n					      <div class="flip-b linkedin">\r\n					      	<a href="#"><span class="icon-back"><i class="icon-linkedin icon-2x"></i></span></a>\r\n					      </div>\r\n					    </div>\r\n					  </div>\r\n					</div>\r\n				</div>	\r\n			</div>\r\n		</div>			\r\n	</div>\r\n</div><!-- end: social icon -->', '', '', 'default.html', 1364754834, 'n', '', '');
+(4, 'home', '首页', '', 2, '', NULL, '', '<!-- start: slider -->\r\n<div class="slider-wrapper slider-wrapper">\r\n\r\n            <div id="slider" class="sl-slider-wrapper">\r\n\r\n				<div class="sl-slider">\r\n				\r\n					{{ widgets:instance id="4"}}					\r\n					{{ widgets:instance id="5"}}	\r\n                                        {{ widgets:instance id="6"}}\r\n                                        {{ widgets:instance id="7"}}\r\n				\r\n				</div><!-- /sl-slider -->\r\n				\r\n				<nav id="nav-arrows" class="nav-arrows">\r\n					<span class="nav-arrow-prev">Previous</span>\r\n					<span class="nav-arrow-next">Next</span>\r\n				</nav>\r\n\r\n				<nav id="nav-dots" class="nav-dots">\r\n					<span class="nav-dot-current"></span>\r\n					<span></span>\r\n					<span></span>\r\n					<span></span>\r\n				</nav>\r\n\r\n			</div><!-- /slider-wrapper -->\r\n	\r\n\r\n</div><!-- end: slider -->\r\n\r\n\r\n<!-- start: lastest-events -->\r\n<div class="section-wrapper lastest-work">\r\n	<div class="container">\r\n		<div class="row">\r\n			<div class="span12">\r\n				<div class="separator">\r\n					<div class="left">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">推荐活动</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>	\r\n			</div>\r\n			<div class="span3">\r\n				<div class="white-content">\r\n					<div class="img-mask hover-mask">\r\n						{{ theme:image file="photos/app-1.jpg" }}\r\n						<div class="flip-container">\r\n						  <div class="flipper">\r\n						    <div class="back">\r\n						      <div class="flip-b">\r\n						      	<a href="#"><span class="icon-back"><i class="icon-plus-sign"></i></span></a>\r\n						      </div>\r\n						    </div>\r\n						  </div>\r\n						</div>\r\n						<span class="hover-fade"><i class="icon-plus-sign icon-3x"></i></span>					\r\n					</div>							\r\n					<a href="#"><h5>帆船挑战赛 <span class="white-title"><i class="icon-plus"></i></span></h5></a>\r\n					<p>帆影点点荡漾团队智慧，乘风破浪跨越艰难使命；高贵典雅乐享大海景致，竞技娱乐快意人生情怀。鸿洲帆船挑战赛邀您鉴赏汇聚四岛的海岸极境。竞逐海上荣...</p>\r\n				</div>\r\n			</div>\r\n			<div class="span3">\r\n				<div class="white-content">\r\n					<div class="img-mask hover-mask">\r\n						{{ theme:image file="photos/app-2.jpg" }}\r\n						<div class="flip-container">\r\n						  <div class="flipper">\r\n						    <div class="back">\r\n						      <div class="flip-b">\r\n						      	<a href="#"><span class="icon-back"><i class="icon-plus-sign"></i></span></a>\r\n						      </div>\r\n						    </div>\r\n						  </div>\r\n						</div>							\r\n						<span class="hover-fade"><i class="icon-plus-sign icon-3x"></i></span>					\r\n					</div>\r\n					<a href="#"><h5>海上求婚仪式 <span class="white-title"><i class="icon-plus"></i></span></h5></a>\r\n					<p>为您树一株浪漫的奇葩，孕育一生的回味。一座游艇，一片蔚蓝，为您酿造一生的甜蜜。以海为名，以船为媒。鸿洲国际游艇会为您专业铸造奢华游艇婚礼。</p>\r\n				</div>\r\n			</div>\r\n			<div class="span3">\r\n				<div class="white-content">\r\n					<div class="img-mask hover-mask">\r\n						{{ theme:image file="photos/app-3.jpg" }}\r\n						<div class="flip-container">\r\n						  <div class="flipper">\r\n						    <div class="back">\r\n						      <div class="flip-b">\r\n						      	<a href="#"><span class="icon-back"><i class="icon-plus-sign"></i></span></a>\r\n						      </div>\r\n						    </div>\r\n						  </div>\r\n						</div>							\r\n						<span class="hover-fade"><i class="icon-plus-sign icon-3x"></i></span>\r\n					</div>\r\n					<a href="#"><h5>游艇鸡尾酒 <span class="white-title"><i class="icon-plus"></i></span></h5></a>\r\n					<p>奢华碰撞，圈层际会。大海之上，觥筹交错问人生；游艇派对，舞乐人生快意享。鸿洲国际游艇会携世界顶级游艇驶入三亚海，为您酝酿巅峰游艇主题酒会，恭...</p>	\r\n				</div>\r\n			</div>\r\n			<div class="span3">\r\n				<div class="white-content">\r\n					<div class="img-mask hover-mask">\r\n						{{ theme:image file="photos/app-4.jpg" }}\r\n						<div class="flip-container">\r\n						  <div class="flipper">\r\n						    <div class="back">\r\n						      <div class="flip-b">\r\n						      	<a href="#"><span class="icon-back"><i class="icon-plus-sign"></i></span></a>\r\n						      </div>\r\n						    </div>\r\n						  </div>\r\n						</div>							\r\n						<span class="hover-fade"><i class="icon-plus-sign icon-3x"></i></span>\r\n					</div>\r\n					<a href="#"><h5>祈福之旅 <span class="white-title"><i class="icon-plus"></i></span></h5></a>\r\n					<p>秉一颗虔诚之心，架一座海上游艇，赴一趟福如东海，祈一世福寿安康。鸿洲东海祈福之旅携您莅赏东海龙王庙，畅览第一福海妙景英姿，撒播一世福寿情缘。...</p>	\r\n				</div>\r\n			</div>						\r\n		</div>\r\n	</div>\r\n</div><!-- end: lastest-events -->\r\n\r\n<!-- start: hello -->\r\n<div class="section-wrapper">\r\n	<div class="container">\r\n		<div class="row">\r\n			<div class="span6">\r\n			{{ body }}\r\n			</div>\r\n\r\n			<div class="span6">\r\n				<div class="separator">\r\n					<div class="left">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">航海体验中心 </h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>	\r\n\r\n			<div class="accordion" id="accordion2">\r\n\r\n{{ widgets:instance id="8"}}\r\n{{ widgets:instance id="9"}}\r\n			  \r\n			</div>\r\n\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div><!-- end: hello -->\r\n\r\n<!-- start: section-Member -->\r\n<div class="section-features">\r\n	<div class="container">\r\n		<div class="row">\r\n\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class="icon-resize-small"></i>\r\n					<h5>驾驶培训</h5>\r\n					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora praesentium qui aspernatur amet distinctio.</p>\r\n				</div>\r\n			</div>\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class="icon-ok"></i>\r\n					<h5>航海体验</h5>\r\n					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora praesentium qui aspernatur amet distinctio. </p>\r\n				</div>\r\n			</div>\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class="icon-edit"></i>\r\n					<h5>VIP活动</h5>\r\n					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora praesentium qui aspernatur amet distinctio.</p>\r\n				</div>\r\n			</div>\r\n\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class="icon-magic"></i>\r\n					<h5>游艇使用</h5>\r\n					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>\r\n				</div>\r\n			</div>\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class=" icon-dashboard"></i>\r\n					<h5>尊享会员</h5>\r\n					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit Tempora praesentium qui aspernatur.</p>\r\n				</div>\r\n			</div>\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class="icon-user-md"></i>\r\n					<h5>优惠打折</h5>\r\n					<p>Consectetur adipisicing elit. Tempora praesentium qui aspernatur  <a href="">contact <i class="icon-envelope"></i></a> </p>\r\n				</div>\r\n			</div>\r\n\r\n		</div>\r\n	</div>\r\n</div><!-- end: section-features -->\r\n\r\n\r\n\r\n<!-- start: client -->\r\n<div class="section-wrapper section-testimonial">\r\n	<div class="container">\r\n		<div class="row">\r\n			<div class="span12">\r\n				<div class="separator">\r\n					<div class="">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">合作伙伴</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>	\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client">\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n						{{ theme:image file="client/1.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">Photoshop <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client" >\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n				    	{{ theme:image file="client/2.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">Jquery <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client" >\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n				    	{{ theme:image file="client/3.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">CSS3 <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client" >\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n				    	{{ theme:image file="client/4.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">GitHub <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client" >\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n				    	{{ theme:image file="client/5.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">HTML5 <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client" >\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n				    	{{ theme:image file="client/6.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">Chromium <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div><!-- end: client -->\r\n\r\n<!-- start: Testimonial -->\r\n<div class="section-wrapper">\r\n	<div class="container">\r\n		<div class="row">\r\n			<div class="span12">\r\n				<div class="separator">\r\n					<div class="">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">会员留言</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>	\r\n			</div>\r\n			<div class="span4">\r\n			  <blockquote>\r\n			    <p><i class="icon-quote-left icon-3x pull-left icon-muted"></i>从我们第一次接触，到成品交货，你们都能提出最好的解决方案。 印刷品的执行很好， 传达了我们和我们参会贵宾所习惯的高品质。.</p>\r\n			    <small>黄总 <a href="#"><i class="icon-external-link"></i></a></small> \r\n			  </blockquote>\r\n			</div>\r\n			<div class="span4">\r\n			  <blockquote>\r\n			    <p><i class="icon-quote-left icon-3x pull-left icon-muted"></i>无论我对质量和时间要求有多高， 我都能依赖他们完成任务。 他们从来没跟我讲过“不行，我们做不到”， 而会和我一起找到价格合理、满足要求的解决办法。</p>\r\n			    <small>Jerry Yang <a href="#"><i class="icon-external-link"></i></a></small> \r\n			  </blockquote>\r\n			</div>\r\n			<div class="span4">\r\n			  <blockquote>\r\n			    <p><i class="icon-quote-left icon-3x pull-left icon-muted"></i>总是积极地找寻最好的解决方案，并严格遵守时间！ 非常耐心和全面。 ... 花时间给我简洁明了地解释一些技术细节。完美地达到了客户期望，即使时间非常紧。</p>\r\n			    <small>Leonard Bernstein <a href="#"><i class="icon-external-link"></i></a></small> \r\n			  </blockquote>\r\n			</div>\r\n		</div>\r\n  	</div>\r\n</div><!-- end: Testimonial -->', '', '', 'default.html', 1364782830, 'n', '', ''),
+(5, 'plugin', '插件专用', '', 2, '', NULL, '', '<h2>{{ title }}</h2>', '', '', 'plugin.html', 1364784916, 'n', '', '');
 
 -- --------------------------------------------------------
 
@@ -858,19 +854,14 @@ INSERT INTO `default_page_types` (`id`, `slug`, `title`, `description`, `stream_
 -- 表的结构 `default_permissions`
 --
 
-CREATE TABLE `default_permissions` (
-  `id` int(11) NOT NULL auto_increment,
+CREATE TABLE IF NOT EXISTS `default_permissions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `group_id` int(11) NOT NULL,
-  `module` varchar(50) collate utf8_unicode_ci NOT NULL,
-  `roles` text collate utf8_unicode_ci,
-  PRIMARY KEY  (`id`),
+  `module` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `roles` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`),
   KEY `group_id` (`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- 导出表中的数据 `default_permissions`
---
-
 
 -- --------------------------------------------------------
 
@@ -878,35 +869,35 @@ CREATE TABLE `default_permissions` (
 -- 表的结构 `default_profiles`
 --
 
-CREATE TABLE `default_profiles` (
-  `id` int(9) NOT NULL auto_increment,
-  `created` datetime default NULL,
-  `updated` datetime default NULL,
-  `created_by` int(11) default NULL,
-  `ordering_count` int(11) default NULL,
+CREATE TABLE IF NOT EXISTS `default_profiles` (
+  `id` int(9) NOT NULL AUTO_INCREMENT,
+  `created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `ordering_count` int(11) DEFAULT NULL,
   `user_id` int(11) unsigned NOT NULL,
-  `display_name` varchar(50) collate utf8_unicode_ci NOT NULL,
-  `first_name` varchar(50) collate utf8_unicode_ci NOT NULL,
-  `last_name` varchar(50) collate utf8_unicode_ci NOT NULL,
-  `company` varchar(100) collate utf8_unicode_ci default NULL,
-  `lang` varchar(2) collate utf8_unicode_ci NOT NULL default 'en',
-  `bio` text collate utf8_unicode_ci,
-  `dob` int(11) default NULL,
-  `gender` set('m','f','') collate utf8_unicode_ci default NULL,
-  `phone` varchar(20) collate utf8_unicode_ci default NULL,
-  `mobile` varchar(20) collate utf8_unicode_ci default NULL,
-  `address_line1` varchar(255) collate utf8_unicode_ci default NULL,
-  `address_line2` varchar(255) collate utf8_unicode_ci default NULL,
-  `address_line3` varchar(255) collate utf8_unicode_ci default NULL,
-  `postcode` varchar(20) collate utf8_unicode_ci default NULL,
-  `website` varchar(255) collate utf8_unicode_ci default NULL,
-  `updated_on` int(11) unsigned default NULL,
-  PRIMARY KEY  (`id`),
+  `display_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `first_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `last_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `company` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lang` varchar(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'en',
+  `bio` text COLLATE utf8_unicode_ci,
+  `dob` int(11) DEFAULT NULL,
+  `gender` set('m','f','') COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mobile` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address_line1` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address_line2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address_line3` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `postcode` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `website` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `updated_on` int(11) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- 导出表中的数据 `default_profiles`
+-- 转存表中的数据 `default_profiles`
 --
 
 INSERT INTO `default_profiles` (`id`, `created`, `updated`, `created_by`, `ordering_count`, `user_id`, `display_name`, `first_name`, `last_name`, `company`, `lang`, `bio`, `dob`, `gender`, `phone`, `mobile`, `address_line1`, `address_line2`, `address_line3`, `postcode`, `website`, `updated_on`) VALUES
@@ -918,19 +909,14 @@ INSERT INTO `default_profiles` (`id`, `created`, `updated`, `created_by`, `order
 -- 表的结构 `default_redirects`
 --
 
-CREATE TABLE `default_redirects` (
-  `id` int(11) NOT NULL auto_increment,
-  `from` varchar(250) collate utf8_unicode_ci NOT NULL,
-  `to` varchar(250) collate utf8_unicode_ci NOT NULL,
-  `type` int(3) NOT NULL default '302',
-  PRIMARY KEY  (`id`),
+CREATE TABLE IF NOT EXISTS `default_redirects` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `to` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `type` int(3) NOT NULL DEFAULT '302',
+  PRIMARY KEY (`id`),
   KEY `from` (`from`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- 导出表中的数据 `default_redirects`
---
-
 
 -- --------------------------------------------------------
 
@@ -938,26 +924,26 @@ CREATE TABLE `default_redirects` (
 -- 表的结构 `default_search_index`
 --
 
-CREATE TABLE `default_search_index` (
-  `id` int(10) unsigned NOT NULL auto_increment,
-  `title` char(255) collate utf8_unicode_ci NOT NULL,
-  `description` text collate utf8_unicode_ci,
-  `keywords` text collate utf8_unicode_ci,
-  `keyword_hash` char(32) collate utf8_unicode_ci default NULL,
-  `module` varchar(40) collate utf8_unicode_ci default NULL,
-  `entry_key` varchar(100) collate utf8_unicode_ci default NULL,
-  `entry_plural` varchar(100) collate utf8_unicode_ci default NULL,
-  `entry_id` varchar(255) collate utf8_unicode_ci default NULL,
-  `uri` varchar(255) collate utf8_unicode_ci default NULL,
-  `cp_edit_uri` varchar(255) collate utf8_unicode_ci default NULL,
-  `cp_delete_uri` varchar(255) collate utf8_unicode_ci default NULL,
-  PRIMARY KEY  (`id`),
+CREATE TABLE IF NOT EXISTS `default_search_index` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` char(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `keywords` text COLLATE utf8_unicode_ci,
+  `keyword_hash` char(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `module` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `entry_key` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `entry_plural` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `entry_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `uri` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cp_edit_uri` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cp_delete_uri` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `unique` (`module`,`entry_key`,`entry_id`(190)),
   FULLTEXT KEY `full search` (`title`,`description`,`keywords`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=29 ;
 
 --
--- 导出表中的数据 `default_search_index`
+-- 转存表中的数据 `default_search_index`
 --
 
 INSERT INTO `default_search_index` (`id`, `title`, `description`, `keywords`, `keyword_hash`, `module`, `entry_key`, `entry_plural`, `entry_id`, `uri`, `cp_edit_uri`, `cp_delete_uri`) VALUES
@@ -980,25 +966,25 @@ INSERT INTO `default_search_index` (`id`, `title`, `description`, `keywords`, `k
 -- 表的结构 `default_settings`
 --
 
-CREATE TABLE `default_settings` (
-  `slug` varchar(30) collate utf8_unicode_ci NOT NULL,
-  `title` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `description` text collate utf8_unicode_ci NOT NULL,
-  `type` set('text','textarea','password','select','select-multiple','radio','checkbox') collate utf8_unicode_ci NOT NULL,
-  `default` text collate utf8_unicode_ci NOT NULL,
-  `value` text collate utf8_unicode_ci NOT NULL,
-  `options` varchar(255) collate utf8_unicode_ci NOT NULL,
+CREATE TABLE IF NOT EXISTS `default_settings` (
+  `slug` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `type` set('text','textarea','password','select','select-multiple','radio','checkbox') COLLATE utf8_unicode_ci NOT NULL,
+  `default` text COLLATE utf8_unicode_ci NOT NULL,
+  `value` text COLLATE utf8_unicode_ci NOT NULL,
+  `options` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `is_required` int(1) NOT NULL,
   `is_gui` int(1) NOT NULL,
-  `module` varchar(50) collate utf8_unicode_ci NOT NULL,
-  `order` int(10) NOT NULL default '0',
-  PRIMARY KEY  (`slug`),
+  `module` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `order` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`slug`),
   UNIQUE KEY `unique_slug` (`slug`),
   KEY `slug` (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 导出表中的数据 `default_settings`
+-- 转存表中的数据 `default_settings`
 --
 
 INSERT INTO `default_settings` (`slug`, `title`, `description`, `type`, `default`, `value`, `options`, `is_required`, `is_gui`, `module`, `order`) VALUES
@@ -1066,22 +1052,22 @@ INSERT INTO `default_settings` (`slug`, `title`, `description`, `type`, `default
 -- 表的结构 `default_theme_options`
 --
 
-CREATE TABLE `default_theme_options` (
-  `id` int(11) NOT NULL auto_increment,
-  `slug` varchar(30) collate utf8_unicode_ci NOT NULL,
-  `title` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `description` text collate utf8_unicode_ci NOT NULL,
-  `type` set('text','textarea','password','select','select-multiple','radio','checkbox','colour-picker') collate utf8_unicode_ci NOT NULL,
-  `default` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `value` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `options` text collate utf8_unicode_ci NOT NULL,
+CREATE TABLE IF NOT EXISTS `default_theme_options` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `type` set('text','textarea','password','select','select-multiple','radio','checkbox','colour-picker') COLLATE utf8_unicode_ci NOT NULL,
+  `default` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `value` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `options` text COLLATE utf8_unicode_ci NOT NULL,
   `is_required` int(1) NOT NULL,
-  `theme` varchar(50) collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`)
+  `theme` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 --
--- 导出表中的数据 `default_theme_options`
+-- 转存表中的数据 `default_theme_options`
 --
 
 INSERT INTO `default_theme_options` (`id`, `slug`, `title`, `description`, `type`, `default`, `value`, `options`, `is_required`, `theme`) VALUES
@@ -1107,30 +1093,30 @@ INSERT INTO `default_theme_options` (`id`, `slug`, `title`, `description`, `type
 -- 表的结构 `default_users`
 --
 
-CREATE TABLE `default_users` (
-  `id` smallint(5) unsigned NOT NULL auto_increment,
-  `email` varchar(60) collate utf8_unicode_ci NOT NULL default '',
-  `password` varchar(100) collate utf8_unicode_ci NOT NULL default '',
-  `salt` varchar(6) collate utf8_unicode_ci NOT NULL default '',
-  `group_id` int(11) default NULL,
-  `ip_address` varchar(16) collate utf8_unicode_ci default NULL,
-  `active` int(1) default NULL,
-  `activation_code` varchar(40) collate utf8_unicode_ci default NULL,
+CREATE TABLE IF NOT EXISTS `default_users` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `email` varchar(60) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `salt` varchar(6) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `group_id` int(11) DEFAULT NULL,
+  `ip_address` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `active` int(1) DEFAULT NULL,
+  `activation_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_on` int(11) NOT NULL,
   `last_login` int(11) NOT NULL,
-  `username` varchar(20) collate utf8_unicode_ci default NULL,
-  `forgotten_password_code` varchar(40) collate utf8_unicode_ci default NULL,
-  `remember_code` varchar(40) collate utf8_unicode_ci default NULL,
-  PRIMARY KEY  (`id`),
+  `username` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `forgotten_password_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remember_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
   KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Registered User Information' AUTO_INCREMENT=2 ;
 
 --
--- 导出表中的数据 `default_users`
+-- 转存表中的数据 `default_users`
 --
 
 INSERT INTO `default_users` (`id`, `email`, `password`, `salt`, `group_id`, `ip_address`, `active`, `activation_code`, `created_on`, `last_login`, `username`, `forgotten_password_code`, `remember_code`) VALUES
-(1, 'gz.liangrongze@gmail.com', '69ee83c02a47a75bdc68a0036778ed9b2a6a68b4', 'ae10d', 1, '', 1, '', 1364475573, 1364746013, 'cbc', NULL, 'eeedc184c9df6c32b5233cf6291fec727439ee6e');
+(1, 'gz.liangrongze@gmail.com', '69ee83c02a47a75bdc68a0036778ed9b2a6a68b4', 'ae10d', 1, '', 1, '', 1364475573, 1364779709, 'cbc', NULL, 'eeedc184c9df6c32b5233cf6291fec727439ee6e');
 
 -- --------------------------------------------------------
 
@@ -1138,17 +1124,12 @@ INSERT INTO `default_users` (`id`, `email`, `password`, `salt`, `group_id`, `ip_
 -- 表的结构 `default_variables`
 --
 
-CREATE TABLE `default_variables` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(250) collate utf8_unicode_ci default NULL,
-  `data` varchar(250) collate utf8_unicode_ci default NULL,
-  PRIMARY KEY  (`id`)
+CREATE TABLE IF NOT EXISTS `default_variables` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `data` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- 导出表中的数据 `default_variables`
---
-
 
 -- --------------------------------------------------------
 
@@ -1156,22 +1137,22 @@ CREATE TABLE `default_variables` (
 -- 表的结构 `default_widgets`
 --
 
-CREATE TABLE `default_widgets` (
-  `id` int(11) NOT NULL auto_increment,
-  `slug` varchar(100) collate utf8_unicode_ci NOT NULL default '',
-  `title` text collate utf8_unicode_ci NOT NULL,
-  `description` text collate utf8_unicode_ci NOT NULL,
-  `author` varchar(100) collate utf8_unicode_ci NOT NULL default '',
-  `website` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `version` varchar(20) collate utf8_unicode_ci NOT NULL default '0',
-  `enabled` int(1) NOT NULL default '1',
-  `order` int(10) NOT NULL default '0',
-  `updated_on` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+CREATE TABLE IF NOT EXISTS `default_widgets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `title` text COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `author` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `website` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `version` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `enabled` int(1) NOT NULL DEFAULT '1',
+  `order` int(10) NOT NULL DEFAULT '0',
+  `updated_on` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
 
 --
--- 导出表中的数据 `default_widgets`
+-- 转存表中的数据 `default_widgets`
 --
 
 INSERT INTO `default_widgets` (`id`, `slug`, `title`, `description`, `author`, `website`, `version`, `enabled`, `order`, `updated_on`) VALUES
@@ -1185,7 +1166,8 @@ INSERT INTO `default_widgets` (`id`, `slug`, `title`, `description`, `author`, `
 (8, 'blog_categories', 'a:7:{s:2:"en";s:15:"Blog Categories";s:2:"br";s:18:"Categorias do Blog";s:2:"pt";s:18:"Categorias do Blog";s:2:"el";s:41:"Κατηγορίες Ιστολογίου";s:2:"fr";s:19:"Catégories du Blog";s:2:"ru";s:29:"Категории Блога";s:2:"id";s:12:"Kateori Blog";}', 'a:7:{s:2:"en";s:30:"Show a list of blog categories";s:2:"br";s:57:"Mostra uma lista de navegação com as categorias do Blog";s:2:"pt";s:57:"Mostra uma lista de navegação com as categorias do Blog";s:2:"el";s:97:"Προβάλει την λίστα των κατηγοριών του ιστολογίου σας";s:2:"fr";s:49:"Permet d''afficher la liste de Catégories du Blog";s:2:"ru";s:57:"Выводит список категорий блога";s:2:"id";s:35:"Menampilkan daftar kategori tulisan";}', 'Stephen Cozart', 'http://github.com/clip/', '1.0.0', 1, 8, 1364485040),
 (9, 'latest_posts', 'a:7:{s:2:"en";s:12:"Latest posts";s:2:"br";s:24:"Artigos recentes do Blog";s:2:"pt";s:24:"Artigos recentes do Blog";s:2:"el";s:62:"Τελευταίες αναρτήσεις ιστολογίου";s:2:"fr";s:17:"Derniers articles";s:2:"ru";s:31:"Последние записи";s:2:"id";s:12:"Post Terbaru";}', 'a:7:{s:2:"en";s:39:"Display latest blog posts with a widget";s:2:"br";s:81:"Mostra uma lista de navegação para abrir os últimos artigos publicados no Blog";s:2:"pt";s:81:"Mostra uma lista de navegação para abrir os últimos artigos publicados no Blog";s:2:"el";s:103:"Προβάλει τις πιο πρόσφατες αναρτήσεις στο ιστολόγιό σας";s:2:"fr";s:68:"Permet d''afficher la liste des derniers posts du blog dans un Widget";s:2:"ru";s:100:"Выводит список последних записей блога внутри виджета";s:2:"id";s:51:"Menampilkan posting blog terbaru menggunakan widget";}', 'Erik Berman', 'http://www.nukleo.fr', '1.0.0', 1, 9, 1364485040),
 (10, 'ImageWidget', 's:18:"设置滚动图片";', 'a:1:{s:2:"en";s:24:"设置首页滚动图片";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 10, 1364752500),
-(11, 'HomeTagsWidget', 's:15:"设置首页Tab";', 'a:1:{s:2:"en";s:15:"设置首页Tab";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 11, 1364754520);
+(11, 'HomeTagsWidget', 's:15:"设置首页Tab";', 'a:1:{s:2:"en";s:15:"设置首页Tab";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 11, 1364754520),
+(12, 'AboutUsBoatsWidget', 's:15:"我们的游艇";', 'a:1:{s:2:"en";s:21:"设置我们的游艇";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 12, 1364783686);
 
 -- --------------------------------------------------------
 
@@ -1193,20 +1175,21 @@ INSERT INTO `default_widgets` (`id`, `slug`, `title`, `description`, `author`, `
 -- 表的结构 `default_widget_areas`
 --
 
-CREATE TABLE `default_widget_areas` (
-  `id` int(11) NOT NULL auto_increment,
-  `slug` varchar(100) collate utf8_unicode_ci default NULL,
-  `title` varchar(100) collate utf8_unicode_ci default NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+CREATE TABLE IF NOT EXISTS `default_widget_areas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- 导出表中的数据 `default_widget_areas`
+-- 转存表中的数据 `default_widget_areas`
 --
 
 INSERT INTO `default_widget_areas` (`id`, `slug`, `title`) VALUES
 (1, 'sidebar', '首页-挂件'),
-(2, 'home', '其他挂件');
+(2, 'home', '其他挂件'),
+(3, 'about-us', '关于我们挂件');
 
 -- --------------------------------------------------------
 
@@ -1214,20 +1197,20 @@ INSERT INTO `default_widget_areas` (`id`, `slug`, `title`) VALUES
 -- 表的结构 `default_widget_instances`
 --
 
-CREATE TABLE `default_widget_instances` (
-  `id` int(11) NOT NULL auto_increment,
-  `title` varchar(100) collate utf8_unicode_ci default NULL,
-  `widget_id` int(11) default NULL,
-  `widget_area_id` int(11) default NULL,
-  `options` text collate utf8_unicode_ci NOT NULL,
-  `order` int(10) NOT NULL default '0',
-  `created_on` int(11) NOT NULL default '0',
-  `updated_on` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+CREATE TABLE IF NOT EXISTS `default_widget_instances` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `widget_id` int(11) DEFAULT NULL,
+  `widget_area_id` int(11) DEFAULT NULL,
+  `options` text COLLATE utf8_unicode_ci NOT NULL,
+  `order` int(10) NOT NULL DEFAULT '0',
+  `created_on` int(11) NOT NULL DEFAULT '0',
+  `updated_on` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 --
--- 导出表中的数据 `default_widget_instances`
+-- 转存表中的数据 `default_widget_instances`
 --
 
 INSERT INTO `default_widget_instances` (`id`, `title`, `widget_id`, `widget_area_id`, `options`, `order`, `created_on`, `updated_on`) VALUES
@@ -1236,4 +1219,12 @@ INSERT INTO `default_widget_instances` (`id`, `title`, `widget_id`, `widget_area
 (6, '第三张图片', 10, 1, 'a:5:{s:8:"image_id";s:15:"f0fad5a0a69a6f3";s:9:"image_url";s:8:"home-new";s:5:"class";s:4:"bg-3";s:12:"display_type";s:10:"horizontal";s:11:"image_title";s:66:"在澳洲的岛国，还没体验过航海，那你还等什么？";}', 3, 1364752888, 0),
 (7, '第四张图片', 10, 1, 'a:5:{s:8:"image_id";s:15:"fa97233c8d09e26";s:9:"image_url";s:8:"home-new";s:5:"class";s:4:"bg-1";s:12:"display_type";s:8:"vertical";s:11:"image_title";s:74:"<span class="btn btn-color">动起来，看看最新有啥好玩的</span>";}', 4, 1364752943, 0),
 (8, 'Tab-1', 11, 1, 'a:5:{s:10:"show_title";s:1:"1";s:10:"tags_title";s:12:"商务拓展";s:12:"tags_content";s:201:" Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias laboriosam quidem iusto repellat unde optio sed perferendis natus dicta in magni enim rem eos iure sequi nam asperiores nihil similique.";s:8:"tags_url";s:8:"home-new";s:11:"tags_active";s:1:"1";}', 5, 1364754207, 1364754548),
-(9, 'Tab-2', 11, 1, 'a:4:{s:10:"tags_title";s:12:"婚纱摄影";s:12:"tags_content";s:173:" consectetur adipisicing elit. Alias laboriosam quidem iusto repellat unde optio sed perferendis natus dicta in magni enim rem eos iure sequi nam asperiores nihil similique.";s:8:"tags_url";s:8:"home-new";s:11:"tags_active";s:1:"0";}', 6, 1364754796, 0);
+(9, 'Tab-2', 11, 1, 'a:4:{s:10:"tags_title";s:12:"婚纱摄影";s:12:"tags_content";s:173:" consectetur adipisicing elit. Alias laboriosam quidem iusto repellat unde optio sed perferendis natus dicta in magni enim rem eos iure sequi nam asperiores nihil similique.";s:8:"tags_url";s:8:"home-new";s:11:"tags_active";s:1:"0";}', 6, 1364754796, 0),
+(10, '第一张', 12, 3, 'a:5:{s:10:"show_title";s:1:"1";s:10:"tags_title";s:9:"Mustan 32";s:9:"tags_desc";s:20:"马斯顿游艇32尺";s:8:"image_id";s:15:"ed011d9a1dcfbda";s:15:"tags_background";s:34:"I <i class="icon-heart"></i> sushi";}', 1, 1364781020, 1364781597),
+(11, '第二张', 12, 3, 'a:5:{s:10:"show_title";s:1:"1";s:10:"tags_title";s:12:"Sunrunner 28";s:9:"tags_desc";s:20:"圣伦娜游艇28尺";s:8:"image_id";s:15:"ed011d9a1dcfbda";s:15:"tags_background";s:35:"I loose my <i class="icon-key"></i>";}', 2, 1364781683, 0),
+(12, '第三张', 12, 3, 'a:5:{s:10:"show_title";s:1:"1";s:10:"tags_title";s:26:"Riviera 4400 Sports Yachat";s:9:"tags_desc";s:20:"瑞维雅游艇44尺";s:8:"image_id";s:15:"ed011d9a1dcfbda";s:15:"tags_background";s:37:"I <i class="icon-food"></i> hamburger";}', 3, 1364781722, 0),
+(13, '第四张', 12, 3, 'a:4:{s:10:"tags_title";s:25:"Riviera 3600 Sport Yachat";s:9:"tags_desc";s:20:"瑞维雅游艇40尺";s:8:"image_id";s:15:"ed011d9a1dcfbda";s:15:"tags_background";s:33:"I need <i class="icon-music"></i>";}', 4, 1364781766, 0);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
