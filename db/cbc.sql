@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2013 年 04 月 01 日 07:33
+-- 生成日期: 2013 年 04 月 01 日 09:07
 -- 服务器版本: 5.5.24-log
 -- PHP 版本: 5.2.2
 
@@ -129,15 +129,17 @@ CREATE TABLE IF NOT EXISTS `default_blog` (
   `status` enum('draft','live') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'draft',
   `type` set('html','markdown','wysiwyg-advanced','wysiwyg-simple') COLLATE utf8_unicode_ci NOT NULL,
   `preview_hash` char(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `display_pic` char(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
 -- 转存表中的数据 `default_blog`
 --
 
-INSERT INTO `default_blog` (`id`, `created`, `updated`, `created_by`, `ordering_count`, `intro`, `title`, `slug`, `category_id`, `body`, `parsed`, `keywords`, `author_id`, `created_on`, `updated_on`, `comments_enabled`, `status`, `type`, `preview_hash`) VALUES
-(1, '2013-03-28 13:08:00', NULL, 1, 1, '第一次使用这个pyrocms', '第一次使用这个pyrocms', 'pyrocms', 1, '第一次使用这个pyrocms', '', '', 1, 1364476080, 0, '3 months', 'live', 'wysiwyg-advanced', '');
+INSERT INTO `default_blog` (`id`, `created`, `updated`, `created_by`, `ordering_count`, `intro`, `title`, `slug`, `category_id`, `body`, `parsed`, `keywords`, `author_id`, `created_on`, `updated_on`, `comments_enabled`, `status`, `type`, `preview_hash`, `display_pic`) VALUES
+(1, '2013-03-28 13:08:00', NULL, 1, 1, '第一次使用这个pyrocms', '第一次使用这个pyrocms', 'pyrocms', 1, '第一次使用这个pyrocms', '', '', 1, 1364476080, 0, '3 months', 'live', 'wysiwyg-advanced', '', NULL),
+(2, '2013-04-01 08:08:00', '2013-04-01 08:08:00', 1, 2, '<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(241, 240, 242);">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore debitis hic illo ab alias porro reiciendis suscipit necessitatibus beatae veniam cum impedit. necessitatibus beatae veniam cum impedit. Voluptates ipsum eligendi labore sint magni earum nam.</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(241, 240, 242);">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam at dolorum dignissimos officiis assumenda ad aut ullam fugit autem ducimus voluptas odio! Dignissimos repellat explicabo exercitationem quas quis officiis saepe?</p>\r\n', 'Voluptates ipsum eligendi', 'voluptates-ipsum-eligendi', 1, '<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(241, 240, 242);">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore debitis hic illo ab alias porro reiciendis suscipit necessitatibus beatae veniam cum impedit. necessitatibus beatae veniam cum impedit. Voluptates ipsum eligendi labore sint magni earum nam.</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(241, 240, 242);">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam at dolorum dignissimos officiis assumenda ad aut ullam fugit autem ducimus voluptas odio! Dignissimos repellat explicabo exercitationem quas quis officiis saepe?<br />\r\n&nbsp;</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore debitis hic illo ab alias porro reiciendis suscipit necessitatibus beatae veniam cum impedit. necessitatibus beatae veniam cum impedit. Voluptates ipsum eligendi labore sint magni earum nam.</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam at dolorum dignissimos officiis assumenda ad aut ullam fugit autem ducimus voluptas odio! Dignissimos repellat explicabo exercitationem quas quis officiis saepe?</p>', '', '', 1, 1364803680, 1364803680, '3 months', 'live', 'wysiwyg-advanced', '', '9517fd0bf8faa65');
 
 -- --------------------------------------------------------
 
@@ -153,14 +155,18 @@ CREATE TABLE IF NOT EXISTS `default_blog_categories` (
   UNIQUE KEY `unique_slug` (`slug`),
   UNIQUE KEY `unique_title` (`title`),
   KEY `slug` (`slug`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
 -- 转存表中的数据 `default_blog_categories`
 --
 
 INSERT INTO `default_blog_categories` (`id`, `slug`, `title`) VALUES
-(1, '', '春天');
+(1, 'hot-news', '最新消息'),
+(4, 'sea-experience', '航海体验'),
+(5, 'boat-season', '帆船季节'),
+(6, '2013-sport', '2013锦标赛'),
+(7, '2012-sport', '2012-锦标赛');
 
 -- --------------------------------------------------------
 
@@ -222,7 +228,7 @@ INSERT INTO `default_ci_sessions` (`session_id`, `ip_address`, `user_agent`, `la
 ('d81798c324dfc096d8d5690e76d8e58c', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364754520, ''),
 ('2d5ffcdba3b9a4e826349bb7bcf3ea7c', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364754553, ''),
 ('7f20883c0f25f1e27c5b5c4f952df92f', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364754767, ''),
-('65e734e94a8279224ab9c7358ebb553c', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364801296, 'a:6:{s:8:"username";s:3:"cbc";s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}'),
+('6cbac96588c14e901aab0daa6ab454b5', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364807125, 'a:6:{s:8:"username";s:3:"cbc";s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}'),
 ('22e930fa6d42c66e17418a7d45cfbdc6', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364780964, ''),
 ('bc2707f6126fd24540c81ea01f40b8f8', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364781059, ''),
 ('01d64d8bf7c812d72d2a886280ec02fe', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364781263, ''),
@@ -232,7 +238,9 @@ INSERT INTO `default_ci_sessions` (`session_id`, `ip_address`, `user_agent`, `la
 ('24d9d5b0bb131d5aabc7f55893154a43', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364788425, 'a:5:{s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}'),
 ('12d572a8cfac364865e4270af459a67f', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364800048, ''),
 ('56edb66b60f8ff9d7f376c5d24dfd908', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364800325, ''),
-('3a44d6a9f7c375e355d5dc4923c1f537', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364800421, '');
+('3a44d6a9f7c375e355d5dc4923c1f537', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364800421, ''),
+('d04bb9dd3eef4433beadfc3209147a36', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364803649, ''),
+('8e81ba0b05009224b83f998a5f3da511', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364807126, 'a:5:{s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}');
 
 -- --------------------------------------------------------
 
@@ -309,7 +317,7 @@ CREATE TABLE IF NOT EXISTS `default_data_fields` (
   `view_options` blob,
   `is_locked` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
 
 --
 -- 转存表中的数据 `default_data_fields`
@@ -333,7 +341,8 @@ INSERT INTO `default_data_fields` (`id`, `field_name`, `field_slug`, `field_name
 (15, 'lang:profile_address_postcode', 'postcode', 'users', 'text', 0x613a323a7b733a31303a226d61785f6c656e677468223b693a32303b733a31333a2264656661756c745f76616c7565223b4e3b7d, NULL, 'no'),
 (16, 'lang:profile_website', 'website', 'users', 'url', NULL, NULL, 'no'),
 (17, '详细信息', 'about_us_description', 'pages', 'wysiwyg', 0x613a323a7b733a31313a22656469746f725f74797065223b733a383a22616476616e636564223b733a31303a22616c6c6f775f74616773223b733a313a226e223b7d, NULL, 'no'),
-(18, 'boat-service-content', 'boatservicecontent', 'pages', 'wysiwyg', 0x613a323a7b733a31313a22656469746f725f74797065223b733a383a22616476616e636564223b733a31303a22616c6c6f775f74616773223b733a313a226e223b7d, NULL, 'no');
+(18, 'boat-service-content', 'boatservicecontent', 'pages', 'wysiwyg', 0x613a323a7b733a31313a22656469746f725f74797065223b733a383a22616476616e636564223b733a31303a22616c6c6f775f74616773223b733a313a226e223b7d, NULL, 'no'),
+(19, 'display_pic', 'display_pic', 'blogs', 'image', 0x613a353a7b733a363a22666f6c646572223b733a313a2236223b733a31323a22726573697a655f7769647468223b733a303a22223b733a31333a22726573697a655f686569676874223b733a303a22223b733a31303a226b6565705f726174696f223b733a333a22796573223b733a31333a22616c6c6f7765645f7479706573223b733a303a22223b7d, NULL, 'no');
 
 -- --------------------------------------------------------
 
@@ -351,7 +360,7 @@ CREATE TABLE IF NOT EXISTS `default_data_field_assignments` (
   `instructions` text COLLATE utf8_unicode_ci,
   `field_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
 
 --
 -- 转存表中的数据 `default_data_field_assignments`
@@ -365,17 +374,18 @@ INSERT INTO `default_data_field_assignments` (`id`, `sort_order`, `stream_id`, `
 (5, 1, 3, 5, 'no', 'no', NULL, NULL),
 (6, 2, 3, 6, 'no', 'no', NULL, NULL),
 (7, 3, 3, 7, 'no', 'no', NULL, NULL),
-(8, 4, 3, 8, 'no', 'no', NULL, NULL),
-(9, 5, 3, 9, 'no', 'no', NULL, NULL),
-(10, 6, 3, 10, 'no', 'no', NULL, NULL),
-(11, 7, 3, 11, 'no', 'no', NULL, NULL),
-(12, 8, 3, 12, 'no', 'no', NULL, NULL),
-(13, 9, 3, 13, 'no', 'no', NULL, NULL),
-(14, 10, 3, 14, 'no', 'no', NULL, NULL),
-(15, 11, 3, 15, 'no', 'no', NULL, NULL),
-(16, 12, 3, 16, 'no', 'no', NULL, NULL),
+(8, 3, 3, 8, 'no', 'no', NULL, NULL),
+(9, 4, 3, 9, 'no', 'no', NULL, NULL),
+(10, 5, 3, 10, 'no', 'no', NULL, NULL),
+(11, 6, 3, 11, 'no', 'no', NULL, NULL),
+(12, 7, 3, 12, 'no', 'no', NULL, NULL),
+(13, 8, 3, 13, 'no', 'no', NULL, NULL),
+(14, 9, 3, 14, 'no', 'no', NULL, NULL),
+(15, 10, 3, 15, 'no', 'no', NULL, NULL),
+(16, 11, 3, 16, 'no', 'no', NULL, NULL),
 (17, 1, 4, 17, 'no', 'no', '', NULL),
-(18, 1, 5, 18, 'no', 'no', '', NULL);
+(18, 1, 5, 18, 'no', 'no', '', NULL),
+(19, 2, 1, 19, 'yes', 'no', '展示在首页的缩略图', NULL);
 
 -- --------------------------------------------------------
 
@@ -513,6 +523,7 @@ CREATE TABLE IF NOT EXISTS `default_files` (
 --
 
 INSERT INTO `default_files` (`id`, `folder_id`, `user_id`, `type`, `name`, `filename`, `path`, `description`, `extension`, `mimetype`, `keywords`, `width`, `height`, `filesize`, `alt_attribute`, `download_count`, `date_added`, `sort`) VALUES
+('17a9fee87907b4a', 6, 1, 'i', 'shuaige.jpg', '0a58f9764f7fadf2659812896a989a4c.jpg', '{{ url:site }}files/large/0a58f9764f7fadf2659812896a989a4c.jpg', '', '.jpg', 'image/jpeg', '', 1024, 633, 198, '', 5, 1364803887, 0),
 ('25de394cd2ce150', 1, 1, 'i', 'agency-3.jpg', '3293bb357d7dcf5f73e00600cffa85f4.jpg', '{{ url:site }}files/large/3293bb357d7dcf5f73e00600cffa85f4.jpg', '', '.jpg', 'image/jpeg', '', 870, 500, 103, '', 0, 1364779993, 0),
 ('395e40aa6fe60d0', 5, 1, 'i', 'firefox.png', '6fe43255679e426e1ce0b873d8cdb004.png', '{{ url:site }}files/large/6fe43255679e426e1ce0b873d8cdb004.png', '', '.png', 'image/png', '', 512, 512, 172, '', 0, 1364800262, 0),
 ('4035013c9a44310', 5, 1, 'i', 'chrome.png', '5167f7587cc92a8551a439f88e9d13ab.png', '{{ url:site }}files/large/5167f7587cc92a8551a439f88e9d13ab.png', '', '.png', 'image/png', '', 512, 512, 54, '', 0, 1364800263, 0),
@@ -522,6 +533,8 @@ INSERT INTO `default_files` (`id`, `folder_id`, `user_id`, `type`, `name`, `file
 ('84796412fafa904', 5, 1, 'i', 'safari.png', '37bc47edf743be98912f60daa2afa5a2.png', '{{ url:site }}files/large/37bc47edf743be98912f60daa2afa5a2.png', '', '.png', 'image/png', '', 512, 512, 205, '', 0, 1364800264, 0),
 ('89da41ffb584855', 5, 1, 'i', 'windows-phone.png', '12ecce3a4a489097a65410789dda85a6.png', '{{ url:site }}files/large/12ecce3a4a489097a65410789dda85a6.png', '', '.png', 'image/png', '', 500, 500, 6, '', 0, 1364800266, 0),
 ('95104bd7a339ec3', 3, 1, 'i', 'responsive-media.png', '93706d036ef05345aec396b6256d61d4.png', '{{ url:site }}files/large/93706d036ef05345aec396b6256d61d4.png', '', '.png', 'image/png', '', 1000, 545, 430, '', 0, 1364752687, 0),
+('9517fd0bf8faa65', 6, 1, 'i', 'shuaige.jpg', '721e1685e6629cf645b4d30f63e85ec1.jpg', '{{ url:site }}files/large/721e1685e6629cf645b4d30f63e85ec1.jpg', '', '.jpg', 'image/jpeg', '', 1024, 633, 198, '', 0, 1364806597, 0),
+('a4f172a6692a975', 6, 1, 'i', 'shuaige.jpg', '554953d1f42f81a9e60c0a58e42e4c52.jpg', '{{ url:site }}files/large/554953d1f42f81a9e60c0a58e42e4c52.jpg', '', '.jpg', 'image/jpeg', '', 1024, 633, 198, '', 0, 1364805270, 0),
 ('aaf53acac16d61f', 5, 1, 'i', 'android.png', '9c1cb828a8bc51ebfa4f1ddb779d8d98.png', '{{ url:site }}files/large/9c1cb828a8bc51ebfa4f1ddb779d8d98.png', '', '.png', 'image/png', '', 500, 500, 10, '', 0, 1364800257, 0),
 ('d6b14276a8b8c7c', 1, 1, 'i', 'agency-2.jpg', '8ac9cfe725eaf5c4f5b926b7ba2c6ba2.jpg', '{{ url:site }}files/large/8ac9cfe725eaf5c4f5b926b7ba2c6ba2.jpg', '', '.jpg', 'image/jpeg', '', 870, 500, 185, '', 0, 1364779946, 0),
 ('e2db4fc5ca3d372', 5, 1, 'i', 'apple.png', 'a0dd6e62285a8f62c7aadac04d5cdd1e.png', '{{ url:site }}files/large/a0dd6e62285a8f62c7aadac04d5cdd1e.png', '', '.png', 'image/png', '', 500, 500, 68, '', 0, 1364800256, 0),
@@ -547,7 +560,7 @@ CREATE TABLE IF NOT EXISTS `default_file_folders` (
   `date_added` int(11) NOT NULL,
   `sort` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
 -- 转存表中的数据 `default_file_folders`
@@ -558,7 +571,8 @@ INSERT INTO `default_file_folders` (`id`, `parent_id`, `slug`, `name`, `location
 (2, 1, 'who', 'who', 'local', '', 1364669886, 1364669886),
 (3, 0, 'home', 'home', 'local', '', 1364752638, 1364752638),
 (4, 0, 'pages', 'pages', 'local', '', 1364785488, 1364785488),
-(5, 0, 'all-services', 'all_services', 'local', '', 1364800110, 1364800110);
+(5, 0, 'all-services', 'all_services', 'local', '', 1364800110, 1364800110),
+(6, 0, 'blog', 'blog', 'local', '', 1364803640, 1364803640);
 
 -- --------------------------------------------------------
 
@@ -972,7 +986,7 @@ CREATE TABLE IF NOT EXISTS `default_search_index` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique` (`module`,`entry_key`,`entry_id`(190)),
   FULLTEXT KEY `full search` (`title`,`description`,`keywords`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=44 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=48 ;
 
 --
 -- 转存表中的数据 `default_search_index`
@@ -1000,7 +1014,8 @@ INSERT INTO `default_search_index` (`id`, `title`, `description`, `keywords`, `k
 (40, '海上求婚仪式', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '19', 'boats-home/services/propose-marriage-sea', 'admin/pages/edit/19', 'admin/pages/delete/19'),
 (41, '游艇婚纱摄影', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '20', 'boats-home/services/wedding-photography', 'admin/pages/edit/20', 'admin/pages/delete/20'),
 (42, 'Yacht', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '21', 'boats-home/services/yacht-party', 'admin/pages/edit/21', 'admin/pages/delete/21'),
-(43, '帆船挑战赛', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '22', 'boats-home/services/sailing-challenge', 'admin/pages/edit/22', 'admin/pages/delete/22');
+(43, '帆船挑战赛', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '22', 'boats-home/services/sailing-challenge', 'admin/pages/edit/22', 'admin/pages/delete/22'),
+(47, 'Voluptates ipsum eligendi', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore debitis hic illo ab alias porro reiciendis suscipit necessitatibus beatae veniam cum impedit. necessitatibus beatae veniam cum impedit. Voluptates ipsum eligendi labore sint magni earum nam.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam at dolorum dignissimos officiis assumenda ad aut ullam fugit autem ducimus voluptas odio! Dignissimos repellat explicabo exercitationem quas quis officiis saepe?\r\n&nbsp;\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore debitis hic illo ab alias porro reiciendis suscipit necessitatibus beatae veniam cum impedit. necessitatibus beatae veniam cum impedit. Voluptates ipsum eligendi labore sint magni earum nam.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam at dolorum dignissimos officiis assumenda ad aut ullam fugit autem ducimus voluptas odio! Dignissimos repellat explicabo exercitationem quas quis officiis saepe?', NULL, NULL, 'blog', 'blog:post', 'blog:posts', '2', 'blog/2013/04/voluptates-ipsum-eligendi', 'admin/blog/edit/2', 'admin/blog/delete/2');
 
 -- --------------------------------------------------------
 
@@ -1158,7 +1173,7 @@ CREATE TABLE IF NOT EXISTS `default_users` (
 --
 
 INSERT INTO `default_users` (`id`, `email`, `password`, `salt`, `group_id`, `ip_address`, `active`, `activation_code`, `created_on`, `last_login`, `username`, `forgotten_password_code`, `remember_code`) VALUES
-(1, 'gz.liangrongze@gmail.com', '69ee83c02a47a75bdc68a0036778ed9b2a6a68b4', 'ae10d', 1, '', 1, '', 1364475573, 1364788426, 'cbc', NULL, 'eeedc184c9df6c32b5233cf6291fec727439ee6e');
+(1, 'gz.liangrongze@gmail.com', '69ee83c02a47a75bdc68a0036778ed9b2a6a68b4', 'ae10d', 1, '', 1, '', 1364475573, 1364807127, 'cbc', NULL, 'eeedc184c9df6c32b5233cf6291fec727439ee6e');
 
 -- --------------------------------------------------------
 
