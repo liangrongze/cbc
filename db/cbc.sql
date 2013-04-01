@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2013 年 04 月 01 日 04:01
+-- 生成日期: 2013 年 04 月 01 日 07:33
 -- 服务器版本: 5.5.24-log
 -- PHP 版本: 5.2.2
 
@@ -222,14 +222,17 @@ INSERT INTO `default_ci_sessions` (`session_id`, `ip_address`, `user_agent`, `la
 ('d81798c324dfc096d8d5690e76d8e58c', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364754520, ''),
 ('2d5ffcdba3b9a4e826349bb7bcf3ea7c', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364754553, ''),
 ('7f20883c0f25f1e27c5b5c4f952df92f', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364754767, ''),
-('be35c060c153c8bdeda0268adbcdcac5', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364788729, 'a:6:{s:8:"username";s:3:"cbc";s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}'),
+('65e734e94a8279224ab9c7358ebb553c', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364801296, 'a:6:{s:8:"username";s:3:"cbc";s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}'),
 ('22e930fa6d42c66e17418a7d45cfbdc6', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364780964, ''),
 ('bc2707f6126fd24540c81ea01f40b8f8', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364781059, ''),
 ('01d64d8bf7c812d72d2a886280ec02fe', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364781263, ''),
 ('fce01f2a21cd096a776709538409360f', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364784894, ''),
 ('782fe40036d9a68dd0f342704d4743e5', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364786886, ''),
 ('bacf6f39d14966c7a721632c9062ad58', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364786887, ''),
-('24d9d5b0bb131d5aabc7f55893154a43', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364788425, 'a:5:{s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}');
+('24d9d5b0bb131d5aabc7f55893154a43', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364788425, 'a:5:{s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}'),
+('12d572a8cfac364865e4270af459a67f', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364800048, ''),
+('56edb66b60f8ff9d7f376c5d24dfd908', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364800325, ''),
+('3a44d6a9f7c375e355d5dc4923c1f537', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364800421, '');
 
 -- --------------------------------------------------------
 
@@ -306,7 +309,7 @@ CREATE TABLE IF NOT EXISTS `default_data_fields` (
   `view_options` blob,
   `is_locked` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
 -- 转存表中的数据 `default_data_fields`
@@ -329,7 +332,8 @@ INSERT INTO `default_data_fields` (`id`, `field_name`, `field_slug`, `field_name
 (14, 'lang:profile_address_line3', 'address_line3', 'users', 'text', 0x613a323a7b733a31303a226d61785f6c656e677468223b4e3b733a31333a2264656661756c745f76616c7565223b4e3b7d, NULL, 'no'),
 (15, 'lang:profile_address_postcode', 'postcode', 'users', 'text', 0x613a323a7b733a31303a226d61785f6c656e677468223b693a32303b733a31333a2264656661756c745f76616c7565223b4e3b7d, NULL, 'no'),
 (16, 'lang:profile_website', 'website', 'users', 'url', NULL, NULL, 'no'),
-(17, '详细信息', 'about_us_description', 'pages', 'wysiwyg', 0x613a323a7b733a31313a22656469746f725f74797065223b733a383a22616476616e636564223b733a31303a22616c6c6f775f74616773223b733a313a226e223b7d, NULL, 'no');
+(17, '详细信息', 'about_us_description', 'pages', 'wysiwyg', 0x613a323a7b733a31313a22656469746f725f74797065223b733a383a22616476616e636564223b733a31303a22616c6c6f775f74616773223b733a313a226e223b7d, NULL, 'no'),
+(18, 'boat-service-content', 'boatservicecontent', 'pages', 'wysiwyg', 0x613a323a7b733a31313a22656469746f725f74797065223b733a383a22616476616e636564223b733a31303a22616c6c6f775f74616773223b733a313a226e223b7d, NULL, 'no');
 
 -- --------------------------------------------------------
 
@@ -347,7 +351,7 @@ CREATE TABLE IF NOT EXISTS `default_data_field_assignments` (
   `instructions` text COLLATE utf8_unicode_ci,
   `field_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
 
 --
 -- 转存表中的数据 `default_data_field_assignments`
@@ -370,7 +374,8 @@ INSERT INTO `default_data_field_assignments` (`id`, `sort_order`, `stream_id`, `
 (14, 10, 3, 14, 'no', 'no', NULL, NULL),
 (15, 11, 3, 15, 'no', 'no', NULL, NULL),
 (16, 12, 3, 16, 'no', 'no', NULL, NULL),
-(17, 1, 4, 17, 'no', 'no', '', NULL);
+(17, 1, 4, 17, 'no', 'no', '', NULL),
+(18, 1, 5, 18, 'no', 'no', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -419,7 +424,7 @@ CREATE TABLE IF NOT EXISTS `default_def_page_fields` (
   `ordering_count` int(11) DEFAULT NULL,
   `body` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
 
 --
 -- 转存表中的数据 `default_def_page_fields`
@@ -436,7 +441,12 @@ INSERT INTO `default_def_page_fields` (`id`, `created`, `updated`, `created_by`,
 (8, '2013-03-31 17:27:17', NULL, 1, 3, '<div class="separator">\r\n					<div class="left">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">Say hello to CBC!</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>		\r\n				<i class="icon-check icon-4x pull-left icon-muted"></i><p> 澳洲中国游艇荟，位于墨尔本Dockland , 在墨尔本最美丽的海港中，是澳洲第一家为航海，划艇爱好者成立的俱乐部。本会宗旨是推动澳洲游艇活动，将被认为是富豪享受的游艇活动概念重新定位，以满足精英人士对此活动的各项需求。</p>\r\n				<p>虽然我们舍弃一切昂贵会所，与澳洲多家游艇俱乐部合作，我们拥有33尺，43尺，55尺等多艘澳洲最有名品牌的游艇，如此得天独厚的环境和先进的设备，让热爱大海的你能更亲密的与她接触，领略她的魅力，探索她的神秘。</p>'),
 (9, '2013-04-01 02:58:07', '2013-04-01 03:24:50', 1, 4, 'Welcome to CBC!'),
 (10, '2013-04-01 03:07:21', '2013-04-01 04:00:05', 1, 5, '<img alt="" class="img-content" src="{{ url:site }}files/large/fb52ed59fc7a400" />\r\n<h4>Device-Responsive Compatibility</h4>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus ducimus harum animi debitis dolore in vitae consequuntur. Nulla fuga eos aliquam pariatur nesciunt neque perferendis magni aut laudantium optio. Excepturi!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae numquam perferendis optio modi repellendus a illo accusamus magnam totam pariatur! Vel tempora velit recusandae repudiandae tenetur cum hic in dignissimos!</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ea fugiat saepe doloremque quas iste quaerat adipisci nulla laborum nam nesciunt iusto voluptates illo aliquam ipsam molestias enim doloribus asperiores?</p>'),
-(11, '2013-04-01 03:08:20', '2013-04-01 04:00:36', 1, 6, '    <h4>Your Brand is Showing</h4>\r\n\r\n                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ea fugiat saepe doloremque quas iste quaerat adipisci nulla laborum nam nesciunt iusto voluptates illo aliquam ipsam molestias enim doloribus asperiores?</p>\r\n\r\n                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae numquam perferendis optio modi repellendus a illo accusamus magnam totam pariatur! Vel tempora velit recusandae repudiandae tenetur cum hic in dignissimos!</p>        ');
+(11, '2013-04-01 03:08:20', '2013-04-01 04:00:36', 1, 6, '    <h4>Your Brand is Showing</h4>\r\n\r\n                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ea fugiat saepe doloremque quas iste quaerat adipisci nulla laborum nam nesciunt iusto voluptates illo aliquam ipsam molestias enim doloribus asperiores?</p>\r\n\r\n                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae numquam perferendis optio modi repellendus a illo accusamus magnam totam pariatur! Vel tempora velit recusandae repudiandae tenetur cum hic in dignissimos!</p>        '),
+(12, '2013-04-01 06:12:26', '2013-04-01 06:24:08', 1, 7, '<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">奢华碰撞，圈层际会。大海之上，觥筹交错问人生；游艇派对，舞乐人生快意享。CBC澳洲中国游艇会携世界顶级游艇驶入三亚海，为您酝酿巅峰游艇主题酒会。恭迎品鉴。</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">奢华碰撞，圈层际会。大海之上，觥筹交错问人生；游艇派对，舞乐人生快意享。CBC澳洲中国游艇会携世界顶级游艇驶入三亚海，为您酝酿巅峰游艇主题酒会。恭迎品鉴。</p>\r\n'),
+(13, '2013-04-01 06:25:45', NULL, 1, 8, '<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">为您树一株浪漫的奇葩，孕育一生的回味。一座游艇，一片蔚蓝，为您酿造一生的甜蜜。以海为名，以船为媒。CBC澳洲中国游艇会为您专业铸造奢华游艇婚礼。</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">为您树一株浪漫的奇葩，孕育一生的回味。一座游艇，一片蔚蓝，为您酿造一生的甜蜜。以海为名，以船为媒。CBC澳洲中国游艇会为您专业铸造奢华游艇婚礼。</p>'),
+(14, '2013-04-01 06:30:50', NULL, 1, 9, '<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">缕一袭甜蜜的装扮，缔造属于爱恋的海世情缘；海市蜃景为您聚光，见证海枯石烂的爱情传奇。海阔天地间，拥享属于二人的海上私邸，定格一世永恒的浪漫回忆。CBC澳洲中国游艇会游艇婚纱摄影专注您一生的甜蜜&hellip;&hellip;</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">缕一袭甜蜜的装扮，缔造属于爱恋的海世情缘；海市蜃景为您聚光，见证海枯石烂的爱情传奇。海阔天地间，拥享属于二人的海上私邸，定格一世永恒的浪漫回忆。CBC澳洲中国游艇会游艇婚纱摄影专注您一生的甜蜜&hellip;&hellip;</p>'),
+(15, '2013-04-01 06:33:08', NULL, 1, 10, '<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">逢生辰吉日，携一座顶级游艇，觅一处海上佳境；邀一圈亲朋佳友，设一席佳肴美酒；来一曲海味民谣，享一回艇派人生。CBC游艇生日派对为生辰的您打造巅峰游艇庆生宴，让尊贵的您在海域中央豪享游艇趣味，在游艇之上冲击人生新壹岁。</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">逢生辰吉日，携一座顶级游艇，觅一处海上佳境；邀一圈亲朋佳友，设一席佳肴美酒；来一曲海味民谣，享一回艇派人生。CBC游艇生日派对为生辰的您打造巅峰游艇庆生宴，让尊贵的您在海域中央豪享游艇趣味，在游艇之上冲击人生新壹岁。</p>'),
+(16, '2013-04-01 06:36:07', NULL, 1, 11, '<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">帆影点点荡漾团队智慧，乘风破浪跨越艰难使命；高贵典雅乐享大海景致，竞技娱乐快意人生情怀。CBC帆船挑战赛邀您鉴赏汇聚四岛的海岸极境，竞逐海上荣耀的梦幻激情，与我们一起，向冠军进发！！！</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(245, 245, 245);">帆影点点荡漾团队智慧，乘风破浪跨越艰难使命；高贵典雅乐享大海景致，竞技娱乐快意人生情怀。CBC帆船挑战赛邀您鉴赏汇聚四岛的海岸极境，竞逐海上荣耀的梦幻激情，与我们一起，向冠军进发！！！</p>');
 
 -- --------------------------------------------------------
 
@@ -504,9 +514,17 @@ CREATE TABLE IF NOT EXISTS `default_files` (
 
 INSERT INTO `default_files` (`id`, `folder_id`, `user_id`, `type`, `name`, `filename`, `path`, `description`, `extension`, `mimetype`, `keywords`, `width`, `height`, `filesize`, `alt_attribute`, `download_count`, `date_added`, `sort`) VALUES
 ('25de394cd2ce150', 1, 1, 'i', 'agency-3.jpg', '3293bb357d7dcf5f73e00600cffa85f4.jpg', '{{ url:site }}files/large/3293bb357d7dcf5f73e00600cffa85f4.jpg', '', '.jpg', 'image/jpeg', '', 870, 500, 103, '', 0, 1364779993, 0),
+('395e40aa6fe60d0', 5, 1, 'i', 'firefox.png', '6fe43255679e426e1ce0b873d8cdb004.png', '{{ url:site }}files/large/6fe43255679e426e1ce0b873d8cdb004.png', '', '.png', 'image/png', '', 512, 512, 172, '', 0, 1364800262, 0),
+('4035013c9a44310', 5, 1, 'i', 'chrome.png', '5167f7587cc92a8551a439f88e9d13ab.png', '{{ url:site }}files/large/5167f7587cc92a8551a439f88e9d13ab.png', '', '.png', 'image/png', '', 512, 512, 54, '', 0, 1364800263, 0),
+('4885399c3d95527', 5, 1, 'i', 'opera.png', 'a651bf847028ff6b57fb177865d2ba2d.png', '{{ url:site }}files/large/a651bf847028ff6b57fb177865d2ba2d.png', '', '.png', 'image/png', '', 512, 512, 34, '', 0, 1364800260, 0),
 ('6190bcb97b91109', 3, 1, 'i', 'responsive-showcase.png', '2bd876bb4cc2b43e3259834c06ec7e2f.png', '{{ url:site }}files/large/2bd876bb4cc2b43e3259834c06ec7e2f.png', '', '.png', 'image/png', '', 779, 512, 217, '', 0, 1364752685, 0),
+('65fb739c59e9b16', 5, 1, 'i', 'ie8.png', 'a8b389d63743e795d9d72b8a0404bed9.png', '{{ url:site }}files/large/a8b389d63743e795d9d72b8a0404bed9.png', '', '.png', 'image/png', '', 700, 700, 325, '', 0, 1364800259, 0),
+('84796412fafa904', 5, 1, 'i', 'safari.png', '37bc47edf743be98912f60daa2afa5a2.png', '{{ url:site }}files/large/37bc47edf743be98912f60daa2afa5a2.png', '', '.png', 'image/png', '', 512, 512, 205, '', 0, 1364800264, 0),
+('89da41ffb584855', 5, 1, 'i', 'windows-phone.png', '12ecce3a4a489097a65410789dda85a6.png', '{{ url:site }}files/large/12ecce3a4a489097a65410789dda85a6.png', '', '.png', 'image/png', '', 500, 500, 6, '', 0, 1364800266, 0),
 ('95104bd7a339ec3', 3, 1, 'i', 'responsive-media.png', '93706d036ef05345aec396b6256d61d4.png', '{{ url:site }}files/large/93706d036ef05345aec396b6256d61d4.png', '', '.png', 'image/png', '', 1000, 545, 430, '', 0, 1364752687, 0),
+('aaf53acac16d61f', 5, 1, 'i', 'android.png', '9c1cb828a8bc51ebfa4f1ddb779d8d98.png', '{{ url:site }}files/large/9c1cb828a8bc51ebfa4f1ddb779d8d98.png', '', '.png', 'image/png', '', 500, 500, 10, '', 0, 1364800257, 0),
 ('d6b14276a8b8c7c', 1, 1, 'i', 'agency-2.jpg', '8ac9cfe725eaf5c4f5b926b7ba2c6ba2.jpg', '{{ url:site }}files/large/8ac9cfe725eaf5c4f5b926b7ba2c6ba2.jpg', '', '.jpg', 'image/jpeg', '', 870, 500, 185, '', 0, 1364779946, 0),
+('e2db4fc5ca3d372', 5, 1, 'i', 'apple.png', 'a0dd6e62285a8f62c7aadac04d5cdd1e.png', '{{ url:site }}files/large/a0dd6e62285a8f62c7aadac04d5cdd1e.png', '', '.png', 'image/png', '', 500, 500, 68, '', 0, 1364800256, 0),
 ('ed011d9a1dcfbda', 2, 1, 'i', 'team-1.jpg', '6754437d1e009ebb0555844ccb7fa8f9.jpg', '{{ url:site }}files/large/6754437d1e009ebb0555844ccb7fa8f9.jpg', '', '.jpg', 'image/jpeg', '', 250, 250, 68, '', 0, 1364781570, 0),
 ('f0fad5a0a69a6f3', 3, 1, 'i', 'loupe-screenshot.png', 'c1a532bed19361a810875474ef816744.png', '{{ url:site }}files/large/c1a532bed19361a810875474ef816744.png', '', '.png', 'image/png', '', 1213, 804, 525, '', 0, 1364752686, 0),
 ('fa3c0604b9d57ce', 1, 1, 'i', 'agency-1.jpg', 'd261b1c5a077384285ae5b6c6adc8ff9.jpg', '{{ url:site }}files/large/d261b1c5a077384285ae5b6c6adc8ff9.jpg', '', '.jpg', 'image/jpeg', '', 870, 500, 121, '', 0, 1364779947, 0),
@@ -529,7 +547,7 @@ CREATE TABLE IF NOT EXISTS `default_file_folders` (
   `date_added` int(11) NOT NULL,
   `sort` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
 -- 转存表中的数据 `default_file_folders`
@@ -539,7 +557,8 @@ INSERT INTO `default_file_folders` (`id`, `parent_id`, `slug`, `name`, `location
 (1, 0, 'about-us', 'about_us', 'local', '', 1364485010, 1364485010),
 (2, 1, 'who', 'who', 'local', '', 1364669886, 1364669886),
 (3, 0, 'home', 'home', 'local', '', 1364752638, 1364752638),
-(4, 0, 'pages', 'pages', 'local', '', 1364785488, 1364785488);
+(4, 0, 'pages', 'pages', 'local', '', 1364785488, 1364785488),
+(5, 0, 'all-services', 'all_services', 'local', '', 1364800110, 1364800110);
 
 -- --------------------------------------------------------
 
@@ -746,7 +765,7 @@ CREATE TABLE IF NOT EXISTS `default_pages` (
   PRIMARY KEY (`id`),
   KEY `slug` (`slug`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
 
 --
 -- 转存表中的数据 `default_pages`
@@ -766,7 +785,14 @@ INSERT INTO `default_pages` (`id`, `slug`, `class`, `title`, `uri`, `parent_id`,
 (12, 'home-new', '', '首页', 'home-new', 0, '4', '8', '', '', '', '', '', 0, 0, 'live', 1364750837, 0, '0', 0, 1, 1364750837),
 (13, 'plugin-about-us-our-member', '', '关于我们-我们的会员-专用-不能删除', 'plugin-about-us-our-member', 0, '5', '9', '', '', '', '', '', 0, 0, 'live', 1364785087, 1364786690, '0', 0, 1, 1364785087),
 (14, 'device', '', 'Device', 'plugin-about-us-our-member/device', 13, '5', '10', '', '', '', '', '', 0, 0, 'live', 1364785641, 1364788805, '0', 0, 1, 1364785641),
-(15, 'brand', '', 'Brand', 'plugin-about-us-our-member/brand', 13, '5', '11', '', '', '', '', '', 0, 0, 'live', 1364785700, 1364788836, '0', 0, 1, 1364785700);
+(15, 'brand', '', 'Brand', 'plugin-about-us-our-member/brand', 13, '5', '11', '', '', '', '', '', 0, 0, 'live', 1364785700, 1364788836, '0', 0, 1, 1364785700),
+(16, 'boats-home', '', '航海中心-总页', 'boats-home', 0, '3', '2', '', '', '', '', '', 0, 0, 'live', 1364795516, 0, '0', 0, 1, 1364795516),
+(17, 'services', '', '所有服务', 'boats-home/services', 16, '3', '3', '', '', '', '', '', 0, 0, 'live', 1364795587, 1364796449, '0', 0, 1, 1364795587),
+(18, 'cocktail', '', '游艇鸡尾酒', 'boats-home/services/cocktail', 17, '5', '12', '', '', '', '', '', 0, 0, 'live', 1364796746, 1364797448, '0', 0, 1, 1364796746),
+(19, 'propose-marriage-sea', '', '海上求婚仪式', 'boats-home/services/propose-marriage-sea', 17, '5', '13', '', '', '', '', '', 0, 0, 'live', 1364797545, 0, '0', 0, 1, 1364797545),
+(20, 'wedding-photography', '', '游艇婚纱摄影', 'boats-home/services/wedding-photography', 17, '5', '14', '', '', '', '', '', 0, 0, 'live', 1364797850, 0, '0', 0, 1, 1364797850),
+(21, 'yacht-party', '', 'Yacht', 'boats-home/services/yacht-party', 17, '5', '15', '', '', '', '', '', 0, 0, 'live', 1364797988, 0, '0', 0, 1, 1364797988),
+(22, 'sailing-challenge', '', '帆船挑战赛', 'boats-home/services/sailing-challenge', 17, '5', '16', '', '', '', '', '', 0, 0, 'live', 1364798167, 0, '0', 0, 1, 1364798167);
 
 -- --------------------------------------------------------
 
@@ -780,15 +806,18 @@ CREATE TABLE IF NOT EXISTS `default_pages_features_-_page_-_type` (
   `updated` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `ordering_count` int(11) DEFAULT NULL,
+  `boatservicecontent` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- 转存表中的数据 `default_pages_features_-_page_-_type`
 --
 
-INSERT INTO `default_pages_features_-_page_-_type` (`id`, `created`, `updated`, `created_by`, `ordering_count`) VALUES
-(1, '2013-03-30 13:52:01', NULL, 1, 1);
+INSERT INTO `default_pages_features_-_page_-_type` (`id`, `created`, `updated`, `created_by`, `ordering_count`, `boatservicecontent`) VALUES
+(1, '2013-03-30 13:52:01', NULL, 1, 1, NULL),
+(2, '2013-04-01 05:51:56', NULL, 1, 2, NULL),
+(3, '2013-04-01 05:53:07', '2013-04-01 06:07:29', 1, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -847,7 +876,7 @@ CREATE TABLE IF NOT EXISTS `default_page_types` (
 INSERT INTO `default_page_types` (`id`, `slug`, `title`, `description`, `stream_id`, `meta_title`, `meta_keywords`, `meta_description`, `body`, `css`, `js`, `theme_layout`, `updated_on`, `save_as_files`, `content_label`, `title_label`) VALUES
 (1, 'default', 'Default', 'A simple page type with a WYSIWYG editor that will get you started adding content.', 2, NULL, NULL, NULL, '<h2>{{ page:title }}</h2>\n\n{{ body }}', '', '', 'default', 1364475578, 'n', NULL, NULL),
 (2, 'staff', 'page-type-about-us', 'For about us page', 4, '', NULL, '', '<!-- start: where -->\r\n<div class="section-wrapper">\r\n	<div class="container">\r\n		<div class="row">\r\n\r\n			<div class="span12">\r\n				<div class="separator">\r\n					<div class="left">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">{{title}}</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>\r\n			</div>\r\n\r\n			<div class="span6">						\r\n				{{about_us_description}}\r\n			</div>\r\n\r\n			<div class="span6">\r\n\r\n				    <div id="myCarousel" class="carousel slide ">\r\n				    <ol class="carousel-indicators">\r\n				    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>\r\n				    <li data-target="#myCarousel" data-slide-to="1"></li>\r\n				    <li data-target="#myCarousel" data-slide-to="2"></li>\r\n				    </ol>\r\n				    <!-- Carousel items -->\r\n				    <div class="carousel-inner">\r\n\r\n{{ files:listing folder="about-us" }}\r\n        <div class="item {{cbc:about_us_carousel_class}}"><img src="uploads/default/files/{{ filename}}" alt="{{ description }}"/></div>\r\n{{ /files:listing }}\r\n\r\n				    </div>\r\n\r\n				    </div>\r\n\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n<!-- end: where -->\r\n<!-- start: who -->\r\n<div class="section-who">\r\n	<div class="section-wrapper">\r\n		<div class="container">\r\n			<div class="row">\r\n				<div class="span12">\r\n					<div class="separator">\r\n						<div class="left">\r\n							<div class="lines">\r\n								<div>\r\n								<h2 class="lines-title">我们的游艇</h2>\r\n								</div>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>\r\n\r\n{{ widgets:instance id="10"}}\r\n{{ widgets:instance id="11"}}\r\n{{ widgets:instance id="12"}}\r\n{{ widgets:instance id="13"}}\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div><!-- end: who -->\r\n\r\n<!-- start: do -->\r\n<div class="section-do">\r\n	<div class="section-wrapper">\r\n		<div class="container">\r\n			<div class="row-fluid">\r\n\r\n				<div class="span12">\r\n					<div class="separator">\r\n						<div class="left">\r\n							<div class="lines">\r\n								<div>\r\n								<h2 class="lines-title">我们的会员</h2>\r\n								</div>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>\r\n\r\n                               <div class="span6">\r\n					<div class="about-tabs">\r\n			                    <ul class="nav nav-tabs" id="myTab">\r\n                                                {{ pages:children id="13" }}\r\n                                                  <li class="{{ cbc:about_us_member_tab_class}}"><a data-toggle="tab" href="#{{ title }}">{{ title }}</a></li>\r\n                                                {{ /pages:children }}\r\n			                    </ul>\r\n			                     <div class="tab-content" id="myTabContent">\r\n                                                  {{ pages:children id="13" }}\r\n                                                       <div id="{{title}}" class="tab-pane fade {{ cbc:about_us_member_tab_content_class }}">\r\n    {{ custom_fields }}\r\n        {{ body }}\r\n    {{ /custom_fields }}\r\n                                                       {{title}}\r\n                                                       </div>\r\n                                                  {{ /pages:children }}        \r\n			                     </div>\r\n					 </div>\r\n				</div>\r\n \r\n\r\n\r\n				<div class="span5 subscribe">\r\n\r\n					<div class="separator">\r\n						<div class="">\r\n							<div class="lines">\r\n								<div>\r\n									<h2 class="lines-title">Want some more?</h2>\r\n								</div>\r\n							</div>\r\n						</div>\r\n					</div>\r\n\r\n					<div class="blank">&nbsp;</div>\r\n\r\n					<div class="alert alert-block alert-error fade in">  \r\n			            <h4 class="alert-heading">Subscribe for monthly updates:</h4>\r\n			            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit dolores similique animi totam temporibus aspernatur enim itaque fugiat ipsa corporis magni placeat laudantium in asperiores saepe odio doloribus? At nam?</p>\r\n\r\n						<form id="subscribe">\r\n							<input  type="text" placeholder="Enter your name" class="span8 subs">\r\n							<input type="text" placeholder="Enter email adress" class="span8 subs">				    <button type="button" class="btn btn-color ">Subscribe</button>\r\n						</form>\r\n\r\n			            <p>\r\n			              \r\n			            </p>\r\n         			</div>					\r\n\r\n				</div>\r\n\r\n			</div>\r\n\r\n\r\n\r\n		</div>\r\n	</div>			\r\n </div><!-- end: do -->', '', '', 'aboutus.html', 1364788664, 'n', '', ''),
-(3, 'features_page_type', 'features - page - type', '', 5, '', NULL, '', '<h2>{{ title }}</h2>', '', '', 'features.html', 1364651469, 'n', '', ''),
+(3, 'features_page_type', '航海中心-所有服务 - 专用', '', 5, '', NULL, '', '<!-- start: title -->\r\n<div class="page-title">\r\n	<div class="section-wrapper">\r\n		<div class="container">\r\n			<h2>航海体验中心</h2>\r\n		</div>\r\n	</div>\r\n</div><!-- end: title -->\r\n\r\n<!-- start: features -->\r\n<div class="section-page-features">\r\n	<div class="section-wrapper">\r\n\r\n\r\n		<div class="wrapper-features">\r\n			<div class="container">\r\n				<div class="row">\r\n\r\n					<div class="span6">\r\n						{{ theme:image file="quick.png" }}\r\n					</div>\r\n					<div class="span6">\r\n\r\n{{ pages:display slug="cocktail" }}\r\n	<div class="separator">\r\n							<div class="">\r\n								<div class="lines">\r\n									<div>\r\n									<h3 class="lines-title">{{ title }}</h3>\r\n									</div>\r\n								</div>\r\n							</div>\r\n						</div>	\r\n	{{ custom_fields }}\r\n		{{ body }}\r\n	{{ /custom_fields }}\r\n{{ /pages:display }}									\r\n					</div>	\r\n\r\n				</div>	\r\n			</div>\r\n		</div>	\r\n\r\n		<div class="wrapper-features">\r\n			<div class="container">\r\n				<div class="row">\r\n\r\n					<div class="span6">\r\n{{ pages:display slug="propose-marriage-sea" }}\r\n	<div class="separator">\r\n							<div class="">\r\n								<div class="lines">\r\n									<div>\r\n									<h3 class="lines-title">{{ title }}</h3>\r\n									</div>\r\n								</div>\r\n							</div>\r\n						</div>	\r\n	{{ custom_fields }}\r\n		{{ body }}\r\n	{{ /custom_fields }}\r\n{{ /pages:display }}\r\n\r\n					</div>\r\n\r\n					<div class="span6">\r\n						{{ theme:image file="active-team.png" class="pull-right"}}\r\n					</div>					\r\n\r\n				</div>	\r\n			</div>\r\n		</div>\r\n\r\n		<div class="wrapper-features">\r\n			<div class="container">\r\n				<div class="row">\r\n\r\n					<div class="span6">\r\n						{{ theme:image file="flip.png" }}\r\n					</div>\r\n					<div class="span6">\r\n{{ pages:display slug="wedding-photography" }}\r\n	<div class="separator">\r\n							<div class="">\r\n								<div class="lines">\r\n									<div>\r\n									<h3 class="lines-title">{{ title }}</h3>\r\n									</div>\r\n								</div>\r\n							</div>\r\n						</div>	\r\n	{{ custom_fields }}\r\n		{{ body }}\r\n	{{ /custom_fields }}\r\n{{ /pages:display }}\r\n					</div>	\r\n\r\n				</div>	\r\n			</div>\r\n		</div>			\r\n\r\n\r\n\r\n	</div>		\r\n</div><!-- end: features -->		\r\n\r\n<div class="section-features">\r\n	<div class="container">\r\n		<div class="row">\r\n\r\n			<div class="section-wrapper">\r\n\r\n				<div class="separator">\r\n					<div class="left">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">航海体验中心 · 满足</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>			\r\n\r\n				<div class="span3">\r\n					{{ widgets:instance id="14"}}\r\n				</div>\r\n				<div class="span3">\r\n					{{ widgets:instance id="15"}}\r\n				</div>\r\n				<div class="span3">\r\n					{{ widgets:instance id="16"}}\r\n				</div>\r\n\r\n				<div class="span3">\r\n					{{ widgets:instance id="17"}}\r\n				</div>\r\n				<div class="span3">\r\n					{{ widgets:instance id="18"}}\r\n				</div>\r\n				<div class="span3">\r\n					{{ widgets:instance id="19"}}\r\n				</div>\r\n				<div class="span3">\r\n					{{ widgets:instance id="20"}}\r\n				</div>\r\n				<div class="span3">\r\n					{{ widgets:instance id="21"}}\r\n				</div>\r\n\r\n			</div>\r\n\r\n\r\n		</div>\r\n	</div>\r\n</div>\r\n\r\n<!-- start: features -->\r\n<div class="section-page-features">\r\n	<div class="section-wrapper">\r\n\r\n		<div class="wrapper-features">\r\n			<div class="container">\r\n				<div class="row-fluid">\r\n\r\n					<div class="span6">\r\n{{ pages:display slug="yacht-party" }}\r\n	<div class="separator">\r\n							<div class="">\r\n								<div class="lines">\r\n									<div>\r\n									<h3 class="lines-title">{{ title }}</h3>\r\n									</div>\r\n								</div>\r\n							</div>\r\n						</div>	\r\n	{{ custom_fields }}\r\n		{{ body }}\r\n	{{ /custom_fields }}\r\n{{ /pages:display }}\r\n\r\n					</div>\r\n\r\n					<div class="span6">\r\n						{{ theme:image file="choose.png" class="pull-right" }}\r\n					</div>					\r\n\r\n				</div>	\r\n			</div>\r\n		</div>	\r\n\r\n		<div class="wrapper-features">\r\n			<div class="container">\r\n				<div class="row-fluid">\r\n\r\n					<div class="span6">\r\n						{{ theme:image file="error.png" }}\r\n					</div>\r\n					<div class="span6">\r\n{{ pages:display slug="sailing-challenge" }}\r\n	<div class="separator">\r\n							<div class="">\r\n								<div class="lines">\r\n									<div>\r\n									<h3 class="lines-title">{{ title }}</h3>\r\n									</div>\r\n								</div>\r\n							</div>\r\n						</div>	\r\n	{{ custom_fields }}\r\n		{{ body }}\r\n	{{ /custom_fields }}\r\n{{ /pages:display }}\r\n					</div>	\r\n\r\n				</div>	\r\n			</div>\r\n		</div>						\r\n\r\n\r\n	</div>		\r\n</div><!-- end: features -->', '', '', 'features.html', 1364800682, 'n', '', ''),
 (4, 'home', '首页', '', 2, '', NULL, '', '<!-- start: slider -->\r\n<div class="slider-wrapper slider-wrapper">\r\n\r\n            <div id="slider" class="sl-slider-wrapper">\r\n\r\n				<div class="sl-slider">\r\n				\r\n					{{ widgets:instance id="4"}}					\r\n					{{ widgets:instance id="5"}}	\r\n                                        {{ widgets:instance id="6"}}\r\n                                        {{ widgets:instance id="7"}}\r\n				\r\n				</div><!-- /sl-slider -->\r\n				\r\n				<nav id="nav-arrows" class="nav-arrows">\r\n					<span class="nav-arrow-prev">Previous</span>\r\n					<span class="nav-arrow-next">Next</span>\r\n				</nav>\r\n\r\n				<nav id="nav-dots" class="nav-dots">\r\n					<span class="nav-dot-current"></span>\r\n					<span></span>\r\n					<span></span>\r\n					<span></span>\r\n				</nav>\r\n\r\n			</div><!-- /slider-wrapper -->\r\n	\r\n\r\n</div><!-- end: slider -->\r\n\r\n\r\n<!-- start: lastest-events -->\r\n<div class="section-wrapper lastest-work">\r\n	<div class="container">\r\n		<div class="row">\r\n			<div class="span12">\r\n				<div class="separator">\r\n					<div class="left">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">推荐活动</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>	\r\n			</div>\r\n			<div class="span3">\r\n				<div class="white-content">\r\n					<div class="img-mask hover-mask">\r\n						{{ theme:image file="photos/app-1.jpg" }}\r\n						<div class="flip-container">\r\n						  <div class="flipper">\r\n						    <div class="back">\r\n						      <div class="flip-b">\r\n						      	<a href="#"><span class="icon-back"><i class="icon-plus-sign"></i></span></a>\r\n						      </div>\r\n						    </div>\r\n						  </div>\r\n						</div>\r\n						<span class="hover-fade"><i class="icon-plus-sign icon-3x"></i></span>					\r\n					</div>							\r\n					<a href="#"><h5>帆船挑战赛 <span class="white-title"><i class="icon-plus"></i></span></h5></a>\r\n					<p>帆影点点荡漾团队智慧，乘风破浪跨越艰难使命；高贵典雅乐享大海景致，竞技娱乐快意人生情怀。鸿洲帆船挑战赛邀您鉴赏汇聚四岛的海岸极境。竞逐海上荣...</p>\r\n				</div>\r\n			</div>\r\n			<div class="span3">\r\n				<div class="white-content">\r\n					<div class="img-mask hover-mask">\r\n						{{ theme:image file="photos/app-2.jpg" }}\r\n						<div class="flip-container">\r\n						  <div class="flipper">\r\n						    <div class="back">\r\n						      <div class="flip-b">\r\n						      	<a href="#"><span class="icon-back"><i class="icon-plus-sign"></i></span></a>\r\n						      </div>\r\n						    </div>\r\n						  </div>\r\n						</div>							\r\n						<span class="hover-fade"><i class="icon-plus-sign icon-3x"></i></span>					\r\n					</div>\r\n					<a href="#"><h5>海上求婚仪式 <span class="white-title"><i class="icon-plus"></i></span></h5></a>\r\n					<p>为您树一株浪漫的奇葩，孕育一生的回味。一座游艇，一片蔚蓝，为您酿造一生的甜蜜。以海为名，以船为媒。鸿洲国际游艇会为您专业铸造奢华游艇婚礼。</p>\r\n				</div>\r\n			</div>\r\n			<div class="span3">\r\n				<div class="white-content">\r\n					<div class="img-mask hover-mask">\r\n						{{ theme:image file="photos/app-3.jpg" }}\r\n						<div class="flip-container">\r\n						  <div class="flipper">\r\n						    <div class="back">\r\n						      <div class="flip-b">\r\n						      	<a href="#"><span class="icon-back"><i class="icon-plus-sign"></i></span></a>\r\n						      </div>\r\n						    </div>\r\n						  </div>\r\n						</div>							\r\n						<span class="hover-fade"><i class="icon-plus-sign icon-3x"></i></span>\r\n					</div>\r\n					<a href="#"><h5>游艇鸡尾酒 <span class="white-title"><i class="icon-plus"></i></span></h5></a>\r\n					<p>奢华碰撞，圈层际会。大海之上，觥筹交错问人生；游艇派对，舞乐人生快意享。鸿洲国际游艇会携世界顶级游艇驶入三亚海，为您酝酿巅峰游艇主题酒会，恭...</p>	\r\n				</div>\r\n			</div>\r\n			<div class="span3">\r\n				<div class="white-content">\r\n					<div class="img-mask hover-mask">\r\n						{{ theme:image file="photos/app-4.jpg" }}\r\n						<div class="flip-container">\r\n						  <div class="flipper">\r\n						    <div class="back">\r\n						      <div class="flip-b">\r\n						      	<a href="#"><span class="icon-back"><i class="icon-plus-sign"></i></span></a>\r\n						      </div>\r\n						    </div>\r\n						  </div>\r\n						</div>							\r\n						<span class="hover-fade"><i class="icon-plus-sign icon-3x"></i></span>\r\n					</div>\r\n					<a href="#"><h5>祈福之旅 <span class="white-title"><i class="icon-plus"></i></span></h5></a>\r\n					<p>秉一颗虔诚之心，架一座海上游艇，赴一趟福如东海，祈一世福寿安康。鸿洲东海祈福之旅携您莅赏东海龙王庙，畅览第一福海妙景英姿，撒播一世福寿情缘。...</p>	\r\n				</div>\r\n			</div>						\r\n		</div>\r\n	</div>\r\n</div><!-- end: lastest-events -->\r\n\r\n<!-- start: hello -->\r\n<div class="section-wrapper">\r\n	<div class="container">\r\n		<div class="row">\r\n			<div class="span6">\r\n			{{ body }}\r\n			</div>\r\n\r\n			<div class="span6">\r\n				<div class="separator">\r\n					<div class="left">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">航海体验中心 </h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>	\r\n\r\n			<div class="accordion" id="accordion2">\r\n\r\n{{ widgets:instance id="8"}}\r\n{{ widgets:instance id="9"}}\r\n			  \r\n			</div>\r\n\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div><!-- end: hello -->\r\n\r\n<!-- start: section-Member -->\r\n<div class="section-features">\r\n	<div class="container">\r\n		<div class="row">\r\n\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class="icon-resize-small"></i>\r\n					<h5>驾驶培训</h5>\r\n					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora praesentium qui aspernatur amet distinctio.</p>\r\n				</div>\r\n			</div>\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class="icon-ok"></i>\r\n					<h5>航海体验</h5>\r\n					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora praesentium qui aspernatur amet distinctio. </p>\r\n				</div>\r\n			</div>\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class="icon-edit"></i>\r\n					<h5>VIP活动</h5>\r\n					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora praesentium qui aspernatur amet distinctio.</p>\r\n				</div>\r\n			</div>\r\n\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class="icon-magic"></i>\r\n					<h5>游艇使用</h5>\r\n					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>\r\n				</div>\r\n			</div>\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class=" icon-dashboard"></i>\r\n					<h5>尊享会员</h5>\r\n					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit Tempora praesentium qui aspernatur.</p>\r\n				</div>\r\n			</div>\r\n			<div class="span4">\r\n				<div class="info-features">\r\n					<i class="icon-user-md"></i>\r\n					<h5>优惠打折</h5>\r\n					<p>Consectetur adipisicing elit. Tempora praesentium qui aspernatur  <a href="">contact <i class="icon-envelope"></i></a> </p>\r\n				</div>\r\n			</div>\r\n\r\n		</div>\r\n	</div>\r\n</div><!-- end: section-features -->\r\n\r\n\r\n\r\n<!-- start: client -->\r\n<div class="section-wrapper section-testimonial">\r\n	<div class="container">\r\n		<div class="row">\r\n			<div class="span12">\r\n				<div class="separator">\r\n					<div class="">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">合作伙伴</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>	\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client">\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n						{{ theme:image file="client/1.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">Photoshop <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client" >\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n				    	{{ theme:image file="client/2.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">Jquery <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client" >\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n				    	{{ theme:image file="client/3.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">CSS3 <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client" >\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n				    	{{ theme:image file="client/4.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">GitHub <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client" >\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n				    	{{ theme:image file="client/5.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">HTML5 <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n			<div class="span2">\r\n				<div class="white-content client-container thumbnail-client" >\r\n				  <div class="client-flipper">\r\n				    <div class="client-front">\r\n				    	{{ theme:image file="client/6.png" }}\r\n				    </div>\r\n				    <div class="client-back">\r\n						<span class="client-back-title">Chromium <a href="#"><i class="icon-external-link"></i></a></span>\r\n				    </div>\r\n				  </div>\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div><!-- end: client -->\r\n\r\n<!-- start: Testimonial -->\r\n<div class="section-wrapper">\r\n	<div class="container">\r\n		<div class="row">\r\n			<div class="span12">\r\n				<div class="separator">\r\n					<div class="">\r\n						<div class="lines">\r\n							<div>\r\n							<h2 class="lines-title">会员留言</h2>\r\n							</div>\r\n						</div>\r\n					</div>\r\n				</div>	\r\n			</div>\r\n			<div class="span4">\r\n			  <blockquote>\r\n			    <p><i class="icon-quote-left icon-3x pull-left icon-muted"></i>从我们第一次接触，到成品交货，你们都能提出最好的解决方案。 印刷品的执行很好， 传达了我们和我们参会贵宾所习惯的高品质。.</p>\r\n			    <small>黄总 <a href="#"><i class="icon-external-link"></i></a></small> \r\n			  </blockquote>\r\n			</div>\r\n			<div class="span4">\r\n			  <blockquote>\r\n			    <p><i class="icon-quote-left icon-3x pull-left icon-muted"></i>无论我对质量和时间要求有多高， 我都能依赖他们完成任务。 他们从来没跟我讲过“不行，我们做不到”， 而会和我一起找到价格合理、满足要求的解决办法。</p>\r\n			    <small>Jerry Yang <a href="#"><i class="icon-external-link"></i></a></small> \r\n			  </blockquote>\r\n			</div>\r\n			<div class="span4">\r\n			  <blockquote>\r\n			    <p><i class="icon-quote-left icon-3x pull-left icon-muted"></i>总是积极地找寻最好的解决方案，并严格遵守时间！ 非常耐心和全面。 ... 花时间给我简洁明了地解释一些技术细节。完美地达到了客户期望，即使时间非常紧。</p>\r\n			    <small>Leonard Bernstein <a href="#"><i class="icon-external-link"></i></a></small> \r\n			  </blockquote>\r\n			</div>\r\n		</div>\r\n  	</div>\r\n</div><!-- end: Testimonial -->', '', '', 'default.html', 1364782830, 'n', '', ''),
 (5, 'plugin', '插件专用', '', 2, '', NULL, '', '<h2>{{ title }}</h2>', '', '', 'plugin.html', 1364784916, 'n', '', '');
 
@@ -943,7 +972,7 @@ CREATE TABLE IF NOT EXISTS `default_search_index` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique` (`module`,`entry_key`,`entry_id`(190)),
   FULLTEXT KEY `full search` (`title`,`description`,`keywords`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=34 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=44 ;
 
 --
 -- 转存表中的数据 `default_search_index`
@@ -964,7 +993,14 @@ INSERT INTO `default_search_index` (`id`, `title`, `description`, `keywords`, `k
 (27, '首页', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '12', 'home-new', 'admin/pages/edit/12', 'admin/pages/delete/12'),
 (29, '关于我们-我们的会员-专用-不能删除', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '13', 'plugin-about-us-our-member', 'admin/pages/edit/13', 'admin/pages/delete/13'),
 (32, 'Device', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '14', 'plugin-about-us-our-member/device', 'admin/pages/edit/14', 'admin/pages/delete/14'),
-(33, 'Brand', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '15', 'plugin-about-us-our-member/brand', 'admin/pages/edit/15', 'admin/pages/delete/15');
+(33, 'Brand', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '15', 'plugin-about-us-our-member/brand', 'admin/pages/edit/15', 'admin/pages/delete/15'),
+(34, '航海中心-总页', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '16', 'boats-home', 'admin/pages/edit/16', 'admin/pages/delete/16'),
+(36, '所有服务', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '17', 'boats-home/services', 'admin/pages/edit/17', 'admin/pages/delete/17'),
+(39, '游艇鸡尾酒', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '18', 'boats-home/services/cocktail', 'admin/pages/edit/18', 'admin/pages/delete/18'),
+(40, '海上求婚仪式', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '19', 'boats-home/services/propose-marriage-sea', 'admin/pages/edit/19', 'admin/pages/delete/19'),
+(41, '游艇婚纱摄影', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '20', 'boats-home/services/wedding-photography', 'admin/pages/edit/20', 'admin/pages/delete/20'),
+(42, 'Yacht', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '21', 'boats-home/services/yacht-party', 'admin/pages/edit/21', 'admin/pages/delete/21'),
+(43, '帆船挑战赛', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '22', 'boats-home/services/sailing-challenge', 'admin/pages/edit/22', 'admin/pages/delete/22');
 
 -- --------------------------------------------------------
 
@@ -1155,7 +1191,7 @@ CREATE TABLE IF NOT EXISTS `default_widgets` (
   `order` int(10) NOT NULL DEFAULT '0',
   `updated_on` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 --
 -- 转存表中的数据 `default_widgets`
@@ -1173,7 +1209,9 @@ INSERT INTO `default_widgets` (`id`, `slug`, `title`, `description`, `author`, `
 (9, 'latest_posts', 'a:7:{s:2:"en";s:12:"Latest posts";s:2:"br";s:24:"Artigos recentes do Blog";s:2:"pt";s:24:"Artigos recentes do Blog";s:2:"el";s:62:"Τελευταίες αναρτήσεις ιστολογίου";s:2:"fr";s:17:"Derniers articles";s:2:"ru";s:31:"Последние записи";s:2:"id";s:12:"Post Terbaru";}', 'a:7:{s:2:"en";s:39:"Display latest blog posts with a widget";s:2:"br";s:81:"Mostra uma lista de navegação para abrir os últimos artigos publicados no Blog";s:2:"pt";s:81:"Mostra uma lista de navegação para abrir os últimos artigos publicados no Blog";s:2:"el";s:103:"Προβάλει τις πιο πρόσφατες αναρτήσεις στο ιστολόγιό σας";s:2:"fr";s:68:"Permet d''afficher la liste des derniers posts du blog dans un Widget";s:2:"ru";s:100:"Выводит список последних записей блога внутри виджета";s:2:"id";s:51:"Menampilkan posting blog terbaru menggunakan widget";}', 'Erik Berman', 'http://www.nukleo.fr', '1.0.0', 1, 9, 1364485040),
 (10, 'ImageWidget', 's:18:"设置滚动图片";', 'a:1:{s:2:"en";s:24:"设置首页滚动图片";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 10, 1364752500),
 (11, 'HomeTagsWidget', 's:15:"设置首页Tab";', 'a:1:{s:2:"en";s:15:"设置首页Tab";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 11, 1364754520),
-(12, 'AboutUsBoatsWidget', 's:15:"我们的游艇";', 'a:1:{s:2:"en";s:21:"设置我们的游艇";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 12, 1364783686);
+(12, 'AboutUsBoatsWidget', 's:15:"我们的游艇";', 'a:1:{s:2:"en";s:21:"设置我们的游艇";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 12, 1364783686),
+(13, 'AboutUsMemberWidget', 's:15:"我们的会员";', 'a:1:{s:2:"en";s:21:"设置我们的会员";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 13, 1364798323),
+(14, 'AllServiceIconWidget', 's:25:"所有服务-图标设置";', 'a:1:{s:2:"en";s:25:"所有服务-图标设置";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 14, 1364800047);
 
 -- --------------------------------------------------------
 
@@ -1186,7 +1224,7 @@ CREATE TABLE IF NOT EXISTS `default_widget_areas` (
   `slug` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- 转存表中的数据 `default_widget_areas`
@@ -1195,7 +1233,8 @@ CREATE TABLE IF NOT EXISTS `default_widget_areas` (
 INSERT INTO `default_widget_areas` (`id`, `slug`, `title`) VALUES
 (1, 'sidebar', '首页-挂件'),
 (2, 'home', '其他挂件'),
-(3, 'about-us', '关于我们挂件');
+(3, 'about-us', '关于我们挂件'),
+(4, 'all_service_widgets', '所有服务页面挂件');
 
 -- --------------------------------------------------------
 
@@ -1213,7 +1252,7 @@ CREATE TABLE IF NOT EXISTS `default_widget_instances` (
   `created_on` int(11) NOT NULL DEFAULT '0',
   `updated_on` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
 -- 转存表中的数据 `default_widget_instances`
@@ -1229,7 +1268,15 @@ INSERT INTO `default_widget_instances` (`id`, `title`, `widget_id`, `widget_area
 (10, '第一张', 12, 3, 'a:5:{s:10:"show_title";s:1:"1";s:10:"tags_title";s:9:"Mustan 32";s:9:"tags_desc";s:20:"马斯顿游艇32尺";s:8:"image_id";s:15:"ed011d9a1dcfbda";s:15:"tags_background";s:34:"I <i class="icon-heart"></i> sushi";}', 1, 1364781020, 1364781597),
 (11, '第二张', 12, 3, 'a:5:{s:10:"show_title";s:1:"1";s:10:"tags_title";s:12:"Sunrunner 28";s:9:"tags_desc";s:20:"圣伦娜游艇28尺";s:8:"image_id";s:15:"ed011d9a1dcfbda";s:15:"tags_background";s:35:"I loose my <i class="icon-key"></i>";}', 2, 1364781683, 0),
 (12, '第三张', 12, 3, 'a:5:{s:10:"show_title";s:1:"1";s:10:"tags_title";s:26:"Riviera 4400 Sports Yachat";s:9:"tags_desc";s:20:"瑞维雅游艇44尺";s:8:"image_id";s:15:"ed011d9a1dcfbda";s:15:"tags_background";s:37:"I <i class="icon-food"></i> hamburger";}', 3, 1364781722, 0),
-(13, '第四张', 12, 3, 'a:4:{s:10:"tags_title";s:25:"Riviera 3600 Sport Yachat";s:9:"tags_desc";s:20:"瑞维雅游艇40尺";s:8:"image_id";s:15:"ed011d9a1dcfbda";s:15:"tags_background";s:33:"I need <i class="icon-music"></i>";}', 4, 1364781766, 0);
+(13, '第四张', 12, 3, 'a:4:{s:10:"tags_title";s:25:"Riviera 3600 Sport Yachat";s:9:"tags_desc";s:20:"瑞维雅游艇40尺";s:8:"image_id";s:15:"ed011d9a1dcfbda";s:15:"tags_background";s:33:"I need <i class="icon-music"></i>";}', 4, 1364781766, 0),
+(14, '惊喜', 14, 4, 'a:3:{s:10:"show_title";s:1:"1";s:10:"tags_title";s:6:"惊喜";s:8:"image_id";s:15:"65fb739c59e9b16";}', 1, 1364800347, 1364800442),
+(15, '休闲', 14, 4, 'a:2:{s:10:"tags_title";s:6:"休闲";s:8:"image_id";s:15:"4035013c9a44310";}', 2, 1364800467, 0),
+(16, '浪漫', 14, 4, 'a:2:{s:10:"tags_title";s:6:"浪漫";s:8:"image_id";s:15:"395e40aa6fe60d0";}', 3, 1364800485, 0),
+(17, '高贵', 14, 4, 'a:2:{s:10:"tags_title";s:6:"高贵";s:8:"image_id";s:15:"4885399c3d95527";}', 4, 1364800530, 0),
+(18, '商务', 14, 4, 'a:2:{s:10:"tags_title";s:6:"商务";s:8:"image_id";s:15:"84796412fafa904";}', 5, 1364800562, 0),
+(19, '独特', 14, 4, 'a:2:{s:10:"tags_title";s:6:"独特";s:8:"image_id";s:15:"e2db4fc5ca3d372";}', 6, 1364800590, 0),
+(20, '唯一', 14, 4, 'a:2:{s:10:"tags_title";s:6:"唯一";s:8:"image_id";s:15:"89da41ffb584855";}', 7, 1364800618, 0),
+(21, '享受', 14, 4, 'a:2:{s:10:"tags_title";s:6:"享受";s:8:"image_id";s:15:"89da41ffb584855";}', 8, 1364800635, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
