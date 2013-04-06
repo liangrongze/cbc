@@ -1,3 +1,12 @@
+<!-- start: title -->
+<div class="page-title">
+	<div class="section-wrapper">
+		<div class="container">
+			<h2>最新动态</h2>
+		</div>
+	</div>
+</div><!-- end: title -->
+
 <!-- start: blog -->
 <div class="section-wrapper section-blog">
 
@@ -40,27 +49,16 @@
 							</div>
 
 						</div>
-						
 					</div>
-
 				</div>
-
-			<?php endforeach; ?>
-
-			<?php echo $pagination['links']; ?>
+			<?php endforeach; ?>		
 
 			<div class="row">
 					
 				<div class="span8">
 
 					<div class="pagination">
-						<ul class="white-content">
-							<li><a href="#">Prev</a></li>
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">Next</a></li>
-						</ul>
+						<?php echo $pagination; ?>
 					</div>
 					
 				</div>
@@ -87,125 +85,19 @@
 							</div>
 						</div>					
 					</div>	
-						<form id="search">
-				              <input type="text" class="span2" placeholder="Enter a keyword">
-				              <button class="btn btn-send" type="button">Search</button>
+						<form id="search" method="GET" action="<?php echo base_url('blog/?');?>">
+				              <input type="text" name="f-intro" class="span2" placeholder="Enter a keyword">
+				              <input name="filter-blog" type="hidden" class="span2" value="1">
+				              <button class="btn btn-send" type="submit">Search</button>
 						</form>						
 
-				</div>	
+				</div>
 
-				<div class="category">
-					<div class="separator">
-						<div class="left">
-							<div class="lines">
-								<div>
-								<h2 class="lines-title">分类</h2>
-								</div>
-							</div>
-						</div>					
-					</div>	
-					<ul>
-						<li class="first-child">
-							<a href="#"><i class="icon-angle-right"></i> Lorem ipsum dolor sit amet</a>
-						</li>
-						<li>
-							<a href="#"><i class="icon-angle-right"></i> consectetur adipisicing elit</a>
-						</li>
-						<li>
-							<a href="#"><i class="icon-angle-right"></i> facere reprehenderit tempore</a>
-						</li>
-						<li>
-							<a href="#"><i class="icon-angle-right"></i> ccusantium architecto vel </a>
-						</li>
-						<li class="last-child">
-							<a href="#"><i class="icon-angle-right"></i> deserunt adipisci quis hic</a>
-						</li>
-					</ul>			
+				{{ widgets:instance id="22"}}
+				
+				{{ widgets:instance id="23"}}
 
-				</div>	
-
-				<div class="popular">
-					<div class="separator">
-						<div class="left">
-							<div class="lines">
-								<div>
-								<h2 class="lines-title">热门消息</h2>
-								</div>
-							</div>
-						</div>					
-					</div>	
-
-					<div class="popular">
-	                    <span>
-	                        <a href=""><img alt="" src="assets/images/large/5.jpg"></a>
-	                    </span>
-	                    <a href=""><p>Ullam dolor vitae sint voluptatum fugit necessitatibus eos nesciunt illum error aliquam non maiores.</p></a>
-                    </div>
-
-                    <div class="clearfix"></div> 
-
-					<div class="popular">
-	                    <span>
-	                        <a href=""><img alt="" src="assets/images/large/6.jpg"></a>
-	                    </span>
-	                    <a href=""><p>Ullam dolor vitae sint voluptatum fugit necessitatibus eos nesciunt illum error aliquam non maiores.</p></a>
-                    </div>    
-
-					<div class="clearfix"></div> 
-
-					<div class="popular">
-	                    <span>
-	                        <a href=""><img alt="" src="assets/images/large/8.jpg"></a>
-	                    </span>
-	                    <a href=""><p>Ullam dolor vitae sint voluptatum fugit necessitatibus eos nesciunt illum error aliquam non maiores.</p></a>
-                    </div>
-
-                 <div class="clearfix"></div>  	 					
-					
-				</div>	
-
-				<div class="tags">
-					<div class="separator">
-						<div class="left">
-							<div class="lines">
-								<div>
-								<h2 class="lines-title">热门话题</h2>
-								</div>
-							</div>
-						</div>					
-					</div>	
-
-					<ul>
-						<li>
-							<a class="side-tag " href="#">CSS3</a>
-						</li>
-						<li>
-							<a class="side-tag " href="#">JS</a>
-						</li>
-						<li>
-							<a class="side-tag " href="#">Chrome</a>
-						</li>
-						<li>
-							<a class="side-tag " href="#">HTML5</a>
-						</li>
-						<li>
-							<a class="side-tag " href="#">Phone</a>
-						</li>
-						<li>
-							<a class="side-tag " href="#">Java</a>
-						</li>
-						<li>
-							<a class="side-tag " href="#">Responsive</a>
-						</li>
-						<li>
-							<a class="side-tag " href="#">Tablets</a>
-						</li>
-						<li>
-							<a class="side-tag " href="#">Jquery</a>
-						</li>
-					</ul>					
-
-				</div>					
+				{{ widgets:instance id="24"}}
 				
 				<div class="text">
 					<div class="separator">

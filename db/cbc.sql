@@ -1,20 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 2.11.2.1
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2013 年 04 月 01 日 09:07
--- 服务器版本: 5.5.24-log
--- PHP 版本: 5.2.2
+-- 生成日期: 2013 年 04 月 06 日 09:12
+-- 服务器版本: 5.0.45
+-- PHP 版本: 5.2.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- 数据库: `cbc`
@@ -26,17 +19,17 @@ SET time_zone = "+00:00";
 -- 表的结构 `core_settings`
 --
 
-CREATE TABLE IF NOT EXISTS `core_settings` (
-  `slug` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `default` text COLLATE utf8_unicode_ci NOT NULL,
-  `value` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`slug`),
+CREATE TABLE `core_settings` (
+  `slug` varchar(30) collate utf8_unicode_ci NOT NULL,
+  `default` text collate utf8_unicode_ci NOT NULL,
+  `value` text collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`slug`),
   UNIQUE KEY `unique - slug` (`slug`),
   KEY `index - slug` (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores settings for the multi-site interface';
 
 --
--- 转存表中的数据 `core_settings`
+-- 导出表中的数据 `core_settings`
 --
 
 INSERT INTO `core_settings` (`slug`, `default`, `value`) VALUES
@@ -50,15 +43,15 @@ INSERT INTO `core_settings` (`slug`, `default`, `value`) VALUES
 -- 表的结构 `core_sites`
 --
 
-CREATE TABLE IF NOT EXISTS `core_sites` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `ref` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `domain` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '1',
-  `created_on` int(11) NOT NULL DEFAULT '0',
-  `updated_on` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
+CREATE TABLE `core_sites` (
+  `id` int(5) NOT NULL auto_increment,
+  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `ref` varchar(20) collate utf8_unicode_ci NOT NULL,
+  `domain` varchar(100) collate utf8_unicode_ci default NULL,
+  `active` tinyint(1) NOT NULL default '1',
+  `created_on` int(11) NOT NULL default '0',
+  `updated_on` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `Unique ref` (`ref`),
   UNIQUE KEY `Unique domain` (`domain`),
   KEY `ref` (`ref`),
@@ -66,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `core_sites` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- 转存表中的数据 `core_sites`
+-- 导出表中的数据 `core_sites`
 --
 
 INSERT INTO `core_sites` (`id`, `name`, `ref`, `domain`, `active`, `created_on`, `updated_on`) VALUES
@@ -78,26 +71,26 @@ INSERT INTO `core_sites` (`id`, `name`, `ref`, `domain`, `active`, `created_on`,
 -- 表的结构 `core_users`
 --
 
-CREATE TABLE IF NOT EXISTS `core_users` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `email` varchar(60) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `salt` varchar(6) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `group_id` int(11) DEFAULT NULL,
-  `ip_address` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `active` int(1) DEFAULT NULL,
-  `activation_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+CREATE TABLE `core_users` (
+  `id` smallint(5) unsigned NOT NULL auto_increment,
+  `email` varchar(60) collate utf8_unicode_ci NOT NULL default '',
+  `password` varchar(100) collate utf8_unicode_ci NOT NULL default '',
+  `salt` varchar(6) collate utf8_unicode_ci NOT NULL default '',
+  `group_id` int(11) default NULL,
+  `ip_address` varchar(16) collate utf8_unicode_ci default NULL,
+  `active` int(1) default NULL,
+  `activation_code` varchar(40) collate utf8_unicode_ci default NULL,
   `created_on` int(11) NOT NULL,
   `last_login` int(11) NOT NULL,
-  `username` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `forgotten_password_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `remember_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `username` varchar(20) collate utf8_unicode_ci default NULL,
+  `forgotten_password_code` varchar(40) collate utf8_unicode_ci default NULL,
+  `remember_code` varchar(40) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`),
   KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Super User Information' AUTO_INCREMENT=2 ;
 
 --
--- 转存表中的数据 `core_users`
+-- 导出表中的数据 `core_users`
 --
 
 INSERT INTO `core_users` (`id`, `email`, `password`, `salt`, `group_id`, `ip_address`, `active`, `activation_code`, `created_on`, `last_login`, `username`, `forgotten_password_code`, `remember_code`) VALUES
@@ -109,37 +102,40 @@ INSERT INTO `core_users` (`id`, `email`, `password`, `salt`, `group_id`, `ip_add
 -- 表的结构 `default_blog`
 --
 
-CREATE TABLE IF NOT EXISTS `default_blog` (
-  `id` int(9) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `default_blog` (
+  `id` int(9) NOT NULL auto_increment,
   `created` datetime NOT NULL,
-  `updated` datetime DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `ordering_count` int(11) DEFAULT NULL,
-  `intro` longtext COLLATE utf8_unicode_ci,
-  `title` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `updated` datetime default NULL,
+  `created_by` int(11) default NULL,
+  `ordering_count` int(11) default NULL,
+  `intro` longtext collate utf8_unicode_ci,
+  `title` varchar(200) collate utf8_unicode_ci NOT NULL,
+  `slug` varchar(200) collate utf8_unicode_ci NOT NULL,
   `category_id` int(11) NOT NULL,
-  `body` text COLLATE utf8_unicode_ci NOT NULL,
-  `parsed` text COLLATE utf8_unicode_ci NOT NULL,
-  `keywords` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `author_id` int(11) NOT NULL DEFAULT '0',
+  `body` text collate utf8_unicode_ci NOT NULL,
+  `parsed` text collate utf8_unicode_ci NOT NULL,
+  `keywords` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  `author_id` int(11) NOT NULL default '0',
   `created_on` int(11) NOT NULL,
-  `updated_on` int(11) NOT NULL DEFAULT '0',
-  `comments_enabled` enum('no','1 day','1 week','2 weeks','1 month','3 months','always') COLLATE utf8_unicode_ci NOT NULL DEFAULT '3 months',
-  `status` enum('draft','live') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'draft',
-  `type` set('html','markdown','wysiwyg-advanced','wysiwyg-simple') COLLATE utf8_unicode_ci NOT NULL,
-  `preview_hash` char(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `display_pic` char(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+  `updated_on` int(11) NOT NULL default '0',
+  `comments_enabled` enum('no','1 day','1 week','2 weeks','1 month','3 months','always') collate utf8_unicode_ci NOT NULL default '3 months',
+  `status` enum('draft','live') collate utf8_unicode_ci NOT NULL default 'draft',
+  `type` set('html','markdown','wysiwyg-advanced','wysiwyg-simple') collate utf8_unicode_ci NOT NULL,
+  `preview_hash` char(32) collate utf8_unicode_ci NOT NULL default '',
+  `display_pic` char(15) collate utf8_unicode_ci default NULL,
+  `display_home` text collate utf8_unicode_ci,
+  `is_hot` varchar(255) collate utf8_unicode_ci default '1',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- 转存表中的数据 `default_blog`
+-- 导出表中的数据 `default_blog`
 --
 
-INSERT INTO `default_blog` (`id`, `created`, `updated`, `created_by`, `ordering_count`, `intro`, `title`, `slug`, `category_id`, `body`, `parsed`, `keywords`, `author_id`, `created_on`, `updated_on`, `comments_enabled`, `status`, `type`, `preview_hash`, `display_pic`) VALUES
-(1, '2013-03-28 13:08:00', NULL, 1, 1, '第一次使用这个pyrocms', '第一次使用这个pyrocms', 'pyrocms', 1, '第一次使用这个pyrocms', '', '', 1, 1364476080, 0, '3 months', 'live', 'wysiwyg-advanced', '', NULL),
-(2, '2013-04-01 08:08:00', '2013-04-01 08:08:00', 1, 2, '<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(241, 240, 242);">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore debitis hic illo ab alias porro reiciendis suscipit necessitatibus beatae veniam cum impedit. necessitatibus beatae veniam cum impedit. Voluptates ipsum eligendi labore sint magni earum nam.</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(241, 240, 242);">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam at dolorum dignissimos officiis assumenda ad aut ullam fugit autem ducimus voluptas odio! Dignissimos repellat explicabo exercitationem quas quis officiis saepe?</p>\r\n', 'Voluptates ipsum eligendi', 'voluptates-ipsum-eligendi', 1, '<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(241, 240, 242);">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore debitis hic illo ab alias porro reiciendis suscipit necessitatibus beatae veniam cum impedit. necessitatibus beatae veniam cum impedit. Voluptates ipsum eligendi labore sint magni earum nam.</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(241, 240, 242);">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam at dolorum dignissimos officiis assumenda ad aut ullam fugit autem ducimus voluptas odio! Dignissimos repellat explicabo exercitationem quas quis officiis saepe?<br />\r\n&nbsp;</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore debitis hic illo ab alias porro reiciendis suscipit necessitatibus beatae veniam cum impedit. necessitatibus beatae veniam cum impedit. Voluptates ipsum eligendi labore sint magni earum nam.</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam at dolorum dignissimos officiis assumenda ad aut ullam fugit autem ducimus voluptas odio! Dignissimos repellat explicabo exercitationem quas quis officiis saepe?</p>', '', '', 1, 1364803680, 1364803680, '3 months', 'live', 'wysiwyg-advanced', '', '9517fd0bf8faa65');
+INSERT INTO `default_blog` (`id`, `created`, `updated`, `created_by`, `ordering_count`, `intro`, `title`, `slug`, `category_id`, `body`, `parsed`, `keywords`, `author_id`, `created_on`, `updated_on`, `comments_enabled`, `status`, `type`, `preview_hash`, `display_pic`, `display_home`, `is_hot`) VALUES
+(1, '2013-03-28 13:08:00', NULL, 1, 1, '第一次使用这个pyrocms', '第一次使用这个pyrocms', 'pyrocms', 1, '第一次使用这个pyrocms', '', '', 1, 1364476080, 0, '3 months', 'live', 'wysiwyg-advanced', '', NULL, NULL, NULL),
+(2, '2013-04-01 08:08:00', '2013-04-01 08:08:00', 1, 2, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore debitis hic illo ab alias porro reiciendis suscipit necessitatibus beatae veniam cum impedit. necessitatibus beatae veniam cum impedit. Voluptates ipsum eligendi labore sint magni earum nam.\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam at dolorum dignissimos officiis assumenda ad aut ullam fugit autem ducimus voluptas odio! Dignissimos repellat explicabo exercitationem quas quis officiis saepe?\r\n', 'Voluptates ipsum eligendi', 'voluptates-ipsum-eligendi', 1, '<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(241, 240, 242);">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore debitis hic illo ab alias porro reiciendis suscipit necessitatibus beatae veniam cum impedit. necessitatibus beatae veniam cum impedit. Voluptates ipsum eligendi labore sint magni earum nam.</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px; background-color: rgb(241, 240, 242);">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam at dolorum dignissimos officiis assumenda ad aut ullam fugit autem ducimus voluptas odio! Dignissimos repellat explicabo exercitationem quas quis officiis saepe?<br />\r\n&nbsp;</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore debitis hic illo ab alias porro reiciendis suscipit necessitatibus beatae veniam cum impedit. necessitatibus beatae veniam cum impedit. Voluptates ipsum eligendi labore sint magni earum nam.</p>\r\n\r\n<p style="margin: 0px 0px 10px; color: rgb(107, 107, 107); font-family: ''Open Sans'', sans-serif; font-size: 15px; line-height: 20px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam at dolorum dignissimos officiis assumenda ad aut ullam fugit autem ducimus voluptas odio! Dignissimos repellat explicabo exercitationem quas quis officiis saepe?</p>', '', '29d1ccabeaca8d3c484faee2c66b93de', 1, 1364803680, 1364803680, '3 months', 'live', 'wysiwyg-advanced', '', '9517fd0bf8faa65', '1', '1'),
+(3, '2013-04-05 16:40:00', '2013-04-05 16:40:00', 1, 3, '2013年&ldquo;海天盛筵&rdquo;于3月30日在海南三亚鸿洲国际游艇会及凤凰国际机场举行，在这次汇聚中国绝大多数超级游艇和公务机品牌的盛大聚会上，美国顶级游艇品牌克里斯正式宣布厦门蓝海游艇发展有限公司成为其在中国的总代理商，这也标志这个美国百年游艇品牌全面进军中国市场。', '美国克里斯（Chris Craft）游艇正式宣布厦门蓝海游艇成为其中国总代理', 'chris-craft', 4, '<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">2013年&ldquo;海天盛筵&rdquo;于3月30日在海南三亚鸿洲国际游艇会及凤凰国际机场举行，在这次汇聚中国绝大多数超级游艇和公务机品牌的盛大聚会上，美国顶级游艇品牌克里斯正式宣布厦门蓝海游艇发展有限公司成为其在中国的总代理商，这也标志这个美国百年游艇品牌全面进军中国市场。</div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;</div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;&nbsp;&nbsp; 2012年7月，厦门蓝海游艇发展有限公司就取得美国Chris Craft（克里斯）游艇旗下全系游艇在中国的总代理销售权。此番是美国克里斯游艇正式宣布其中国代理销售权&ldquo;花落蓝海&rdquo;。这也使蓝海游艇正式拥有了完备的游艇代理产品线，该产品线能满足国内不同高端游艇客户群体的需求。</div>\r\n\r\n<div align="center" style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;"><img border="0" src="http://www.yachtsonline.com.cn/UploadFiles/201344205830215.jpg" /></div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;</div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;&nbsp;&nbsp; 2012年底，厦门蓝海游艇筹备了美国克里斯游艇中国销售网络商业计划。该商业计划内容包括未来三年内在国内主要沿海城市建立克里斯游艇二级代理商，第一阶段的二级代理商涉及城市包括三亚、深圳、广州、青岛、大连、天津等，这些城市也将建设美国克里斯游艇专属展厅，方便克里斯游艇在全国范围内展开营销和售后维修服务。</div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;</div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;&nbsp;&nbsp; 美国克里斯游艇全球发展总监BASTIEN BONNET表示：厦门蓝海游艇在未成为正式代理商之前，就已经将2艘克里斯游艇成功销售给中国客户。厦门蓝海游艇专业的游艇管理和销售能力正是克里斯游艇公司需要的，同时厦门蓝海游艇也是克里斯游艇公司旗下73家代理商中最具专业的游艇代理销售公司之一，因此Bastien说他对克里斯游艇未来在中国的销售市场充满信心，厦门蓝海游艇定能做出令人满意的成绩。</div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;</div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;"><strong>美国克里斯游艇品牌介绍</strong></div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;&nbsp;&nbsp;</div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;&nbsp;&nbsp; 美国克里斯游艇生产的是纯手工打造的游艇，该品牌始于1874年，其船厂是全球最具声誉的造船厂之一。克里斯游艇的总部设在佛罗里达州的萨拉索塔，在过去的130多年里,这里总共建造了250000 艘游艇，克里斯游艇以此为基地，旗下有三个系列的游艇：海盗系列，火箭系列，卡塔莱娜系列，以及银色子弹20和骑兵20两个单独生产型号，在世界各地有73家代理商。</div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;&nbsp;&nbsp;</div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;&nbsp;&nbsp; 克里斯游艇的核心竞争力在其创新和设计，这使它的产品往往结合了技术和效率，充满实用性的美。克里斯游艇一般都具有独特的外形&mdash;&mdash;其光滑的外部轮廓，能给人以全新的体验。船上精致的细节, 闪闪发光的钢铁和被擦得锃亮的木头,无不呈现出传统与现代相结合的美感。</div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;&nbsp;&nbsp;&nbsp;</div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;&nbsp;&nbsp; 全球已有无数人体验过克里斯游艇的创新和品质，这其中就包括两位美国总统：法兰克林.罗斯福和约翰.肯尼迪。他们都曾乘坐克里斯游艇，携家人一起出海休闲放松。除了总统之外，还有许多美国名门望族家庭、电影明星也都曾购买过克里斯游艇。克里斯游艇还是世界电影界的&ldquo;明星&rdquo;，它的形象出现在众多经典影片和小说里，如近斯热播的暮光之城里出现的银色子弹经典传承的克里斯的速度与高贵。</div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;</div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;"><strong>厦门蓝海游艇发展公司简介</strong></div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;</div>\r\n\r\n<div style="color: rgb(0, 102, 204); font-family: 宋体; font-size: 14px; line-height: normal;">&nbsp;&nbsp;&nbsp; 厦门蓝海游艇公司成立于2005年，作为国内专业的游艇代理公司，蓝海游艇于2009年取得了是英国公主游艇、加拿大庞巴迪集团旗下水上运动娱乐产品、西度摩托艇CAN-AM全地形山地车的福建总代理权。并与2012年7月获得美国克里斯游艇中国总代理的授权。目前蓝海游艇销售代理的产品包括：豪华游艇、快艇、钓鱼艇、摩托艇和帆船等。随着游艇消费者的递增，自2009年12月开始，厦门蓝海游艇发展有限公司的销售量每年都超过40艘。不仅如此，厦门蓝海还是&ldquo;海洋经济产业链&rdquo;的倡导者，拥有专业的俱乐部和维修厂，为客户提供专业和完整的客户服务。蓝海游艇公司一直把游艇是一种生活方式的理念带给国人，让更多人能够尽情玩海，享受游艇生活，享受海洋生活。</div>', '', '67939a6f02cc6126ad44b1974e88af58', 1, 1365180000, 1365180000, '3 months', 'live', 'wysiwyg-advanced', 'ef8f02865f48f7abd62e12f55f338d9c', 'e8525fd6e88a4a0', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -147,18 +143,18 @@ INSERT INTO `default_blog` (`id`, `created`, `updated`, `created_by`, `ordering_
 -- 表的结构 `default_blog_categories`
 --
 
-CREATE TABLE IF NOT EXISTS `default_blog_categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
+CREATE TABLE `default_blog_categories` (
+  `id` int(11) NOT NULL auto_increment,
+  `slug` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `title` varchar(100) collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `unique_slug` (`slug`),
   UNIQUE KEY `unique_title` (`title`),
   KEY `slug` (`slug`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
 
 --
--- 转存表中的数据 `default_blog_categories`
+-- 导出表中的数据 `default_blog_categories`
 --
 
 INSERT INTO `default_blog_categories` (`id`, `slug`, `title`) VALUES
@@ -174,18 +170,18 @@ INSERT INTO `default_blog_categories` (`id`, `slug`, `title`) VALUES
 -- 表的结构 `default_ci_sessions`
 --
 
-CREATE TABLE IF NOT EXISTS `default_ci_sessions` (
-  `session_id` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
-  `ip_address` varchar(16) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
-  `user_agent` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
-  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
-  `user_data` text COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`session_id`),
+CREATE TABLE `default_ci_sessions` (
+  `session_id` varchar(40) collate utf8_unicode_ci NOT NULL default '0',
+  `ip_address` varchar(16) collate utf8_unicode_ci NOT NULL default '0',
+  `user_agent` varchar(120) collate utf8_unicode_ci NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL default '0',
+  `user_data` text collate utf8_unicode_ci,
+  PRIMARY KEY  (`session_id`),
   KEY `last_activity_idx` (`last_activity`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 转存表中的数据 `default_ci_sessions`
+-- 导出表中的数据 `default_ci_sessions`
 --
 
 INSERT INTO `default_ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
@@ -240,7 +236,61 @@ INSERT INTO `default_ci_sessions` (`session_id`, `ip_address`, `user_agent`, `la
 ('56edb66b60f8ff9d7f376c5d24dfd908', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364800325, ''),
 ('3a44d6a9f7c375e355d5dc4923c1f537', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364800421, ''),
 ('d04bb9dd3eef4433beadfc3209147a36', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364803649, ''),
-('8e81ba0b05009224b83f998a5f3da511', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364807126, 'a:5:{s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}');
+('8e81ba0b05009224b83f998a5f3da511', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1364807126, 'a:5:{s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}'),
+('77225dbe8bbf62cb121b48dcb1a6d7fe', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365136481, 'a:6:{s:8:"username";s:3:"cbc";s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}'),
+('b17af727dd2ccef13be7ce99e3da93ec', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365134518, ''),
+('8272041009a584f091b8c45863997aaa', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365136482, 'a:5:{s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}'),
+('cbbd82c58d3c0561df681a7afe8510e4', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365137970, 'a:5:{s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}'),
+('23976fea59f4a312780720b38f906872', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365137146, ''),
+('3bd1800d6c0971c14d39e86a8545a46c', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365137971, 'a:5:{s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}'),
+('9ef6be1856539fb25fd84331d4f205c2', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365138355, 'a:5:{s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}'),
+('092819ed35a30f0da0aa3874d297cf2a', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365138406, ''),
+('ace6227139e9f4d0248c7929abd236fd', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365138426, ''),
+('83a2b0f91c59e0f2d1be6042be8ffae3', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365138468, ''),
+('6cab7b04e1c660636ffbcc40f76a8143', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365220887, 'a:5:{s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}'),
+('a717e059cd1444cab6b6fc196661eb92', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365153935, ''),
+('f11afe56110f388c192010486b6edb61', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365154532, ''),
+('108f8bc6b04a08975fc6246a0d57131f', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365154789, ''),
+('aecd3229ee832c9a91ac672b20df1afa', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155285, ''),
+('ce1710a51b89de3e383cfc3857a73885', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155285, ''),
+('55a22893f97f305810f462297d931428', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155285, ''),
+('50a80cc11fb925517636c56f2e0aa145', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155455, ''),
+('5b6e9f779bf241c1e19109a752041945', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155560, ''),
+('ac631f6d533a1ca3ffdf1959b1d4dfd9', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155625, ''),
+('b56d829d059386153b8befeda4f6c677', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155574, ''),
+('4be9d25f79ab747cb43bb5c9b8bcbd5d', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155638, ''),
+('d39a2daa8c258d9b5f10478343d7578e', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155825, ''),
+('aa74669999f16136f68076d2d24cbd69', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155855, ''),
+('5d3ba79657373522b6b4747fb42c6747', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155855, ''),
+('b47b595054b8ddca408cdf09b07f7e5d', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155867, ''),
+('eb1131876891e76687ced8e21ef44149', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155867, ''),
+('80b249ee4ea162c9abc6ab267eeba4ad', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155867, ''),
+('ed2bca7b3959610154a5d832367c0faa', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155941, ''),
+('eb3a22750a6e6fabaa036a79ebd917fb', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155942, ''),
+('99128a81cef5d8ee4cb316173491aa1d', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365155953, ''),
+('b94da1e97a27e22cfa9460db2c0c4815', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365156187, ''),
+('ff146f595ba56d5d653a26cf018fb605', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365156248, ''),
+('24d5e8b1684f19b2ea4b2cbf1fdb0fe4', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365156523, ''),
+('2416f2d68eb827a5e7756057f8492898', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365156572, ''),
+('9e3335007b5f159b11180eb6374faacd', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365156589, ''),
+('3e24c91ffe0fdd4e51120579839138d0', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365156724, ''),
+('f236638ff9bfe6ea58187875dfe8d2e4', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365156725, ''),
+('cc922308e3da9f35261aa879ebd41a36', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365156725, ''),
+('7e71fe6e8a743d6c622c6c60d6444596', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365156725, ''),
+('c5ecf1be0f1acb4bc2c28b5ee4c1e020', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365156778, ''),
+('5dccc767b154f909cf84579e7f5f8c33', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365157103, ''),
+('737dab4fc7d9bbea39bde7d0ac49250c', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365157067, ''),
+('939e043c311be8cf155c42dd95d2cf8c', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365157125, ''),
+('423c3265a5c519cbe458b5d02e6feb5a', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365157122, ''),
+('cac885c7d9bd7ac308e11892e4bf8890', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365157271, ''),
+('d8690dbcb100f132faf5f621c1b5cbc0', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365157271, ''),
+('7e708195cfca14caec33cd08753d329f', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365157271, ''),
+('d5ce801ec28c834e1fe77d2fad700bc6', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365181245, ''),
+('ee04048c2dcdc4a909ff84da01581a26', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365181244, ''),
+('7c68edc7c4fd742f932308ce500c9077', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365218493, ''),
+('1c8e0c19c951b6945f422c8b809d3458', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365236228, 'a:6:{s:8:"username";s:3:"cbc";s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}'),
+('b6bad699d60c079470f2f57cb50d770a', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365236241, ''),
+('7563032ef77e30e51a73eb9c13aafe7b', '127.0.0.1', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.43 Safari/537.31', 1365239319, 'a:5:{s:5:"email";s:24:"gz.liangrongze@gmail.com";s:2:"id";s:1:"1";s:7:"user_id";s:1:"1";s:8:"group_id";s:1:"1";s:5:"group";s:5:"admin";}');
 
 -- --------------------------------------------------------
 
@@ -248,26 +298,31 @@ INSERT INTO `default_ci_sessions` (`session_id`, `ip_address`, `user_agent`, `la
 -- 表的结构 `default_comments`
 --
 
-CREATE TABLE IF NOT EXISTS `default_comments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `is_active` int(1) NOT NULL DEFAULT '0',
-  `user_id` int(11) NOT NULL DEFAULT '0',
-  `user_name` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `user_email` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `user_website` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `comment` text COLLATE utf8_unicode_ci NOT NULL,
-  `parsed` text COLLATE utf8_unicode_ci NOT NULL,
-  `module` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `entry_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
-  `entry_title` char(255) COLLATE utf8_unicode_ci NOT NULL,
-  `entry_key` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `entry_plural` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `uri` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cp_uri` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_on` int(11) NOT NULL DEFAULT '0',
-  `ip_address` varchar(15) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`)
+CREATE TABLE `default_comments` (
+  `id` int(11) NOT NULL auto_increment,
+  `is_active` int(1) NOT NULL default '0',
+  `user_id` int(11) NOT NULL default '0',
+  `user_name` varchar(40) collate utf8_unicode_ci NOT NULL default '',
+  `user_email` varchar(40) collate utf8_unicode_ci NOT NULL default '',
+  `user_website` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `comment` text collate utf8_unicode_ci NOT NULL,
+  `parsed` text collate utf8_unicode_ci NOT NULL,
+  `module` varchar(40) collate utf8_unicode_ci NOT NULL,
+  `entry_id` varchar(255) collate utf8_unicode_ci NOT NULL default '0',
+  `entry_title` char(255) collate utf8_unicode_ci NOT NULL,
+  `entry_key` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `entry_plural` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `uri` varchar(255) collate utf8_unicode_ci default NULL,
+  `cp_uri` varchar(255) collate utf8_unicode_ci default NULL,
+  `created_on` int(11) NOT NULL default '0',
+  `ip_address` varchar(15) collate utf8_unicode_ci NOT NULL default '',
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- 导出表中的数据 `default_comments`
+--
+
 
 -- --------------------------------------------------------
 
@@ -275,12 +330,17 @@ CREATE TABLE IF NOT EXISTS `default_comments` (
 -- 表的结构 `default_comment_blacklists`
 --
 
-CREATE TABLE IF NOT EXISTS `default_comment_blacklists` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `website` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `email` varchar(150) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`)
+CREATE TABLE `default_comment_blacklists` (
+  `id` int(11) NOT NULL auto_increment,
+  `website` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `email` varchar(150) collate utf8_unicode_ci NOT NULL default '',
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- 导出表中的数据 `default_comment_blacklists`
+--
+
 
 -- --------------------------------------------------------
 
@@ -288,18 +348,23 @@ CREATE TABLE IF NOT EXISTS `default_comment_blacklists` (
 -- 表的结构 `default_contact_log`
 --
 
-CREATE TABLE IF NOT EXISTS `default_contact_log` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `subject` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `message` text COLLATE utf8_unicode_ci NOT NULL,
-  `sender_agent` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `sender_ip` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `sender_os` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `sent_at` int(11) NOT NULL DEFAULT '0',
-  `attachments` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `default_contact_log` (
+  `id` int(11) NOT NULL auto_increment,
+  `email` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `subject` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `message` text collate utf8_unicode_ci NOT NULL,
+  `sender_agent` varchar(64) collate utf8_unicode_ci NOT NULL default '',
+  `sender_ip` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  `sender_os` varchar(32) collate utf8_unicode_ci NOT NULL default '',
+  `sent_at` int(11) NOT NULL default '0',
+  `attachments` text collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- 导出表中的数据 `default_contact_log`
+--
+
 
 -- --------------------------------------------------------
 
@@ -307,24 +372,24 @@ CREATE TABLE IF NOT EXISTS `default_contact_log` (
 -- 表的结构 `default_data_fields`
 --
 
-CREATE TABLE IF NOT EXISTS `default_data_fields` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `field_name` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `field_slug` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `field_namespace` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `field_type` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `default_data_fields` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `field_name` varchar(60) collate utf8_unicode_ci NOT NULL,
+  `field_slug` varchar(60) collate utf8_unicode_ci NOT NULL,
+  `field_namespace` varchar(60) collate utf8_unicode_ci default NULL,
+  `field_type` varchar(50) collate utf8_unicode_ci NOT NULL,
   `field_data` blob,
   `view_options` blob,
-  `is_locked` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
+  `is_locked` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'no',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
 
 --
--- 转存表中的数据 `default_data_fields`
+-- 导出表中的数据 `default_data_fields`
 --
 
 INSERT INTO `default_data_fields` (`id`, `field_name`, `field_slug`, `field_namespace`, `field_type`, `field_data`, `view_options`, `is_locked`) VALUES
-(1, 'lang:blog:intro_label', 'intro', 'blogs', 'wysiwyg', 0x613a323a7b733a31313a22656469746f725f74797065223b733a363a2273696d706c65223b733a31303a22616c6c6f775f74616773223b733a313a2279223b7d, NULL, 'no'),
+(1, 'lang:blog:intro_label', 'intro', 'blogs', 'textarea', 0x613a323a7b733a31323a2264656661756c745f74657874223b733a303a22223b733a31303a22616c6c6f775f74616773223b733a313a226e223b7d, NULL, 'no'),
 (2, 'lang:pages:body_label', 'body', 'pages', 'wysiwyg', 0x613a323a7b733a31313a22656469746f725f74797065223b733a383a22616476616e636564223b733a31303a22616c6c6f775f74616773223b733a313a2279223b7d, NULL, 'no'),
 (3, 'lang:user:first_name_label', 'first_name', 'users', 'text', 0x613a323a7b733a31303a226d61785f6c656e677468223b693a35303b733a31333a2264656661756c745f76616c7565223b4e3b7d, NULL, 'no'),
 (4, 'lang:user:last_name_label', 'last_name', 'users', 'text', 0x613a323a7b733a31303a226d61785f6c656e677468223b693a35303b733a31333a2264656661756c745f76616c7565223b4e3b7d, NULL, 'no'),
@@ -342,7 +407,9 @@ INSERT INTO `default_data_fields` (`id`, `field_name`, `field_slug`, `field_name
 (16, 'lang:profile_website', 'website', 'users', 'url', NULL, NULL, 'no'),
 (17, '详细信息', 'about_us_description', 'pages', 'wysiwyg', 0x613a323a7b733a31313a22656469746f725f74797065223b733a383a22616476616e636564223b733a31303a22616c6c6f775f74616773223b733a313a226e223b7d, NULL, 'no'),
 (18, 'boat-service-content', 'boatservicecontent', 'pages', 'wysiwyg', 0x613a323a7b733a31313a22656469746f725f74797065223b733a383a22616476616e636564223b733a31303a22616c6c6f775f74616773223b733a313a226e223b7d, NULL, 'no'),
-(19, 'display_pic', 'display_pic', 'blogs', 'image', 0x613a353a7b733a363a22666f6c646572223b733a313a2236223b733a31323a22726573697a655f7769647468223b733a303a22223b733a31333a22726573697a655f686569676874223b733a303a22223b733a31303a226b6565705f726174696f223b733a333a22796573223b733a31333a22616c6c6f7765645f7479706573223b733a303a22223b7d, NULL, 'no');
+(19, 'display_pic', 'display_pic', 'blogs', 'image', 0x613a353a7b733a363a22666f6c646572223b733a313a2236223b733a31323a22726573697a655f7769647468223b733a303a22223b733a31333a22726573697a655f686569676874223b733a303a22223b733a31303a226b6565705f726174696f223b733a333a22796573223b733a31333a22616c6c6f7765645f7479706573223b733a303a22223b7d, NULL, 'no'),
+(21, 'display_home', 'display_home', 'blogs', 'choice', 0x613a353a7b733a31313a2263686f6963655f64617461223b733a31303a2231203a20e698bee7a4ba223b733a31313a2263686f6963655f74797065223b733a31303a22636865636b626f786573223b733a31333a2264656661756c745f76616c7565223b733a313a2231223b733a31313a226d696e5f63686f69636573223b733a303a22223b733a31313a226d61785f63686f69636573223b733a303a22223b7d, NULL, 'no'),
+(22, 'is_hot', 'is_hot', 'blogs', 'choice', 0x613a353a7b733a31313a2263686f6963655f64617461223b733a31313a2231203a2020e783ade997a8223b733a31313a2263686f6963655f74797065223b733a31303a22636865636b626f786573223b733a31333a2264656661756c745f76616c7565223b733a313a2231223b733a31313a226d696e5f63686f69636573223b733a303a22223b733a31313a226d61785f63686f69636573223b733a303a22223b7d, NULL, 'no');
 
 -- --------------------------------------------------------
 
@@ -350,24 +417,24 @@ INSERT INTO `default_data_fields` (`id`, `field_name`, `field_slug`, `field_name
 -- 表的结构 `default_data_field_assignments`
 --
 
-CREATE TABLE IF NOT EXISTS `default_data_field_assignments` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `default_data_field_assignments` (
+  `id` int(11) unsigned NOT NULL auto_increment,
   `sort_order` int(11) NOT NULL,
   `stream_id` int(11) NOT NULL,
   `field_id` int(11) NOT NULL,
-  `is_required` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
-  `is_unique` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
-  `instructions` text COLLATE utf8_unicode_ci,
-  `field_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=21 ;
+  `is_required` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'no',
+  `is_unique` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'no',
+  `instructions` text collate utf8_unicode_ci,
+  `field_name` varchar(255) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
 
 --
--- 转存表中的数据 `default_data_field_assignments`
+-- 导出表中的数据 `default_data_field_assignments`
 --
 
 INSERT INTO `default_data_field_assignments` (`id`, `sort_order`, `stream_id`, `field_id`, `is_required`, `is_unique`, `instructions`, `field_name`) VALUES
-(1, 1, 1, 1, 'yes', 'no', NULL, NULL),
+(1, 1, 1, 1, 'yes', 'no', '', NULL),
 (2, 1, 2, 2, 'no', 'no', NULL, NULL),
 (3, 1, 3, 3, 'yes', 'no', NULL, NULL),
 (4, 1, 3, 4, 'yes', 'no', NULL, NULL),
@@ -375,17 +442,19 @@ INSERT INTO `default_data_field_assignments` (`id`, `sort_order`, `stream_id`, `
 (6, 2, 3, 6, 'no', 'no', NULL, NULL),
 (7, 3, 3, 7, 'no', 'no', NULL, NULL),
 (8, 3, 3, 8, 'no', 'no', NULL, NULL),
-(9, 4, 3, 9, 'no', 'no', NULL, NULL),
-(10, 5, 3, 10, 'no', 'no', NULL, NULL),
-(11, 6, 3, 11, 'no', 'no', NULL, NULL),
-(12, 7, 3, 12, 'no', 'no', NULL, NULL),
-(13, 8, 3, 13, 'no', 'no', NULL, NULL),
-(14, 9, 3, 14, 'no', 'no', NULL, NULL),
-(15, 10, 3, 15, 'no', 'no', NULL, NULL),
-(16, 11, 3, 16, 'no', 'no', NULL, NULL),
+(9, 3, 3, 9, 'no', 'no', NULL, NULL),
+(10, 4, 3, 10, 'no', 'no', NULL, NULL),
+(11, 5, 3, 11, 'no', 'no', NULL, NULL),
+(12, 6, 3, 12, 'no', 'no', NULL, NULL),
+(13, 7, 3, 13, 'no', 'no', NULL, NULL),
+(14, 8, 3, 14, 'no', 'no', NULL, NULL),
+(15, 9, 3, 15, 'no', 'no', NULL, NULL),
+(16, 10, 3, 16, 'no', 'no', NULL, NULL),
 (17, 1, 4, 17, 'no', 'no', '', NULL),
 (18, 1, 5, 18, 'no', 'no', '', NULL),
-(19, 2, 1, 19, 'yes', 'no', '展示在首页的缩略图', NULL);
+(19, 2, 1, 19, 'yes', 'no', '展示在首页的缩略图', NULL),
+(21, 3, 1, 21, 'no', 'no', '', NULL),
+(22, 4, 1, 22, 'no', 'no', '是否热门消息', NULL);
 
 -- --------------------------------------------------------
 
@@ -393,24 +462,24 @@ INSERT INTO `default_data_field_assignments` (`id`, `sort_order`, `stream_id`, `
 -- 表的结构 `default_data_streams`
 --
 
-CREATE TABLE IF NOT EXISTS `default_data_streams` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `stream_name` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `stream_slug` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `stream_namespace` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `stream_prefix` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `about` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+CREATE TABLE `default_data_streams` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `stream_name` varchar(60) collate utf8_unicode_ci NOT NULL,
+  `stream_slug` varchar(60) collate utf8_unicode_ci NOT NULL,
+  `stream_namespace` varchar(60) collate utf8_unicode_ci default NULL,
+  `stream_prefix` varchar(60) collate utf8_unicode_ci default NULL,
+  `about` varchar(255) collate utf8_unicode_ci default NULL,
   `view_options` blob NOT NULL,
-  `title_column` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `sorting` enum('title','custom') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'title',
-  `permissions` text COLLATE utf8_unicode_ci,
-  `is_hidden` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'no',
-  `menu_path` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `title_column` varchar(255) collate utf8_unicode_ci default NULL,
+  `sorting` enum('title','custom') collate utf8_unicode_ci NOT NULL default 'title',
+  `permissions` text collate utf8_unicode_ci,
+  `is_hidden` enum('yes','no') collate utf8_unicode_ci NOT NULL default 'no',
+  `menu_path` varchar(255) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
--- 转存表中的数据 `default_data_streams`
+-- 导出表中的数据 `default_data_streams`
 --
 
 INSERT INTO `default_data_streams` (`id`, `stream_name`, `stream_slug`, `stream_namespace`, `stream_prefix`, `about`, `view_options`, `title_column`, `sorting`, `permissions`, `is_hidden`, `menu_path`) VALUES
@@ -426,18 +495,18 @@ INSERT INTO `default_data_streams` (`id`, `stream_name`, `stream_slug`, `stream_
 -- 表的结构 `default_def_page_fields`
 --
 
-CREATE TABLE IF NOT EXISTS `default_def_page_fields` (
-  `id` int(9) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `default_def_page_fields` (
+  `id` int(9) NOT NULL auto_increment,
   `created` datetime NOT NULL,
-  `updated` datetime DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `ordering_count` int(11) DEFAULT NULL,
-  `body` longtext COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`id`)
+  `updated` datetime default NULL,
+  `created_by` int(11) default NULL,
+  `ordering_count` int(11) default NULL,
+  `body` longtext collate utf8_unicode_ci,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=17 ;
 
 --
--- 转存表中的数据 `default_def_page_fields`
+-- 导出表中的数据 `default_def_page_fields`
 --
 
 INSERT INTO `default_def_page_fields` (`id`, `created`, `updated`, `created_by`, `ordering_count`, `body`) VALUES
@@ -464,22 +533,22 @@ INSERT INTO `default_def_page_fields` (`id`, `created`, `updated`, `created_by`,
 -- 表的结构 `default_email_templates`
 --
 
-CREATE TABLE IF NOT EXISTS `default_email_templates` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `subject` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `body` text COLLATE utf8_unicode_ci NOT NULL,
-  `lang` varchar(2) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `is_default` int(1) NOT NULL DEFAULT '0',
-  `module` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`),
+CREATE TABLE `default_email_templates` (
+  `id` int(11) NOT NULL auto_increment,
+  `slug` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `description` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `subject` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `body` text collate utf8_unicode_ci NOT NULL,
+  `lang` varchar(2) collate utf8_unicode_ci default NULL,
+  `is_default` int(1) NOT NULL default '0',
+  `module` varchar(50) collate utf8_unicode_ci NOT NULL default '',
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `slug_lang` (`slug`,`lang`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
--- 转存表中的数据 `default_email_templates`
+-- 导出表中的数据 `default_email_templates`
 --
 
 INSERT INTO `default_email_templates` (`id`, `slug`, `name`, `description`, `subject`, `body`, `lang`, `is_default`, `module`) VALUES
@@ -496,30 +565,30 @@ INSERT INTO `default_email_templates` (`id`, `slug`, `name`, `description`, `sub
 -- 表的结构 `default_files`
 --
 
-CREATE TABLE IF NOT EXISTS `default_files` (
-  `id` char(15) COLLATE utf8_unicode_ci NOT NULL,
-  `folder_id` int(11) NOT NULL DEFAULT '0',
-  `user_id` int(11) NOT NULL DEFAULT '1',
-  `type` enum('a','v','d','i','o') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `filename` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `extension` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `mimetype` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `keywords` char(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `width` int(5) DEFAULT NULL,
-  `height` int(5) DEFAULT NULL,
-  `filesize` int(11) NOT NULL DEFAULT '0',
-  `alt_attribute` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `download_count` int(11) NOT NULL DEFAULT '0',
-  `date_added` int(11) NOT NULL DEFAULT '0',
-  `sort` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+CREATE TABLE `default_files` (
+  `id` char(15) collate utf8_unicode_ci NOT NULL,
+  `folder_id` int(11) NOT NULL default '0',
+  `user_id` int(11) NOT NULL default '1',
+  `type` enum('a','v','d','i','o') collate utf8_unicode_ci default NULL,
+  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `filename` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `path` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `description` text collate utf8_unicode_ci NOT NULL,
+  `extension` varchar(10) collate utf8_unicode_ci NOT NULL,
+  `mimetype` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `keywords` char(32) collate utf8_unicode_ci NOT NULL default '',
+  `width` int(5) default NULL,
+  `height` int(5) default NULL,
+  `filesize` int(11) NOT NULL default '0',
+  `alt_attribute` varchar(255) collate utf8_unicode_ci default NULL,
+  `download_count` int(11) NOT NULL default '0',
+  `date_added` int(11) NOT NULL default '0',
+  `sort` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 转存表中的数据 `default_files`
+-- 导出表中的数据 `default_files`
 --
 
 INSERT INTO `default_files` (`id`, `folder_id`, `user_id`, `type`, `name`, `filename`, `path`, `description`, `extension`, `mimetype`, `keywords`, `width`, `height`, `filesize`, `alt_attribute`, `download_count`, `date_added`, `sort`) VALUES
@@ -538,6 +607,7 @@ INSERT INTO `default_files` (`id`, `folder_id`, `user_id`, `type`, `name`, `file
 ('aaf53acac16d61f', 5, 1, 'i', 'android.png', '9c1cb828a8bc51ebfa4f1ddb779d8d98.png', '{{ url:site }}files/large/9c1cb828a8bc51ebfa4f1ddb779d8d98.png', '', '.png', 'image/png', '', 500, 500, 10, '', 0, 1364800257, 0),
 ('d6b14276a8b8c7c', 1, 1, 'i', 'agency-2.jpg', '8ac9cfe725eaf5c4f5b926b7ba2c6ba2.jpg', '{{ url:site }}files/large/8ac9cfe725eaf5c4f5b926b7ba2c6ba2.jpg', '', '.jpg', 'image/jpeg', '', 870, 500, 185, '', 0, 1364779946, 0),
 ('e2db4fc5ca3d372', 5, 1, 'i', 'apple.png', 'a0dd6e62285a8f62c7aadac04d5cdd1e.png', '{{ url:site }}files/large/a0dd6e62285a8f62c7aadac04d5cdd1e.png', '', '.png', 'image/png', '', 500, 500, 68, '', 0, 1364800256, 0),
+('e8525fd6e88a4a0', 6, 1, 'i', '20134421020854.jpg', 'b491ee40093104874ad2373d6a051327.jpg', '{{ url:site }}files/large/b491ee40093104874ad2373d6a051327.jpg', '', '.jpg', 'image/jpeg', '', 600, 400, 68, '', 0, 1365180171, 0),
 ('ed011d9a1dcfbda', 2, 1, 'i', 'team-1.jpg', '6754437d1e009ebb0555844ccb7fa8f9.jpg', '{{ url:site }}files/large/6754437d1e009ebb0555844ccb7fa8f9.jpg', '', '.jpg', 'image/jpeg', '', 250, 250, 68, '', 0, 1364781570, 0),
 ('f0fad5a0a69a6f3', 3, 1, 'i', 'loupe-screenshot.png', 'c1a532bed19361a810875474ef816744.png', '{{ url:site }}files/large/c1a532bed19361a810875474ef816744.png', '', '.png', 'image/png', '', 1213, 804, 525, '', 0, 1364752686, 0),
 ('fa3c0604b9d57ce', 1, 1, 'i', 'agency-1.jpg', 'd261b1c5a077384285ae5b6c6adc8ff9.jpg', '{{ url:site }}files/large/d261b1c5a077384285ae5b6c6adc8ff9.jpg', '', '.jpg', 'image/jpeg', '', 870, 500, 121, '', 0, 1364779947, 0),
@@ -550,20 +620,20 @@ INSERT INTO `default_files` (`id`, `folder_id`, `user_id`, `type`, `name`, `file
 -- 表的结构 `default_file_folders`
 --
 
-CREATE TABLE IF NOT EXISTS `default_file_folders` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(11) DEFAULT '0',
-  `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `location` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'local',
-  `remote_container` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+CREATE TABLE `default_file_folders` (
+  `id` int(11) NOT NULL auto_increment,
+  `parent_id` int(11) default '0',
+  `slug` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `location` varchar(20) collate utf8_unicode_ci NOT NULL default 'local',
+  `remote_container` varchar(100) collate utf8_unicode_ci NOT NULL default '',
   `date_added` int(11) NOT NULL,
-  `sort` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `sort` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
 
 --
--- 转存表中的数据 `default_file_folders`
+-- 导出表中的数据 `default_file_folders`
 --
 
 INSERT INTO `default_file_folders` (`id`, `parent_id`, `slug`, `name`, `location`, `remote_container`, `date_added`, `sort`) VALUES
@@ -580,15 +650,15 @@ INSERT INTO `default_file_folders` (`id`, `parent_id`, `slug`, `name`, `location
 -- 表的结构 `default_groups`
 --
 
-CREATE TABLE IF NOT EXISTS `default_groups` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `default_groups` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `description` varchar(250) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
 
 --
--- 转存表中的数据 `default_groups`
+-- 导出表中的数据 `default_groups`
 --
 
 INSERT INTO `default_groups` (`id`, `name`, `description`) VALUES
@@ -601,11 +671,22 @@ INSERT INTO `default_groups` (`id`, `name`, `description`) VALUES
 -- 表的结构 `default_keywords`
 --
 
-CREATE TABLE IF NOT EXISTS `default_keywords` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+CREATE TABLE `default_keywords` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(50) collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+
+--
+-- 导出表中的数据 `default_keywords`
+--
+
+INSERT INTO `default_keywords` (`id`, `name`) VALUES
+(1, '代理'),
+(2, '厦门'),
+(3, '广州'),
+(4, '奢侈'),
+(5, '游艇');
 
 -- --------------------------------------------------------
 
@@ -613,12 +694,24 @@ CREATE TABLE IF NOT EXISTS `default_keywords` (
 -- 表的结构 `default_keywords_applied`
 --
 
-CREATE TABLE IF NOT EXISTS `default_keywords_applied` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `hash` char(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+CREATE TABLE `default_keywords_applied` (
+  `id` int(11) NOT NULL auto_increment,
+  `hash` char(32) collate utf8_unicode_ci NOT NULL default '',
   `keyword_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+
+--
+-- 导出表中的数据 `default_keywords_applied`
+--
+
+INSERT INTO `default_keywords_applied` (`id`, `hash`, `keyword_id`) VALUES
+(3, '67939a6f02cc6126ad44b1974e88af58', 1),
+(4, '67939a6f02cc6126ad44b1974e88af58', 2),
+(5, '67939a6f02cc6126ad44b1974e88af58', 3),
+(8, '29d1ccabeaca8d3c484faee2c66b93de', 4),
+(9, '29d1ccabeaca8d3c484faee2c66b93de', 5),
+(10, '29d1ccabeaca8d3c484faee2c66b93de', 2);
 
 -- --------------------------------------------------------
 
@@ -626,12 +719,12 @@ CREATE TABLE IF NOT EXISTS `default_keywords_applied` (
 -- 表的结构 `default_migrations`
 --
 
-CREATE TABLE IF NOT EXISTS `default_migrations` (
-  `version` int(3) DEFAULT NULL
+CREATE TABLE `default_migrations` (
+  `version` int(3) default NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 转存表中的数据 `default_migrations`
+-- 导出表中的数据 `default_migrations`
 --
 
 INSERT INTO `default_migrations` (`version`) VALUES
@@ -643,28 +736,28 @@ INSERT INTO `default_migrations` (`version`) VALUES
 -- 表的结构 `default_modules`
 --
 
-CREATE TABLE IF NOT EXISTS `default_modules` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text COLLATE utf8_unicode_ci NOT NULL,
-  `slug` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `version` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `type` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8_unicode_ci,
+CREATE TABLE `default_modules` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` text collate utf8_unicode_ci NOT NULL,
+  `slug` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `version` varchar(20) collate utf8_unicode_ci NOT NULL,
+  `type` varchar(20) collate utf8_unicode_ci default NULL,
+  `description` text collate utf8_unicode_ci,
   `skip_xss` tinyint(1) NOT NULL,
   `is_frontend` tinyint(1) NOT NULL,
   `is_backend` tinyint(1) NOT NULL,
-  `menu` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `menu` varchar(20) collate utf8_unicode_ci NOT NULL,
   `enabled` tinyint(1) NOT NULL,
   `installed` tinyint(1) NOT NULL,
   `is_core` tinyint(1) NOT NULL,
-  `updated_on` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
+  `updated_on` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `slug` (`slug`),
   KEY `enabled` (`enabled`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
 
 --
--- 转存表中的数据 `default_modules`
+-- 导出表中的数据 `default_modules`
 --
 
 INSERT INTO `default_modules` (`id`, `name`, `slug`, `version`, `type`, `description`, `skip_xss`, `is_frontend`, `is_backend`, `menu`, `enabled`, `installed`, `is_core`, `updated_on`) VALUES
@@ -697,16 +790,16 @@ INSERT INTO `default_modules` (`id`, `name`, `slug`, `version`, `type`, `descrip
 -- 表的结构 `default_navigation_groups`
 --
 
-CREATE TABLE IF NOT EXISTS `default_navigation_groups` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `abbrev` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
+CREATE TABLE `default_navigation_groups` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `abbrev` varchar(50) collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`id`),
   KEY `abbrev` (`abbrev`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- 转存表中的数据 `default_navigation_groups`
+-- 导出表中的数据 `default_navigation_groups`
 --
 
 INSERT INTO `default_navigation_groups` (`id`, `title`, `abbrev`) VALUES
@@ -720,26 +813,26 @@ INSERT INTO `default_navigation_groups` (`id`, `title`, `abbrev`) VALUES
 -- 表的结构 `default_navigation_links`
 --
 
-CREATE TABLE IF NOT EXISTS `default_navigation_links` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `parent` int(11) DEFAULT NULL,
-  `link_type` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'uri',
-  `page_id` int(11) DEFAULT NULL,
-  `module_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `uri` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `navigation_group_id` int(5) NOT NULL DEFAULT '0',
-  `position` int(5) NOT NULL DEFAULT '0',
-  `target` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `restricted_to` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `class` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`),
+CREATE TABLE `default_navigation_links` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(100) collate utf8_unicode_ci NOT NULL default '',
+  `parent` int(11) default NULL,
+  `link_type` varchar(20) collate utf8_unicode_ci NOT NULL default 'uri',
+  `page_id` int(11) default NULL,
+  `module_name` varchar(50) collate utf8_unicode_ci NOT NULL default '',
+  `url` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `uri` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `navigation_group_id` int(5) NOT NULL default '0',
+  `position` int(5) NOT NULL default '0',
+  `target` varchar(10) collate utf8_unicode_ci default NULL,
+  `restricted_to` varchar(255) collate utf8_unicode_ci default NULL,
+  `class` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  PRIMARY KEY  (`id`),
   KEY `navigation_group_id` (`navigation_group_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- 转存表中的数据 `default_navigation_links`
+-- 导出表中的数据 `default_navigation_links`
 --
 
 INSERT INTO `default_navigation_links` (`id`, `title`, `parent`, `link_type`, `page_id`, `module_name`, `url`, `uri`, `navigation_group_id`, `position`, `target`, `restricted_to`, `class`) VALUES
@@ -753,36 +846,36 @@ INSERT INTO `default_navigation_links` (`id`, `title`, `parent`, `link_type`, `p
 -- 表的结构 `default_pages`
 --
 
-CREATE TABLE IF NOT EXISTS `default_pages` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `class` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `uri` text COLLATE utf8_unicode_ci,
-  `parent_id` int(11) NOT NULL DEFAULT '0',
-  `type_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `entry_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `css` text COLLATE utf8_unicode_ci,
-  `js` text COLLATE utf8_unicode_ci,
-  `meta_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `meta_keywords` char(32) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `meta_description` text COLLATE utf8_unicode_ci,
-  `rss_enabled` int(1) NOT NULL DEFAULT '0',
-  `comments_enabled` int(1) NOT NULL DEFAULT '0',
-  `status` enum('draft','live') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'draft',
-  `created_on` int(11) NOT NULL DEFAULT '0',
-  `updated_on` int(11) NOT NULL DEFAULT '0',
-  `restricted_to` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `is_home` int(1) NOT NULL DEFAULT '0',
-  `strict_uri` tinyint(1) NOT NULL DEFAULT '1',
-  `order` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
+CREATE TABLE `default_pages` (
+  `id` int(11) NOT NULL auto_increment,
+  `slug` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `class` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `title` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `uri` text collate utf8_unicode_ci,
+  `parent_id` int(11) NOT NULL default '0',
+  `type_id` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `entry_id` varchar(255) collate utf8_unicode_ci default NULL,
+  `css` text collate utf8_unicode_ci,
+  `js` text collate utf8_unicode_ci,
+  `meta_title` varchar(255) collate utf8_unicode_ci default NULL,
+  `meta_keywords` char(32) collate utf8_unicode_ci default NULL,
+  `meta_description` text collate utf8_unicode_ci,
+  `rss_enabled` int(1) NOT NULL default '0',
+  `comments_enabled` int(1) NOT NULL default '0',
+  `status` enum('draft','live') collate utf8_unicode_ci NOT NULL default 'draft',
+  `created_on` int(11) NOT NULL default '0',
+  `updated_on` int(11) NOT NULL default '0',
+  `restricted_to` varchar(255) collate utf8_unicode_ci default NULL,
+  `is_home` int(1) NOT NULL default '0',
+  `strict_uri` tinyint(1) NOT NULL default '1',
+  `order` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`),
   KEY `slug` (`slug`),
   KEY `parent_id` (`parent_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=23 ;
 
 --
--- 转存表中的数据 `default_pages`
+-- 导出表中的数据 `default_pages`
 --
 
 INSERT INTO `default_pages` (`id`, `slug`, `class`, `title`, `uri`, `parent_id`, `type_id`, `entry_id`, `css`, `js`, `meta_title`, `meta_keywords`, `meta_description`, `rss_enabled`, `comments_enabled`, `status`, `created_on`, `updated_on`, `restricted_to`, `is_home`, `strict_uri`, `order`) VALUES
@@ -800,7 +893,7 @@ INSERT INTO `default_pages` (`id`, `slug`, `class`, `title`, `uri`, `parent_id`,
 (13, 'plugin-about-us-our-member', '', '关于我们-我们的会员-专用-不能删除', 'plugin-about-us-our-member', 0, '5', '9', '', '', '', '', '', 0, 0, 'live', 1364785087, 1364786690, '0', 0, 1, 1364785087),
 (14, 'device', '', 'Device', 'plugin-about-us-our-member/device', 13, '5', '10', '', '', '', '', '', 0, 0, 'live', 1364785641, 1364788805, '0', 0, 1, 1364785641),
 (15, 'brand', '', 'Brand', 'plugin-about-us-our-member/brand', 13, '5', '11', '', '', '', '', '', 0, 0, 'live', 1364785700, 1364788836, '0', 0, 1, 1364785700),
-(16, 'boats-home', '', '航海中心-总页', 'boats-home', 0, '3', '2', '', '', '', '', '', 0, 0, 'live', 1364795516, 0, '0', 0, 1, 1364795516),
+(16, 'boats-home', '', '航海中心-总页', 'boats-home', 0, '3', '2', '', '', '', '', '', 0, 0, 'live', 1364795516, 1365181072, '0', 0, 1, 1364795516),
 (17, 'services', '', '所有服务', 'boats-home/services', 16, '3', '3', '', '', '', '', '', 0, 0, 'live', 1364795587, 1364796449, '0', 0, 1, 1364795587),
 (18, 'cocktail', '', '游艇鸡尾酒', 'boats-home/services/cocktail', 17, '5', '12', '', '', '', '', '', 0, 0, 'live', 1364796746, 1364797448, '0', 0, 1, 1364796746),
 (19, 'propose-marriage-sea', '', '海上求婚仪式', 'boats-home/services/propose-marriage-sea', 17, '5', '13', '', '', '', '', '', 0, 0, 'live', 1364797545, 0, '0', 0, 1, 1364797545),
@@ -814,23 +907,23 @@ INSERT INTO `default_pages` (`id`, `slug`, `class`, `title`, `uri`, `parent_id`,
 -- 表的结构 `default_pages_features_-_page_-_type`
 --
 
-CREATE TABLE IF NOT EXISTS `default_pages_features_-_page_-_type` (
-  `id` int(9) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `default_pages_features_-_page_-_type` (
+  `id` int(9) NOT NULL auto_increment,
   `created` datetime NOT NULL,
-  `updated` datetime DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `ordering_count` int(11) DEFAULT NULL,
-  `boatservicecontent` longtext COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`id`)
+  `updated` datetime default NULL,
+  `created_by` int(11) default NULL,
+  `ordering_count` int(11) default NULL,
+  `boatservicecontent` longtext collate utf8_unicode_ci,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- 转存表中的数据 `default_pages_features_-_page_-_type`
+-- 导出表中的数据 `default_pages_features_-_page_-_type`
 --
 
 INSERT INTO `default_pages_features_-_page_-_type` (`id`, `created`, `updated`, `created_by`, `ordering_count`, `boatservicecontent`) VALUES
 (1, '2013-03-30 13:52:01', NULL, 1, 1, NULL),
-(2, '2013-04-01 05:51:56', NULL, 1, 2, NULL),
+(2, '2013-04-01 05:51:56', '2013-04-05 16:57:52', 1, 2, NULL),
 (3, '2013-04-01 05:53:07', '2013-04-01 06:07:29', 1, 3, NULL);
 
 -- --------------------------------------------------------
@@ -839,18 +932,18 @@ INSERT INTO `default_pages_features_-_page_-_type` (`id`, `created`, `updated`, 
 -- 表的结构 `default_pages_staff`
 --
 
-CREATE TABLE IF NOT EXISTS `default_pages_staff` (
-  `id` int(9) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `default_pages_staff` (
+  `id` int(9) NOT NULL auto_increment,
   `created` datetime NOT NULL,
-  `updated` datetime DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `ordering_count` int(11) DEFAULT NULL,
-  `about_us_description` longtext COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`id`)
+  `updated` datetime default NULL,
+  `created_by` int(11) default NULL,
+  `ordering_count` int(11) default NULL,
+  `about_us_description` longtext collate utf8_unicode_ci,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- 转存表中的数据 `default_pages_staff`
+-- 导出表中的数据 `default_pages_staff`
 --
 
 INSERT INTO `default_pages_staff` (`id`, `created`, `updated`, `created_by`, `ordering_count`, `about_us_description`) VALUES
@@ -863,28 +956,28 @@ INSERT INTO `default_pages_staff` (`id`, `created`, `updated`, `created_by`, `or
 -- 表的结构 `default_page_types`
 --
 
-CREATE TABLE IF NOT EXISTS `default_page_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `title` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci,
+CREATE TABLE `default_page_types` (
+  `id` int(11) NOT NULL auto_increment,
+  `slug` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `title` varchar(60) collate utf8_unicode_ci NOT NULL,
+  `description` text collate utf8_unicode_ci,
   `stream_id` int(11) NOT NULL,
-  `meta_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `meta_keywords` char(32) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `meta_description` text COLLATE utf8_unicode_ci,
-  `body` text COLLATE utf8_unicode_ci NOT NULL,
-  `css` text COLLATE utf8_unicode_ci,
-  `js` text COLLATE utf8_unicode_ci,
-  `theme_layout` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'default',
+  `meta_title` varchar(255) collate utf8_unicode_ci default NULL,
+  `meta_keywords` char(32) collate utf8_unicode_ci default NULL,
+  `meta_description` text collate utf8_unicode_ci,
+  `body` text collate utf8_unicode_ci NOT NULL,
+  `css` text collate utf8_unicode_ci,
+  `js` text collate utf8_unicode_ci,
+  `theme_layout` varchar(100) collate utf8_unicode_ci NOT NULL default 'default',
   `updated_on` int(11) NOT NULL,
-  `save_as_files` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'n',
-  `content_label` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `title_label` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `save_as_files` char(1) collate utf8_unicode_ci NOT NULL default 'n',
+  `content_label` varchar(60) collate utf8_unicode_ci default NULL,
+  `title_label` varchar(100) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
--- 转存表中的数据 `default_page_types`
+-- 导出表中的数据 `default_page_types`
 --
 
 INSERT INTO `default_page_types` (`id`, `slug`, `title`, `description`, `stream_id`, `meta_title`, `meta_keywords`, `meta_description`, `body`, `css`, `js`, `theme_layout`, `updated_on`, `save_as_files`, `content_label`, `title_label`) VALUES
@@ -900,14 +993,19 @@ INSERT INTO `default_page_types` (`id`, `slug`, `title`, `description`, `stream_
 -- 表的结构 `default_permissions`
 --
 
-CREATE TABLE IF NOT EXISTS `default_permissions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `default_permissions` (
+  `id` int(11) NOT NULL auto_increment,
   `group_id` int(11) NOT NULL,
-  `module` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `roles` text COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`id`),
+  `module` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `roles` text collate utf8_unicode_ci,
+  PRIMARY KEY  (`id`),
   KEY `group_id` (`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- 导出表中的数据 `default_permissions`
+--
+
 
 -- --------------------------------------------------------
 
@@ -915,35 +1013,35 @@ CREATE TABLE IF NOT EXISTS `default_permissions` (
 -- 表的结构 `default_profiles`
 --
 
-CREATE TABLE IF NOT EXISTS `default_profiles` (
-  `id` int(9) NOT NULL AUTO_INCREMENT,
-  `created` datetime DEFAULT NULL,
-  `updated` datetime DEFAULT NULL,
-  `created_by` int(11) DEFAULT NULL,
-  `ordering_count` int(11) DEFAULT NULL,
+CREATE TABLE `default_profiles` (
+  `id` int(9) NOT NULL auto_increment,
+  `created` datetime default NULL,
+  `updated` datetime default NULL,
+  `created_by` int(11) default NULL,
+  `ordering_count` int(11) default NULL,
   `user_id` int(11) unsigned NOT NULL,
-  `display_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `first_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `last_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `company` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lang` varchar(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'en',
-  `bio` text COLLATE utf8_unicode_ci,
-  `dob` int(11) DEFAULT NULL,
-  `gender` set('m','f','') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `mobile` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `address_line1` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `address_line2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `address_line3` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `postcode` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `website` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `updated_on` int(11) unsigned DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `display_name` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `first_name` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `last_name` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `company` varchar(100) collate utf8_unicode_ci default NULL,
+  `lang` varchar(2) collate utf8_unicode_ci NOT NULL default 'en',
+  `bio` text collate utf8_unicode_ci,
+  `dob` int(11) default NULL,
+  `gender` set('m','f','') collate utf8_unicode_ci default NULL,
+  `phone` varchar(20) collate utf8_unicode_ci default NULL,
+  `mobile` varchar(20) collate utf8_unicode_ci default NULL,
+  `address_line1` varchar(255) collate utf8_unicode_ci default NULL,
+  `address_line2` varchar(255) collate utf8_unicode_ci default NULL,
+  `address_line3` varchar(255) collate utf8_unicode_ci default NULL,
+  `postcode` varchar(20) collate utf8_unicode_ci default NULL,
+  `website` varchar(255) collate utf8_unicode_ci default NULL,
+  `updated_on` int(11) unsigned default NULL,
+  PRIMARY KEY  (`id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- 转存表中的数据 `default_profiles`
+-- 导出表中的数据 `default_profiles`
 --
 
 INSERT INTO `default_profiles` (`id`, `created`, `updated`, `created_by`, `ordering_count`, `user_id`, `display_name`, `first_name`, `last_name`, `company`, `lang`, `bio`, `dob`, `gender`, `phone`, `mobile`, `address_line1`, `address_line2`, `address_line3`, `postcode`, `website`, `updated_on`) VALUES
@@ -955,14 +1053,19 @@ INSERT INTO `default_profiles` (`id`, `created`, `updated`, `created_by`, `order
 -- 表的结构 `default_redirects`
 --
 
-CREATE TABLE IF NOT EXISTS `default_redirects` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `from` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `to` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `type` int(3) NOT NULL DEFAULT '302',
-  PRIMARY KEY (`id`),
+CREATE TABLE `default_redirects` (
+  `id` int(11) NOT NULL auto_increment,
+  `from` varchar(250) collate utf8_unicode_ci NOT NULL,
+  `to` varchar(250) collate utf8_unicode_ci NOT NULL,
+  `type` int(3) NOT NULL default '302',
+  PRIMARY KEY  (`id`),
   KEY `from` (`from`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- 导出表中的数据 `default_redirects`
+--
+
 
 -- --------------------------------------------------------
 
@@ -970,26 +1073,26 @@ CREATE TABLE IF NOT EXISTS `default_redirects` (
 -- 表的结构 `default_search_index`
 --
 
-CREATE TABLE IF NOT EXISTS `default_search_index` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `title` char(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci,
-  `keywords` text COLLATE utf8_unicode_ci,
-  `keyword_hash` char(32) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `module` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `entry_key` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `entry_plural` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `entry_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `uri` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cp_edit_uri` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cp_delete_uri` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
+CREATE TABLE `default_search_index` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `title` char(255) collate utf8_unicode_ci NOT NULL,
+  `description` text collate utf8_unicode_ci,
+  `keywords` text collate utf8_unicode_ci,
+  `keyword_hash` char(32) collate utf8_unicode_ci default NULL,
+  `module` varchar(40) collate utf8_unicode_ci default NULL,
+  `entry_key` varchar(100) collate utf8_unicode_ci default NULL,
+  `entry_plural` varchar(100) collate utf8_unicode_ci default NULL,
+  `entry_id` varchar(255) collate utf8_unicode_ci default NULL,
+  `uri` varchar(255) collate utf8_unicode_ci default NULL,
+  `cp_edit_uri` varchar(255) collate utf8_unicode_ci default NULL,
+  `cp_delete_uri` varchar(255) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `unique` (`module`,`entry_key`,`entry_id`(190)),
   FULLTEXT KEY `full search` (`title`,`description`,`keywords`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=48 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=70 ;
 
 --
--- 转存表中的数据 `default_search_index`
+-- 导出表中的数据 `default_search_index`
 --
 
 INSERT INTO `default_search_index` (`id`, `title`, `description`, `keywords`, `keyword_hash`, `module`, `entry_key`, `entry_plural`, `entry_id`, `uri`, `cp_edit_uri`, `cp_delete_uri`) VALUES
@@ -1008,14 +1111,15 @@ INSERT INTO `default_search_index` (`id`, `title`, `description`, `keywords`, `k
 (29, '关于我们-我们的会员-专用-不能删除', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '13', 'plugin-about-us-our-member', 'admin/pages/edit/13', 'admin/pages/delete/13'),
 (32, 'Device', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '14', 'plugin-about-us-our-member/device', 'admin/pages/edit/14', 'admin/pages/delete/14'),
 (33, 'Brand', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '15', 'plugin-about-us-our-member/brand', 'admin/pages/edit/15', 'admin/pages/delete/15'),
-(34, '航海中心-总页', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '16', 'boats-home', 'admin/pages/edit/16', 'admin/pages/delete/16'),
+(66, '航海中心-总页', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '16', 'boats-home', 'admin/pages/edit/16', 'admin/pages/delete/16'),
 (36, '所有服务', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '17', 'boats-home/services', 'admin/pages/edit/17', 'admin/pages/delete/17'),
 (39, '游艇鸡尾酒', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '18', 'boats-home/services/cocktail', 'admin/pages/edit/18', 'admin/pages/delete/18'),
 (40, '海上求婚仪式', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '19', 'boats-home/services/propose-marriage-sea', 'admin/pages/edit/19', 'admin/pages/delete/19'),
 (41, '游艇婚纱摄影', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '20', 'boats-home/services/wedding-photography', 'admin/pages/edit/20', 'admin/pages/delete/20'),
 (42, 'Yacht', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '21', 'boats-home/services/yacht-party', 'admin/pages/edit/21', 'admin/pages/delete/21'),
 (43, '帆船挑战赛', '', NULL, NULL, 'pages', 'pages:page', 'pages:pages', '22', 'boats-home/services/sailing-challenge', 'admin/pages/edit/22', 'admin/pages/delete/22'),
-(47, 'Voluptates ipsum eligendi', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore debitis hic illo ab alias porro reiciendis suscipit necessitatibus beatae veniam cum impedit. necessitatibus beatae veniam cum impedit. Voluptates ipsum eligendi labore sint magni earum nam.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam at dolorum dignissimos officiis assumenda ad aut ullam fugit autem ducimus voluptas odio! Dignissimos repellat explicabo exercitationem quas quis officiis saepe?\r\n&nbsp;\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore debitis hic illo ab alias porro reiciendis suscipit necessitatibus beatae veniam cum impedit. necessitatibus beatae veniam cum impedit. Voluptates ipsum eligendi labore sint magni earum nam.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam at dolorum dignissimos officiis assumenda ad aut ullam fugit autem ducimus voluptas odio! Dignissimos repellat explicabo exercitationem quas quis officiis saepe?', NULL, NULL, 'blog', 'blog:post', 'blog:posts', '2', 'blog/2013/04/voluptates-ipsum-eligendi', 'admin/blog/edit/2', 'admin/blog/delete/2');
+(67, '美国克里斯（Chris Craft）游艇正式宣布厦门蓝海游艇成为其中国总代理', '2013年&ldquo;海天盛筵&rdquo;于3月30日在海南三亚鸿洲国际游艇会及凤凰国际机场举行，在这次汇聚中国绝大多数超级游艇和公务机品牌的盛大聚会上，美国顶级游艇品牌克里斯正式宣布厦门蓝海游艇发展有限公司成为其在中国的总代理商，这也标志这个美国百年游艇品牌全面进军中国市场。\r\n\r\n&nbsp;\r\n\r\n&nbsp;&nbsp;&nbsp; 2012年7月，厦门蓝海游艇发展有限公司就取得美国Chris Craft（克里斯）游艇旗下全系游艇在中国的总代理销售权。此番是美国克里斯游艇正式宣布其中国代理销售权&ldquo;花落蓝海&rdquo;。这也使蓝海游艇正式拥有了完备的游艇代理产品线，该产品线能满足国内不同高端游艇客户群体的需求。\r\n\r\n\r\n\r\n&nbsp;\r\n\r\n&nbsp;&nbsp;&nbsp; 2012年底，厦门蓝海游艇筹备了美国克里斯游艇中国销售网络商业计划。该商业计划内容包括未来三年内在国内主要沿海城市建立克里斯游艇二级代理商，第一阶段的二级代理商涉及城市包括三亚、深圳、广州、青岛、大连、天津等，这些城市也将建设美国克里斯游艇专属展厅，方便克里斯游艇在全国范围内展开营销和售后维修服务。\r\n\r\n&nbsp;\r\n\r\n&nbsp;&nbsp;&nbsp; 美国克里斯游艇全球发展总监BASTIEN BONNET表示：厦门蓝海游艇在未成为正式代理商之前，就已经将2艘克里斯游艇成功销售给中国客户。厦门蓝海游艇专业的游艇管理和销售能力正是克里斯游艇公司需要的，同时厦门蓝海游艇也是克里斯游艇公司旗下73家代理商中最具专业的游艇代理销售公司之一，因此Bastien说他对克里斯游艇未来在中国的销售市场充满信心，厦门蓝海游艇定能做出令人满意的成绩。\r\n\r\n&nbsp;\r\n\r\n美国克里斯游艇品牌介绍\r\n\r\n&nbsp;&nbsp;&nbsp;\r\n\r\n&nbsp;&nbsp;&nbsp; 美国克里斯游艇生产的是纯手工打造的游艇，该品牌始于1874年，其船厂是全球最具声誉的造船厂之一。克里斯游艇的总部设在佛罗里达州的萨拉索塔，在过去的130多年里,这里总共建造了250000 艘游艇，克里斯游艇以此为基地，旗下有三个系列的游艇：海盗系列，火箭系列，卡塔莱娜系列，以及银色子弹20和骑兵20两个单独生产型号，在世界各地有73家代理商。\r\n\r\n&nbsp;&nbsp;&nbsp;\r\n\r\n&nbsp;&nbsp;&nbsp; 克里斯游艇的核心竞争力在其创新和设计，这使它的产品往往结合了技术和效率，充满实用性的美。克里斯游艇一般都具有独特的外形&mdash;&mdash;其光滑的外部轮廓，能给人以全新的体验。船上精致的细节, 闪闪发光的钢铁和被擦得锃亮的木头,无不呈现出传统与现代相结合的美感。\r\n\r\n&nbsp;&nbsp;&nbsp;&nbsp;\r\n\r\n&nbsp;&nbsp;&nbsp; 全球已有无数人体验过克里斯游艇的创新和品质，这其中就包括两位美国总统：法兰克林.罗斯福和约翰.肯尼迪。他们都曾乘坐克里斯游艇，携家人一起出海休闲放松。除了总统之外，还有许多美国名门望族家庭、电影明星也都曾购买过克里斯游艇。克里斯游艇还是世界电影界的&ldquo;明星&rdquo;，它的形象出现在众多经典影片和小说里，如近斯热播的暮光之城里出现的银色子弹经典传承的克里斯的速度与高贵。\r\n\r\n&nbsp;\r\n\r\n厦门蓝海游艇发展公司简介\r\n\r\n&nbsp;\r\n\r\n&nbsp;&nbsp;&nbsp; 厦门蓝海游艇公司成立于2005年，作为国内专业的游艇代理公司，蓝海游艇于2009年取得了是英国公主游艇、加拿大庞巴迪集团旗下水上运动娱乐产品、西度摩托艇CAN-AM全地形山地车的福建总代理权。并与2012年7月获得美国克里斯游艇中国总代理的授权。目前蓝海游艇销售代理的产品包括：豪华游艇、快艇、钓鱼艇、摩托艇和帆船等。随着游艇消费者的递增，自2009年12月开始，厦门蓝海游艇发展有限公司的销售量每年都超过40艘。不仅如此，厦门蓝海还是&ldquo;海洋经济产业链&rdquo;的倡导者，拥有专业的俱乐部和维修厂，为客户提供专业和完整的客户服务。蓝海游艇公司一直把游艇是一种生活方式的理念带给国人，让更多人能够尽情玩海，享受游艇生活，享受海洋生活。', '代理, 厦门, 广州', '67939a6f02cc6126ad44b1974e88af58', 'blog', 'blog:post', 'blog:posts', '3', 'blog/2013/04/chris-craft', 'admin/blog/edit/3', 'admin/blog/delete/3'),
+(69, 'Voluptates ipsum eligendi', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore debitis hic illo ab alias porro reiciendis suscipit necessitatibus beatae veniam cum impedit. necessitatibus beatae veniam cum impedit. Voluptates ipsum eligendi labore sint magni earum nam.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam at dolorum dignissimos officiis assumenda ad aut ullam fugit autem ducimus voluptas odio! Dignissimos repellat explicabo exercitationem quas quis officiis saepe?\r\n&nbsp;\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore debitis hic illo ab alias porro reiciendis suscipit necessitatibus beatae veniam cum impedit. necessitatibus beatae veniam cum impedit. Voluptates ipsum eligendi labore sint magni earum nam.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam at dolorum dignissimos officiis assumenda ad aut ullam fugit autem ducimus voluptas odio! Dignissimos repellat explicabo exercitationem quas quis officiis saepe?', '厦门, 奢侈, 游艇', '29d1ccabeaca8d3c484faee2c66b93de', 'blog', 'blog:post', 'blog:posts', '2', 'blog/2013/04/voluptates-ipsum-eligendi', 'admin/blog/edit/2', 'admin/blog/delete/2');
 
 -- --------------------------------------------------------
 
@@ -1023,25 +1127,25 @@ INSERT INTO `default_search_index` (`id`, `title`, `description`, `keywords`, `k
 -- 表的结构 `default_settings`
 --
 
-CREATE TABLE IF NOT EXISTS `default_settings` (
-  `slug` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `type` set('text','textarea','password','select','select-multiple','radio','checkbox') COLLATE utf8_unicode_ci NOT NULL,
-  `default` text COLLATE utf8_unicode_ci NOT NULL,
-  `value` text COLLATE utf8_unicode_ci NOT NULL,
-  `options` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `default_settings` (
+  `slug` varchar(30) collate utf8_unicode_ci NOT NULL,
+  `title` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `description` text collate utf8_unicode_ci NOT NULL,
+  `type` set('text','textarea','password','select','select-multiple','radio','checkbox') collate utf8_unicode_ci NOT NULL,
+  `default` text collate utf8_unicode_ci NOT NULL,
+  `value` text collate utf8_unicode_ci NOT NULL,
+  `options` varchar(255) collate utf8_unicode_ci NOT NULL,
   `is_required` int(1) NOT NULL,
   `is_gui` int(1) NOT NULL,
-  `module` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `order` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`slug`),
+  `module` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `order` int(10) NOT NULL default '0',
+  PRIMARY KEY  (`slug`),
   UNIQUE KEY `unique_slug` (`slug`),
   KEY `slug` (`slug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 转存表中的数据 `default_settings`
+-- 导出表中的数据 `default_settings`
 --
 
 INSERT INTO `default_settings` (`slug`, `title`, `description`, `type`, `default`, `value`, `options`, `is_required`, `is_gui`, `module`, `order`) VALUES
@@ -1089,7 +1193,7 @@ INSERT INTO `default_settings` (`slug`, `title`, `description`, `type`, `default
 ('meta_topic', 'Meta Topic', 'Two or three words describing this type of company/website.', 'text', 'Content Management', 'Add your slogan here', '', 0, 1, '', 998),
 ('moderate_comments', 'Moderate Comments', 'Force comments to be approved before they appear on the site.', 'radio', '1', '1', '1=Enabled|0=Disabled', 1, 1, 'comments', 967),
 ('profile_visibility', 'Profile Visibility', 'Specify who can view user profiles on the public site', 'select', 'public', '', 'public=profile_public|owner=profile_owner|hidden=profile_hidden|member=profile_member', 0, 1, 'users', 960),
-('records_per_page', 'Records Per Page', 'How many records should we show per page in the admin section?', 'select', '25', '', '10=10|25=25|50=50|100=100', 1, 1, '', 992),
+('records_per_page', 'Records Per Page', 'How many records should we show per page in the admin section?', 'select', '25', '10', '10=10|25=25|50=50|100=100', 1, 1, '', 992),
 ('registered_email', 'User Registered Email', 'Send a notification email to the contact e-mail when someone registers.', 'radio', '1', '', '1=Enabled|0=Disabled', 0, 1, 'users', 962),
 ('require_lastname', 'Require last names?', 'For some situations, a last name may not be required. Do you want to force users to enter one or not?', 'radio', '1', '', '1=Required|0=Optional', 1, 1, 'users', 962),
 ('rss_feed_items', 'Feed item count', 'How many items should we show in RSS/blog feeds?', 'select', '25', '', '10=10|25=25|50=50|100=100', 1, 1, '', 991),
@@ -1109,22 +1213,22 @@ INSERT INTO `default_settings` (`slug`, `title`, `description`, `type`, `default
 -- 表的结构 `default_theme_options`
 --
 
-CREATE TABLE IF NOT EXISTS `default_theme_options` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `slug` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `type` set('text','textarea','password','select','select-multiple','radio','checkbox','colour-picker') COLLATE utf8_unicode_ci NOT NULL,
-  `default` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `value` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `options` text COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `default_theme_options` (
+  `id` int(11) NOT NULL auto_increment,
+  `slug` varchar(30) collate utf8_unicode_ci NOT NULL,
+  `title` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `description` text collate utf8_unicode_ci NOT NULL,
+  `type` set('text','textarea','password','select','select-multiple','radio','checkbox','colour-picker') collate utf8_unicode_ci NOT NULL,
+  `default` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `value` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `options` text collate utf8_unicode_ci NOT NULL,
   `is_required` int(1) NOT NULL,
-  `theme` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
+  `theme` varchar(50) collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 --
--- 转存表中的数据 `default_theme_options`
+-- 导出表中的数据 `default_theme_options`
 --
 
 INSERT INTO `default_theme_options` (`id`, `slug`, `title`, `description`, `type`, `default`, `value`, `options`, `is_required`, `theme`) VALUES
@@ -1150,30 +1254,30 @@ INSERT INTO `default_theme_options` (`id`, `slug`, `title`, `description`, `type
 -- 表的结构 `default_users`
 --
 
-CREATE TABLE IF NOT EXISTS `default_users` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `email` varchar(60) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `salt` varchar(6) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `group_id` int(11) DEFAULT NULL,
-  `ip_address` varchar(16) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `active` int(1) DEFAULT NULL,
-  `activation_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+CREATE TABLE `default_users` (
+  `id` smallint(5) unsigned NOT NULL auto_increment,
+  `email` varchar(60) collate utf8_unicode_ci NOT NULL default '',
+  `password` varchar(100) collate utf8_unicode_ci NOT NULL default '',
+  `salt` varchar(6) collate utf8_unicode_ci NOT NULL default '',
+  `group_id` int(11) default NULL,
+  `ip_address` varchar(16) collate utf8_unicode_ci default NULL,
+  `active` int(1) default NULL,
+  `activation_code` varchar(40) collate utf8_unicode_ci default NULL,
   `created_on` int(11) NOT NULL,
   `last_login` int(11) NOT NULL,
-  `username` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `forgotten_password_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `remember_code` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
+  `username` varchar(20) collate utf8_unicode_ci default NULL,
+  `forgotten_password_code` varchar(40) collate utf8_unicode_ci default NULL,
+  `remember_code` varchar(40) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`),
   KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Registered User Information' AUTO_INCREMENT=2 ;
 
 --
--- 转存表中的数据 `default_users`
+-- 导出表中的数据 `default_users`
 --
 
 INSERT INTO `default_users` (`id`, `email`, `password`, `salt`, `group_id`, `ip_address`, `active`, `activation_code`, `created_on`, `last_login`, `username`, `forgotten_password_code`, `remember_code`) VALUES
-(1, 'gz.liangrongze@gmail.com', '69ee83c02a47a75bdc68a0036778ed9b2a6a68b4', 'ae10d', 1, '', 1, '', 1364475573, 1364807127, 'cbc', NULL, 'eeedc184c9df6c32b5233cf6291fec727439ee6e');
+(1, 'gz.liangrongze@gmail.com', '69ee83c02a47a75bdc68a0036778ed9b2a6a68b4', 'ae10d', 1, '', 1, '', 1364475573, 1365239319, 'cbc', NULL, 'eeedc184c9df6c32b5233cf6291fec727439ee6e');
 
 -- --------------------------------------------------------
 
@@ -1181,12 +1285,17 @@ INSERT INTO `default_users` (`id`, `email`, `password`, `salt`, `group_id`, `ip_
 -- 表的结构 `default_variables`
 --
 
-CREATE TABLE IF NOT EXISTS `default_variables` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `data` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `default_variables` (
+  `id` int(11) NOT NULL auto_increment,
+  `name` varchar(250) collate utf8_unicode_ci default NULL,
+  `data` varchar(250) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+--
+-- 导出表中的数据 `default_variables`
+--
+
 
 -- --------------------------------------------------------
 
@@ -1194,22 +1303,22 @@ CREATE TABLE IF NOT EXISTS `default_variables` (
 -- 表的结构 `default_widgets`
 --
 
-CREATE TABLE IF NOT EXISTS `default_widgets` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `slug` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `title` text COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `author` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `website` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `version` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
-  `enabled` int(1) NOT NULL DEFAULT '1',
-  `order` int(10) NOT NULL DEFAULT '0',
-  `updated_on` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
+CREATE TABLE `default_widgets` (
+  `id` int(11) NOT NULL auto_increment,
+  `slug` varchar(100) collate utf8_unicode_ci NOT NULL default '',
+  `title` text collate utf8_unicode_ci NOT NULL,
+  `description` text collate utf8_unicode_ci NOT NULL,
+  `author` varchar(100) collate utf8_unicode_ci NOT NULL default '',
+  `website` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `version` varchar(20) collate utf8_unicode_ci NOT NULL default '0',
+  `enabled` int(1) NOT NULL default '1',
+  `order` int(10) NOT NULL default '0',
+  `updated_on` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 --
--- 转存表中的数据 `default_widgets`
+-- 导出表中的数据 `default_widgets`
 --
 
 INSERT INTO `default_widgets` (`id`, `slug`, `title`, `description`, `author`, `website`, `version`, `enabled`, `order`, `updated_on`) VALUES
@@ -1217,16 +1326,19 @@ INSERT INTO `default_widgets` (`id`, `slug`, `title`, `description`, `author`, `
 (2, 'html', 's:4:"HTML";', 'a:9:{s:2:"en";s:28:"Create blocks of custom HTML";s:2:"el";s:80:"Δημιουργήστε περιοχές με δικό σας κώδικα HTML";s:2:"br";s:41:"Permite criar blocos de HTML customizados";s:2:"pt";s:41:"Permite criar blocos de HTML customizados";s:2:"nl";s:30:"Maak blokken met maatwerk HTML";s:2:"ru";s:83:"Создание HTML-блоков с произвольным содержимым";s:2:"id";s:24:"Membuat blok HTML apapun";s:2:"fi";s:32:"Luo lohkoja omasta HTML koodista";s:2:"fr";s:36:"Créez des blocs HTML personnalisés";}', 'Phil Sturgeon', 'http://philsturgeon.co.uk/', '1.0.0', 1, 2, 1364485040),
 (3, 'login', 'a:9:{s:2:"en";s:5:"Login";s:2:"el";s:14:"Σύνδεση";s:2:"nl";s:5:"Login";s:2:"br";s:5:"Login";s:2:"pt";s:5:"Login";s:2:"ru";s:22:"Вход на сайт";s:2:"id";s:5:"Login";s:2:"fi";s:13:"Kirjautuminen";s:2:"fr";s:9:"Connexion";}', 'a:9:{s:2:"en";s:36:"Display a simple login form anywhere";s:2:"el";s:96:"Προβάλετε μια απλή φόρμα σύνδεσης χρήστη οπουδήποτε";s:2:"br";s:69:"Permite colocar um formulário de login em qualquer lugar do seu site";s:2:"pt";s:69:"Permite colocar um formulário de login em qualquer lugar do seu site";s:2:"nl";s:32:"Toon overal een simpele loginbox";s:2:"ru";s:72:"Выводит простую форму для входа на сайт";s:2:"id";s:32:"Menampilkan form login sederhana";s:2:"fi";s:52:"Näytä yksinkertainen kirjautumislomake missä vain";s:2:"fr";s:54:"Affichez un formulaire de connexion où vous souhaitez";}', 'Phil Sturgeon', 'http://philsturgeon.co.uk/', '1.0.0', 1, 3, 1364748046),
 (4, 'navigation', 'a:9:{s:2:"en";s:10:"Navigation";s:2:"el";s:16:"Πλοήγηση";s:2:"nl";s:9:"Navigatie";s:2:"br";s:11:"Navegação";s:2:"pt";s:11:"Navegação";s:2:"ru";s:18:"Навигация";s:2:"id";s:8:"Navigasi";s:2:"fi";s:10:"Navigaatio";s:2:"fr";s:10:"Navigation";}', 'a:9:{s:2:"en";s:40:"Display a navigation group with a widget";s:2:"el";s:100:"Προβάλετε μια ομάδα στοιχείων πλοήγησης στον ιστότοπο";s:2:"nl";s:38:"Toon een navigatiegroep met een widget";s:2:"br";s:62:"Exibe um grupo de links de navegação como widget em seu site";s:2:"pt";s:62:"Exibe um grupo de links de navegação como widget no seu site";s:2:"ru";s:88:"Отображает навигационную группу внутри виджета";s:2:"id";s:44:"Menampilkan grup navigasi menggunakan widget";s:2:"fi";s:37:"Näytä widgetillä navigaatio ryhmä";s:2:"fr";s:47:"Affichez un groupe de navigation dans un widget";}', 'Phil Sturgeon', 'http://philsturgeon.co.uk/', '1.2.0', 1, 4, 1364748528),
-(5, 'rss_feed', 'a:9:{s:2:"en";s:8:"RSS Feed";s:2:"el";s:24:"Τροφοδοσία RSS";s:2:"nl";s:8:"RSS Feed";s:2:"br";s:8:"Feed RSS";s:2:"pt";s:8:"Feed RSS";s:2:"ru";s:31:"Лента новостей RSS";s:2:"id";s:8:"RSS Feed";s:2:"fi";s:10:"RSS Syöte";s:2:"fr";s:8:"Flux RSS";}', 'a:9:{s:2:"en";s:41:"Display parsed RSS feeds on your websites";s:2:"el";s:82:"Προβάλετε τα περιεχόμενα μιας τροφοδοσίας RSS";s:2:"nl";s:28:"Toon RSS feeds op uw website";s:2:"br";s:48:"Interpreta e exibe qualquer feed RSS no seu site";s:2:"pt";s:48:"Interpreta e exibe qualquer feed RSS no seu site";s:2:"ru";s:94:"Выводит обработанную ленту новостей на вашем сайте";s:2:"id";s:42:"Menampilkan kutipan RSS feed di situs Anda";s:2:"fi";s:39:"Näytä purettu RSS syöte sivustollasi";s:2:"fr";s:39:"Affichez un flux RSS sur votre site web";}', 'Phil Sturgeon', 'http://philsturgeon.co.uk/', '1.2.0', 1, 5, 1364485040),
+(5, 'rss_feed', 'a:9:{s:2:"en";s:8:"RSS Feed";s:2:"el";s:24:"Τροφοδοσία RSS";s:2:"nl";s:8:"RSS Feed";s:2:"br";s:8:"Feed RSS";s:2:"pt";s:8:"Feed RSS";s:2:"ru";s:31:"Лента новостей RSS";s:2:"id";s:8:"RSS Feed";s:2:"fi";s:10:"RSS Syöte";s:2:"fr";s:8:"Flux RSS";}', 'a:9:{s:2:"en";s:41:"Display parsed RSS feeds on your websites";s:2:"el";s:82:"Προβάλετε τα περιεχόμενα μιας τροφοδοσίας RSS";s:2:"nl";s:28:"Toon RSS feeds op uw website";s:2:"br";s:48:"Interpreta e exibe qualquer feed RSS no seu site";s:2:"pt";s:48:"Interpreta e exibe qualquer feed RSS no seu site";s:2:"ru";s:94:"Выводит обработанную ленту новостей на вашем сайте";s:2:"id";s:42:"Menampilkan kutipan RSS feed di situs Anda";s:2:"fi";s:39:"Näytä purettu RSS syöte sivustollasi";s:2:"fr";s:39:"Affichez un flux RSS sur votre site web";}', 'Phil Sturgeon', 'http://philsturgeon.co.uk/', '1.2.0', 1, 5, 1365153667),
 (6, 'social_bookmark', 'a:9:{s:2:"en";s:15:"Social Bookmark";s:2:"el";s:35:"Κοινωνική δικτύωση";s:2:"nl";s:19:"Sociale Bladwijzers";s:2:"br";s:15:"Social Bookmark";s:2:"pt";s:15:"Social Bookmark";s:2:"ru";s:37:"Социальные закладки";s:2:"id";s:15:"Social Bookmark";s:2:"fi";s:24:"Sosiaalinen kirjanmerkki";s:2:"fr";s:13:"Liens sociaux";}', 'a:9:{s:2:"en";s:47:"Configurable social bookmark links from AddThis";s:2:"el";s:111:"Παραμετροποιήσιμα στοιχεία κοινωνικής δικτυώσης από το AddThis";s:2:"nl";s:43:"Voeg sociale bladwijzers toe vanuit AddThis";s:2:"br";s:87:"Adiciona links de redes sociais usando o AddThis, podendo fazer algumas configurações";s:2:"pt";s:87:"Adiciona links de redes sociais usando o AddThis, podendo fazer algumas configurações";s:2:"ru";s:90:"Конфигурируемые социальные закладки с сайта AddThis";s:2:"id";s:60:"Tautan social bookmark yang dapat dikonfigurasi dari AddThis";s:2:"fi";s:59:"Konfiguroitava sosiaalinen kirjanmerkki linkit AddThis:stä";s:2:"fr";s:43:"Liens sociaux personnalisables avec AddThis";}', 'Phil Sturgeon', 'http://philsturgeon.co.uk/', '1.0.0', 1, 6, 1364485040),
 (7, 'archive', 'a:7:{s:2:"en";s:7:"Archive";s:2:"br";s:15:"Arquivo do Blog";s:2:"pt";s:15:"Arquivo do Blog";s:2:"el";s:33:"Αρχείο Ιστολογίου";s:2:"fr";s:16:"Archives du Blog";s:2:"ru";s:10:"Архив";s:2:"id";s:7:"Archive";}', 'a:7:{s:2:"en";s:64:"Display a list of old months with links to posts in those months";s:2:"br";s:95:"Mostra uma lista navegação cronológica contendo o índice dos artigos publicados mensalmente";s:2:"pt";s:95:"Mostra uma lista navegação cronológica contendo o índice dos artigos publicados mensalmente";s:2:"el";s:155:"Προβάλλει μια λίστα μηνών και συνδέσμους σε αναρτήσεις που έγιναν σε κάθε από αυτούς";s:2:"fr";s:95:"Permet d''afficher une liste des mois passés avec des liens vers les posts relatifs à ces mois";s:2:"ru";s:114:"Выводит список по месяцам со ссылками на записи в этих месяцах";s:2:"id";s:63:"Menampilkan daftar bulan beserta tautan post di setiap bulannya";}', 'Phil Sturgeon', 'http://philsturgeon.co.uk/', '1.0.0', 1, 7, 1364485040),
 (8, 'blog_categories', 'a:7:{s:2:"en";s:15:"Blog Categories";s:2:"br";s:18:"Categorias do Blog";s:2:"pt";s:18:"Categorias do Blog";s:2:"el";s:41:"Κατηγορίες Ιστολογίου";s:2:"fr";s:19:"Catégories du Blog";s:2:"ru";s:29:"Категории Блога";s:2:"id";s:12:"Kateori Blog";}', 'a:7:{s:2:"en";s:30:"Show a list of blog categories";s:2:"br";s:57:"Mostra uma lista de navegação com as categorias do Blog";s:2:"pt";s:57:"Mostra uma lista de navegação com as categorias do Blog";s:2:"el";s:97:"Προβάλει την λίστα των κατηγοριών του ιστολογίου σας";s:2:"fr";s:49:"Permet d''afficher la liste de Catégories du Blog";s:2:"ru";s:57:"Выводит список категорий блога";s:2:"id";s:35:"Menampilkan daftar kategori tulisan";}', 'Stephen Cozart', 'http://github.com/clip/', '1.0.0', 1, 8, 1364485040),
 (9, 'latest_posts', 'a:7:{s:2:"en";s:12:"Latest posts";s:2:"br";s:24:"Artigos recentes do Blog";s:2:"pt";s:24:"Artigos recentes do Blog";s:2:"el";s:62:"Τελευταίες αναρτήσεις ιστολογίου";s:2:"fr";s:17:"Derniers articles";s:2:"ru";s:31:"Последние записи";s:2:"id";s:12:"Post Terbaru";}', 'a:7:{s:2:"en";s:39:"Display latest blog posts with a widget";s:2:"br";s:81:"Mostra uma lista de navegação para abrir os últimos artigos publicados no Blog";s:2:"pt";s:81:"Mostra uma lista de navegação para abrir os últimos artigos publicados no Blog";s:2:"el";s:103:"Προβάλει τις πιο πρόσφατες αναρτήσεις στο ιστολόγιό σας";s:2:"fr";s:68:"Permet d''afficher la liste des derniers posts du blog dans un Widget";s:2:"ru";s:100:"Выводит список последних записей блога внутри виджета";s:2:"id";s:51:"Menampilkan posting blog terbaru menggunakan widget";}', 'Erik Berman', 'http://www.nukleo.fr', '1.0.0', 1, 9, 1364485040),
 (10, 'ImageWidget', 's:18:"设置滚动图片";', 'a:1:{s:2:"en";s:24:"设置首页滚动图片";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 10, 1364752500),
 (11, 'HomeTagsWidget', 's:15:"设置首页Tab";', 'a:1:{s:2:"en";s:15:"设置首页Tab";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 11, 1364754520),
-(12, 'AboutUsBoatsWidget', 's:15:"我们的游艇";', 'a:1:{s:2:"en";s:21:"设置我们的游艇";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 12, 1364783686),
-(13, 'AboutUsMemberWidget', 's:15:"我们的会员";', 'a:1:{s:2:"en";s:21:"设置我们的会员";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 13, 1364798323),
-(14, 'AllServiceIconWidget', 's:25:"所有服务-图标设置";', 'a:1:{s:2:"en";s:25:"所有服务-图标设置";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 14, 1364800047);
+(12, 'AboutUsBoatsWidget', 's:15:"我们的游艇";', 'a:1:{s:2:"en";s:21:"设置我们的游艇";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 12, 1365153667),
+(13, 'AboutUsMemberWidget', 's:15:"我们的会员";', 'a:1:{s:2:"en";s:21:"设置我们的会员";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 13, 1365153667),
+(14, 'AllServiceIconWidget', 's:25:"所有服务-图标设置";', 'a:1:{s:2:"en";s:25:"所有服务-图标设置";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 14, 1365153667),
+(15, 'BlogCategoryWidget', 's:12:"所有分类";', 'a:1:{s:2:"en";s:12:"所有分类";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 15, 1365179922),
+(16, 'BlogHotWidget', 's:12:"热门消息";', 'a:1:{s:2:"en";s:35:"热门消息-在blog首页中使用";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 16, 1365236240),
+(17, 'BlogTagWidget', 's:12:"热门话题";', 'a:1:{s:2:"en";s:12:"热门话题";}', '梁荣泽', 'http://liangrongze.com/', '1.0', 1, 17, 1365236240);
 
 -- --------------------------------------------------------
 
@@ -1234,22 +1346,23 @@ INSERT INTO `default_widgets` (`id`, `slug`, `title`, `description`, `author`, `
 -- 表的结构 `default_widget_areas`
 --
 
-CREATE TABLE IF NOT EXISTS `default_widget_areas` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `slug` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+CREATE TABLE `default_widget_areas` (
+  `id` int(11) NOT NULL auto_increment,
+  `slug` varchar(100) collate utf8_unicode_ci default NULL,
+  `title` varchar(100) collate utf8_unicode_ci default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
 
 --
--- 转存表中的数据 `default_widget_areas`
+-- 导出表中的数据 `default_widget_areas`
 --
 
 INSERT INTO `default_widget_areas` (`id`, `slug`, `title`) VALUES
 (1, 'sidebar', '首页-挂件'),
 (2, 'home', '其他挂件'),
 (3, 'about-us', '关于我们挂件'),
-(4, 'all_service_widgets', '所有服务页面挂件');
+(4, 'all_service_widgets', '所有服务页面挂件'),
+(5, 'blog-index', '博客首页');
 
 -- --------------------------------------------------------
 
@@ -1257,20 +1370,20 @@ INSERT INTO `default_widget_areas` (`id`, `slug`, `title`) VALUES
 -- 表的结构 `default_widget_instances`
 --
 
-CREATE TABLE IF NOT EXISTS `default_widget_instances` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `widget_id` int(11) DEFAULT NULL,
-  `widget_area_id` int(11) DEFAULT NULL,
-  `options` text COLLATE utf8_unicode_ci NOT NULL,
-  `order` int(10) NOT NULL DEFAULT '0',
-  `created_on` int(11) NOT NULL DEFAULT '0',
-  `updated_on` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=22 ;
+CREATE TABLE `default_widget_instances` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(100) collate utf8_unicode_ci default NULL,
+  `widget_id` int(11) default NULL,
+  `widget_area_id` int(11) default NULL,
+  `options` text collate utf8_unicode_ci NOT NULL,
+  `order` int(10) NOT NULL default '0',
+  `created_on` int(11) NOT NULL default '0',
+  `updated_on` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=25 ;
 
 --
--- 转存表中的数据 `default_widget_instances`
+-- 导出表中的数据 `default_widget_instances`
 --
 
 INSERT INTO `default_widget_instances` (`id`, `title`, `widget_id`, `widget_area_id`, `options`, `order`, `created_on`, `updated_on`) VALUES
@@ -1291,8 +1404,7 @@ INSERT INTO `default_widget_instances` (`id`, `title`, `widget_id`, `widget_area
 (18, '商务', 14, 4, 'a:2:{s:10:"tags_title";s:6:"商务";s:8:"image_id";s:15:"84796412fafa904";}', 5, 1364800562, 0),
 (19, '独特', 14, 4, 'a:2:{s:10:"tags_title";s:6:"独特";s:8:"image_id";s:15:"e2db4fc5ca3d372";}', 6, 1364800590, 0),
 (20, '唯一', 14, 4, 'a:2:{s:10:"tags_title";s:6:"唯一";s:8:"image_id";s:15:"89da41ffb584855";}', 7, 1364800618, 0),
-(21, '享受', 14, 4, 'a:2:{s:10:"tags_title";s:6:"享受";s:8:"image_id";s:15:"89da41ffb584855";}', 8, 1364800635, 0);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+(21, '享受', 14, 4, 'a:2:{s:10:"tags_title";s:6:"享受";s:8:"image_id";s:15:"89da41ffb584855";}', 8, 1364800635, 0),
+(22, '博客-分类', 15, 5, 'a:3:{s:10:"show_title";s:1:"1";s:3:"num";s:1:"4";s:8:"show_all";s:1:"1";}', 1, 1365153988, 1365154800),
+(23, '热门消息', 16, 5, 'a:2:{s:3:"num";s:1:"3";s:7:"is_show";s:1:"1";}', 2, 1365179956, 0),
+(24, '热门话题', 17, 5, 'a:2:{s:10:"show_title";s:1:"1";s:3:"num";s:1:"2";}', 3, 1365218520, 1365221038);
