@@ -1372,6 +1372,7 @@ ol.comment-list li {
     border-top: 1px solid #E8E7EA;
     float: left;
     padding: 15px 0 10px;
+	width:770px;
 }
 ol.comment-list li:first-child {
     border: medium none;

@@ -1,45 +1,44 @@
-<h3><?php echo sprintf(lang('comments:edit_title'), $comment->id); ?></h3>
+<?php echo form_open('comments/create/blog', 'class="crud"'); ?>
 
-<?php echo form_open($this->uri->uri_string(), 'class="crud"'); ?>
+	<?php echo form_hidden('entry', $entry_hash) ?>
+	
+	<div class="row">
+				<div class="span8 white-content post-form">
 
-	<?php echo form_hidden('user_id', $comment->user_id); ?>
-	<?php echo form_hidden('active', $comment->is_active); ?>
+					<div class="separator">
+						<div class="left">
+							<div class="lines">
+								<div>
+								<h2 class="lines-title">Add your comment</h2>
+								</div>
+							</div>
+						</div>
+					</div>					
 
-	<ul class="fields">
-		<?php if ( ! $comment->user_id > 0): ?>
-		<li class="even">
-			<label for="name"><?php echo lang('comments:name_label'); ?>:</label>
-			<?php echo form_input('name', $comment->name, 'maxlength="100"'); ?>
-		</li>
+					<form method="post">
+						<?php if ( ! is_logged_in()): ?>
+						<div class="clearfix">
+							<div class="input">
+								<input type="text" placeholder="Enter your name" name="name" class="span3">						
+							</div>
+						</div>
 
-		<li>
-			<label for="email"><?php echo lang('comments:email_label'); ?>:</label>
-			<?php echo form_input('email', $comment->email, 'maxlength="100"'); ?>
-		</li>
-		<?php else: ?>
-		<li class="even">
-			<label><?php echo lang('comments:name_label'); ?>:</label>
-			<p><?php echo $comment->name; ?></p>
-		</li>
-		<li>
-			<label><?php echo lang('comments:email_label'); ?>:</label>
-			<p><?php echo $comment->email; ?></p>
-		</li>
-		<?php endif; ?>
+						<span class="visual"><i class="icon-comments"></i></span>
 
-		<li class="even">
-			<label for="body"><?php echo lang('comments:message_label'); ?>:</label><br />
-			<?php echo form_textarea(array('name'=>'comment', 'value' => $comment->comment, 'rows' => 5, 'class'=>'wysiwyg-simple')); ?>
-		</li>
+						<div class="clearfix">
+							<div class="input">
+								<input type="text" placeholder="Enter email adress" name="email" class="span3">		
+							</div>
+						</div>
+						<?php endif ?>
+						<div class="field clearfix">
+							<textarea class="text textarea" name="comment"></textarea>
+						</div>
 
-		<li>
-			<label for="website"><?php echo lang('comments:website_label'); ?>:</label>
-			<?php echo form_input('website', $comment->website); ?>
-		</li>
-	</ul>
-
-	<div class="buttons float-right padding-top">
-		<?php $this->load->view('admin/partials/buttons', array('buttons' => array('save', 'cancel') )); ?>
-	</div>
-
+						<div class="actions">
+							<button tabindex="3" type="submit" class="btn btn-color">Send</button>
+						</div>
+					</form>
+				</div><!--end: send comment  --> 
+			</div>
 <?php echo form_close(); ?>
