@@ -646,7 +646,7 @@ class CI_Upload {
 			return TRUE;
 		}
 
-		return FALSE;
+		return TRUE;
 	}
 
 	// --------------------------------------------------------------------

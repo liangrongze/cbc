@@ -22,6 +22,7 @@
   	{{ theme:css file="bootstrap.css" }}
 	{{ theme:css file="bootstrap-responsive.css" }}
 	{{ theme:css file="style.css" }}
+	{{ theme:css file="uploadify.css" }}
   	<!-- End CSS-->
 
 	<!-- Load up some favicons -->
@@ -33,7 +34,7 @@
     <!--[if IE 8]>
 		<style>.boxy{position:relative;width:150px;height:150px;}.flipper {overflow: hidden;}.subscribe input[type="text"], .subscribe textarea {width: 35%;}.plan-background {background-position: center;background-repeat: repeat-x;border:none;} .sign-background {background-position: center;background-repeat: repeat-x;border:none;}.countdown-background {background-position: center;background-repeat: repeat-x;border:none;}.page-title {background-position: center;background-repeat: repeat-x;border:none;}.img-mask .flipper {display: none;}</style>	
 	<![endif]-->
-	
+		{{ theme:js file="jquery.js" }}
 </head>
 
 <body>
@@ -55,15 +56,15 @@
 				<div id="top-navigation" class="nav-collapse subnav-collapse collapse ">
 					<ul class="nav pull-right">
 						<li class="active">
-							<?php echo anchor('home-new', "首页"); ?>
+							<?php echo anchor('home-new', "首页"); ?></li>
 						<li class=""><?php echo anchor('aboutus', "关于我们"); ?></li>
-						</li>
+						
 						<li class="dropdown">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">会员中心<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="portfolio-item.html">会员福利</a></li>
 								<li><a href="plan.html">会员价格</a></li>
-								<li><a href="sign-up.html">加入我们</a></li>
+								<li><?php echo anchor('users/register', "加入我们"); ?></li></li>
 								<li><a href="portfolio.html">会员章程</a></li>
 								<li><a href="password.html">常见问题</a></li>													
 							</ul>

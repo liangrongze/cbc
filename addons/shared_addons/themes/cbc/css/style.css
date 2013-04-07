@@ -1185,8 +1185,14 @@ box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3) inset;
     text-align: center;
     margin-bottom: 20px;
 }
+.btn-avatar-upload{
+    text-align: center;
+    margin-bottom: 20px;
+    margin-left: 10px;
+	display:none;
+}
 .btn-account { 
-   width: 113%;
+   width: 70%;
 }
 
 /* ===== #sign up ===== */
@@ -2227,5 +2233,9 @@ body {padding-top: 0px;}
 @media (max-width: 340px) {
     .thumbnail-box{margin-left: 65px}
     .section-portfolio .container{margin-left: 10px;}
+}
+
+.error{
+	color:red;
 }
 

@@ -379,7 +379,8 @@ class Users extends Public_Controller
 				{
 					$profile_data['display_name'] = $username;
 				}
-
+				$profile_data['avatar'] = $this->input->post('file_name');
+				$profile_data['avatar_src'] = $this->input->post('src_name');
 				// We are registering with a null group_id so we just
 				// use the default user ID in the settings.
 				$id = $this->ion_auth->register($username, $password, $email, null, $profile_data);
@@ -873,6 +874,38 @@ class Users extends Public_Controller
 		}
 
 		return true;
+	}
+
+	/*上传图像*/
+	public function upload(){
+
+			$config['upload_path'] 		= 'uploads/default/users/';
+			$config['allowed_types']    = 'gif|jpg|png';
+			$config['max_size']			= 2097152;
+
+			$this->load->library('upload', $config);
+
+			if ($this->upload->do_upload('Filedata'))
+			{
+				$upload_data = $this->upload->data();
+				// CONFIGURE IMAGE LIBRARY
+				$conf['image_library']    = 'gd2';
+				$conf['source_image']     = $config['upload_path'].$upload_data['file_name'];
+				$conf['new_image']        = md5(time().rand(100000,20000)).$upload_data['file_ext'];
+				$conf['width']            = 130;
+				$this->image_lib->initialize($conf);
+				$status = $this->image_lib->resize();
+				$this->image_lib->clear();
+				
+				if( $status ){
+					echo json_encode(array('status'=>'success','src_name'=>$upload_data['file_name'],'file_name'=>$conf['new_image'],'path'=>$config['upload_path'].$conf['new_image']));
+				}else{
+					echo json_encode(array('status'=>'fail','msg'=>'上传失败，请联系管理员'));
+				}
+				
+			}else{
+				echo json_encode(array('status'=>'fail','msg'=>$this->upload->display_errors()));
+			}
 	}
 
 }
