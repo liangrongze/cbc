@@ -211,10 +211,11 @@ class CI_Email {
 			}
 			else
 			{
-				$name = $this->_prep_q_encoding($name, TRUE);
+				$name = '=?'. $this->charset .'?B?'. base64_encode($name) .'?=';
+				//$name = $this->_prep_q_encoding($name, TRUE);
 			}
 		}
-
+		
 		$this->set_header('From', $name.' <'.$from.'>');
 		$this->set_header('Return-Path', '<'.$from.'>');
 
@@ -368,7 +369,8 @@ class CI_Email {
 	 */
 	public function subject($subject)
 	{
-		$subject = $this->_prep_q_encoding($subject);
+		//$subject = $this->_prep_q_encoding($subject);
+		$subject = '=?'. $this->charset .'?B?'. base64_encode($subject) .'?=';
 		$this->set_header('Subject', $subject);
 		return $this;
 	}
