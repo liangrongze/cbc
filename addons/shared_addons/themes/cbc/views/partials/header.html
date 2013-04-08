@@ -62,8 +62,7 @@
 						<li class="dropdown">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">会员中心<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="portfolio-item.html">会员福利</a></li>
-								<li><a href="plan.html"></a></li>
+								<li><?php echo anchor('Benefits', "会员福利"); ?></li></li>
 								<li><?php echo anchor('plan', "会员价格"); ?></li></li>
 								<li><?php echo anchor('users/register', "加入我们"); ?></li></li>
 								<li><?php echo anchor('member-rule', "会员章程"); ?></li></li>
@@ -74,20 +73,19 @@
 						<li class="dropdown">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">航海中心<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><?php echo anchor('boats-home/services', "所有服务"); ?><a href="features.html"></a></li>
-								<li><a href="plan.html">生日派对</a></li>
+								<li><?php echo anchor('boats-home/services', "所有服务"); ?></li>
+								<li><?php echo anchor('party', "生日派对"); ?></li>
+								<!--
 								<li><a href="sign-up.html">商务拓展</a></li>
 								<li><a href="portfolio.html">垂钓生活</a></li>
 								<li><a href="password.html">浪漫婚礼</a></li>													
+								-->
 							</ul>
 						</li>
 						<li class=""><?php echo anchor('blog', "最新动态"); ?></li>
 						<li class=""><?php echo anchor('contact', "联系我们"); ?></li>
 						<li class="top-account visible-desktop">
-						<?php if ( ! is_logged_in()): ?><a class="top-sign-in" href="<?php echo site_url('users/login');?>">快来加入</a>
-						<?php else:?>
-						<a class="top-sign-up" href="<?php echo site_url('users/logout');?>">退出</a>
-						<?php endif;?></li>
+						<a class="top-sign-in" href="<?php echo site_url('plan');?>">快来加入</a>
 					</ul>
 				</div>	
 		
