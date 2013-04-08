@@ -134,9 +134,11 @@
 						<p class="footer-subscribe"><strong>订阅每月最新动态:</strong></p>
 
 						<form id="newsletter">
-				              <input type="text" placeholder="你Emaill邮件地址" class="span9 subs">
-				              <button type="button" class="btn btn-send">发送</button>
+				              <input type="text" id="subEmail" name="subEmail" placeholder="你Emaill邮件地址" class="span9 subs">
+							  <span id="subLoading" style="display:none;">请等候...</span>
+				              <button type="button" class="btn btn-send sub-send">发送</button>
 						</form>
+						<div id="subError"></div>
 					</div>
 					
 					
@@ -194,19 +196,19 @@
 					<div class="span6">
 						<ul class="footer-links">
 							<li>
-								<a href="about.html">关于我们</a>
+								<a href="<?php echo site_url('aboutus');?>">关于我们</a>
 							</li>
 							<li>
-								<a href="features.html">会员中心</a>
+								<a href="<?php echo site_url('plan');?>">会员中心</a>
 							</li>
 							<li>
-								<a href="blog-post.html">航海体验</a>
+								<a href="<?php echo site_url('boats-home/services');?>">航海体验</a>
 							</li>
 							<li>
-								<a href="sign-in.html">联系我们</a>
+								<a href="<?php echo site_url('contact');?>">联系我们</a>
 							</li>
 							<li>
-								<a href="contact.html">加入我们</a>
+								<a href="<?php echo site_url('users/register');?>">加入我们</a>
 							</li>
 						</ul>
 					</div>

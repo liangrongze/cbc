@@ -907,5 +907,37 @@ class Users extends Public_Controller
 				echo json_encode(array('status'=>'fail','msg'=>$this->upload->display_errors()));
 			}
 	}
+	
+		// 写入到newsletter中
+	public function subscribe(){
+		
+		$this->load->helper('email');
+
+		//$_POST['email'] = "222@234.com";
+		
+		$email = $this->input->post('email');
+		
+
+		// If the validation worked, or the user is already logged in
+		if (valid_email($_POST['email'])){
+
+			$row =  $this->db->select('*')->from('newsletter')->where('email', $_POST['email'])->get();
+			//echo $this->db->last_query();
+			//var_dump($row->result());
+			if( $row->result() ){
+				echo json_encode(array('status'=>'fail','msg'=>'请不要重复发送'));
+			}else{
+				$data = array(
+				   'email' => trim($_POST['email']),
+				   'create_at' => time()
+				);
+
+				$this->db->insert('newsletter', $data); 
+				echo json_encode(array('status'=>'success','msg'=>'成功订阅'));
+			}
+		}else{
+			echo json_encode(array('status'=>'fail','msg'=>'请输入正确的Email'));
+		}
+	}
 
 }

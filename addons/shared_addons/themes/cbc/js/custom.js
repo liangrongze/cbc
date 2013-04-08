@@ -159,3 +159,43 @@
         $('#shell img').plaxify()
         $.plax.enable()
       })
+
+	 $(document).ready(function () {
+       $(".sub-send").click(function (){
+			 $("#newsletter").submit();
+			return false;
+		});
+		$("#newsletter").validate({
+			errorPlacement: function(error, element) {
+					$("#subError").html("");
+					error.appendTo( $("#subError") );
+				},
+			rules: {
+				subEmail: {
+					required: true,
+					email: true
+				},
+			},
+			messages: {
+				subEmail: "请输入正确的邮箱地址",
+			},
+			submitHandler: function(form) {
+				$("#subError").html("");
+				$("#subLoading").show();
+		        $(".sub-send").hide();
+				$.post("index.php/users/subscribe",
+				  {
+					email: $("#subEmail").val(),
+				  },
+				  function(data,status){
+						//console.log(data,status);
+						var data = jQuery.parseJSON(data);
+						$("#subLoading").hide();
+						$(".sub-send").show();
+						$("#subEmail").val("");
+						alert(data.msg);
+				  });
+			 }
+		});
+      })
+
