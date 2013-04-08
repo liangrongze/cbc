@@ -27,8 +27,8 @@
 							<div class="blog-info">
 								<?php $title = sprintf('<div class="blog-title"><h4>%s</h4></div>',$post['title']);?>
 								<?php echo anchor('blog/' .date('Y/m', $post['created']) .'/'. $post['slug'], $title); ?>
-								<a href="post.html"><span><i class="icon-heart"></i>5</span></a>
-								<a href="post.html"><span><i class="icon-comments"></i>9</span></a>
+								<!--<a href="post.html"><span><i class="icon-heart"></i>5</span></a>
+								<a href="post.html"><span><i class="icon-comments"></i>9</span></a>-->
 								<span><i class="icon-calendar"></i> <?php echo date("M d, Y",$post['created']);?></span>
 							</div>
 							<div class="clearfix"></div>

@@ -28,7 +28,7 @@ class Users extends Public_Controller
 	/**
 	 * Show the current user's profile
 	 */
-	public function index()
+	public function __index()
 	{
 		if (isset($this->current_user->id))
 		{
@@ -45,7 +45,7 @@ class Users extends Public_Controller
 	 *
 	 * @param string $username The Username or ID of the user
 	 */
-	public function view($username = null)
+	public function __view($username = null)
 	{
 		// work out the visibility setting
 		switch (Settings::get('profile_visibility'))
@@ -95,7 +95,7 @@ class Users extends Public_Controller
 	/**
 	 * Let's login, shall we?
 	 */
-	public function login()
+	public function __login()
 	{
 		// Check post and session for the redirect place
 		$redirect_to = ($this->input->post('redirect_to')) 
@@ -181,7 +181,7 @@ class Users extends Public_Controller
 	/**
 	 * Method to log the user out of the system
 	 */
-	public function logout()
+	public function __logout()
 	{
 		// allow third party devs to do things right before the user leaves
 		Events::trigger('pre_user_logout');
@@ -202,7 +202,7 @@ class Users extends Public_Controller
 	/**
 	 * Method to register a new user
 	 */
-	public function register()
+	public function __register()
 	{
 		if ($this->current_user)
 		{
@@ -526,7 +526,7 @@ class Users extends Public_Controller
 	 *
 	 * Shows an activated messages and a login form.
 	 */
-	public function activated()
+	public function __activated()
 	{
 		//if they are logged in redirect them to the home page
 		if ($this->current_user)
@@ -626,7 +626,7 @@ class Users extends Public_Controller
 	/**
 	 * Password reset is finished
 	 */
-	public function reset_complete()
+	public function __reset_complete()
 	{
 		PYRO_DEMO and show_error(lang('global:demo_restrictions'));
 
@@ -877,7 +877,7 @@ class Users extends Public_Controller
 	}
 
 	/*上传图像*/
-	public function upload(){
+	public function __upload(){
 
 			$config['upload_path'] 		= 'uploads/default/users/';
 			$config['allowed_types']    = 'gif|jpg|png';

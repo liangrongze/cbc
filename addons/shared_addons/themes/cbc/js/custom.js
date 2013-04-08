@@ -66,7 +66,7 @@
 
     jQuery(function($){
         $(".tweet").tweet({
-            username: "StrapTrooper",
+            username: "ChineseBoatClub",
             join_text: "auto",
             avatar_size: 48,
             count: 2,

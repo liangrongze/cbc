@@ -35,8 +35,8 @@
 							</div>
 							<div class="post-info">
 								<span><i class="icon-calendar"></i> <?php echo date('M d, Y', $post['created']);?></span>
-								<a href=""><span><i class="icon-heart"></i>5</span></a>
-								<a href=""><span><i class="icon-user"></i> Ryan Roy</span></a>
+								<!--<a href=""><span><i class="icon-heart"></i>5</span></a>
+								<a href=""><span><i class="icon-user"></i> Ryan Roy</span></a>-->
 							</div> 
 
 						<?php echo $post['body'];?>
@@ -46,22 +46,6 @@
 					</div>
 
 				</div>
-			
-			
-
-			<?php if (Settings::get('enable_comments')): ?>
-			
-				<?php echo $this->comments->display() ?>
-
-
-				<?php if ($form_display): ?>
-					<?php echo $this->comments->form() ?>
-				<?php else: ?>
-				<?php echo sprintf(lang('blog:disabled_after'), strtolower(lang('global:duration:'.str_replace(' ', '-', $post[0]['comments_enabled'])))) ?>
-				<?php endif ?>
-
-
-			<?php endif ?>
 				
 			</div>	
 
