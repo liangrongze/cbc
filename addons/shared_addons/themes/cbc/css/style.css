@@ -624,6 +624,11 @@ background-color: #EE6557;
 .section-features .info-features img {
     margin-bottom: 15px;
 }
+
+.section-features .info-features i img {
+    margin-bottom: 4px;
+	height:70px;
+}
 .section-features .info-features h5 {
     box-shadow: none;
     color: #FFFFFF;
