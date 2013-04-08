@@ -83,7 +83,7 @@
 			<div class="row">
 				<div class="span3 offset5 account create-account">
                         <span>Already have an account?</span>
-                        <a href="sign-in.html">Sign in</a>
+                        <a href="<?php echo site_url('users/login');?>">Sign in</a>
 				</div>	
 			</div>
 		</div>

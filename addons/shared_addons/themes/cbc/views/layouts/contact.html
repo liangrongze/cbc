@@ -1,0 +1,71 @@
+{{ theme:partial name="header" }}
+	
+{{ template:body }}
+
+ <script>
+ $(function() {
+
+	$("#open_upload_cnt").click(function (){
+		if( $(".btn-avatar-upload").is(":hidden") ){
+			$(".btn-avatar-upload").show();
+			$(this).html("Cancel Up Photo");
+		}else{
+			$(".btn-avatar-upload").hide();
+			$(this).html("Up your Photo");
+		}
+		return false;
+	});
+	$("#send-contact").click(function (){
+		 $("#contact-form").submit();
+		return false;
+	});
+	$("#contact-form").validate({
+		rules: {
+
+			name :{
+				required: true,
+				minlength: 2,
+				maxlength: 50,
+			},
+			message: {
+				required: true,
+				minlength: 5,
+				maxlength: 300,
+			},
+			subject: {
+				required: true,
+				minlength: 5,
+				maxlength: 80,
+			},
+			email: {
+				required: true,
+				email: true
+			},
+		},
+		messages: {
+			name : {
+				required: "Please enter name",
+				minlength: "Your name must consist of at least 2 characters",
+				maxlength: "Your name more than 50 characters"
+			},
+			subject: {
+				required: "Please enter subject",
+				minlength: "Your message: must consist of at least 5 characters",
+				maxlength: "Your message: more than 80 characters"
+			},
+			message: {
+				required: "Please enter message:",
+				minlength: "Your message: must consist of at least 5 characters",
+				maxlength: "Your message: more than 300 characters"
+			},
+			email: "Please enter a valid email address",
+		},
+		submitHandler: function(form) {
+			form.submit();
+			$("#send-contact").hide();
+			$("#sending").show();
+		 }
+	});
+});
+ </script>
+{{ theme:partial name="footer" }}

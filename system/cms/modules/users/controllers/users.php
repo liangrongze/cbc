@@ -118,7 +118,7 @@ class Users extends Public_Controller
 			array(
 				'field' => 'email',
 				'label' => lang('global:email'),
-				'rules' => 'required|trim|callback__check_login'
+				'rules' => 'required|trim|callback__check_login[登陆失败]'
 			),
 			array(
 				'field' => 'password',

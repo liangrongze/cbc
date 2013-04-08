@@ -56,14 +56,15 @@
 				<div id="top-navigation" class="nav-collapse subnav-collapse collapse ">
 					<ul class="nav pull-right">
 						<li class="active">
-							<?php echo anchor('home-new', "首页"); ?></li>
+							<?php echo anchor('home', "首页"); ?></li>
 						<li class=""><?php echo anchor('aboutus', "关于我们"); ?></li>
 						
 						<li class="dropdown">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">会员中心<b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="portfolio-item.html">会员福利</a></li>
-								<li><a href="plan.html">会员价格</a></li>
+								<li><a href="plan.html"></a></li>
+								<li><?php echo anchor('plan', "会员价格"); ?></li></li>
 								<li><?php echo anchor('users/register', "加入我们"); ?></li></li>
 								<li><a href="portfolio.html">会员章程</a></li>
 								<li><a href="password.html">常见问题</a></li>													
@@ -81,8 +82,12 @@
 							</ul>
 						</li>
 						<li class=""><?php echo anchor('blog', "最新动态"); ?></li>
-						<li class=""><a href="contact.html">联系我们</a></li>
-						<li class="top-account visible-desktop"><a class="top-sign-in" href="sign-in.html">快来加入</a></li>
+						<li class=""><?php echo anchor('contact', "联系我们"); ?></li>
+						<li class="top-account visible-desktop">
+						<?php if ( ! is_logged_in()): ?><a class="top-sign-in" href="<?php echo site_url('users/login');?>">快来加入</a>
+						<?php else:?>
+						<a class="top-sign-up" href="<?php echo site_url('users/logout');?>">退出</a>
+						<?php endif;?></li>
 					</ul>
 				</div>	
 		

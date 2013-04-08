@@ -217,7 +217,12 @@ class Plugin_Contact extends Plugin
 		$this->load->helper('form');
 		
 		$field_list = $this->attributes();
-		
+		$placeholder = array(
+			'name'=>'名字',	
+			'email'=>'联系邮箱',	
+			'subject'=>'标题',	
+			'message'=>'你的想法',	
+		);
 		// If they try using the old form tag plugin give them an idea why it's failing.
 		if ( ! $this->content() or count($field_list) == 0)
 		{
@@ -345,12 +350,12 @@ class Plugin_Contact extends Plugin
 		}
 
 
-		if ($this->input->post('contact-submit')) { 
-			
+		if ($this->input->post('d0ntf1llth1s1n')) { 
+		
 			$this->form_validation->set_rules($validation);
 			
 			if ($this->form_validation->run())
-			{
+			{ 
 				// maybe it's a bot?
 				if ($this->input->post('d0ntf1llth1s1n') !== ' ')
 				{
@@ -447,7 +452,7 @@ class Plugin_Contact extends Plugin
 						{
 							$message = $this->attribute('error', lang('contact_error_message'));
 						}
-						
+
 						$this->session->set_flashdata('error', $message);
 						redirect(current_url());
 					}
@@ -503,15 +508,18 @@ class Plugin_Contact extends Plugin
 				$parse_data[$form] .= call_user_func('form_'.$value['type'],
 														$form,
 														set_value($form),
-														'id="contact_'.$form.'" class="'.$form.'"'
+														'id="contact_'.$form.'" class="span5" placeholder="'.$placeholder[$form].'"'
 													 );
 			}
 		}
 	
-		$output	 = form_open_multipart($action, 'class="contact-form"').PHP_EOL;
-		$output	.= form_input('d0ntf1llth1s1n', ' ', 'class="default-form" style="display:none"');
+		$output	 = form_open_multipart($action, 'class="contact-form" id="contact-form"').PHP_EOL;
+		$output	.= form_input('d0ntf1llth1s1n', ' ', 'class="default-form" style="display:none" ');
 		$output	.= $this->parser->parse_string($this->content(), str_replace('{{', '{ {', $parse_data), true).PHP_EOL;
-		$output .= '<span class="contact-button">'.form_submit('contact-submit', ucfirst($button)).'</span>'.PHP_EOL;
+		//$output .= '<span class="contact-button">'.form_submit('contact-submit', ucfirst($button)).'</span>'.PHP_EOL;
+		$output .= '<br><span id="sending" style="display:none">发送中....</span>'.PHP_EOL;
+		$output .= '<span id="sending" style="display:none">发送中....</span>'.PHP_EOL;
+		$output .= '<br><button class="btn btn-color" type="button" id="send-contact">Send</button>'.PHP_EOL;
 		$output .= form_close();
 
 		return $output;
